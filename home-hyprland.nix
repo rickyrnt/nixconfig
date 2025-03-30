@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
   wallpaper-photo = pkgs.fetchurl {
     url = "https://images.steamusercontent.com/ugc/1170321140105641126/47F1E70BD90DB25A97F3B761B07764F7F947287E/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
     name = "wallpaper-photo";
@@ -8,9 +7,11 @@ let
   };
 in
 {
-  imports = [
-    (import "$(home-manager}/nixos")
-  ];
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
 
   home-manager.users.rickyrnt = {
     gtk = {
@@ -19,12 +20,6 @@ in
         name = "Adwaita-dark";
         package = pkgs.gnome-themes-extra;
       };
-    };
-
-    qt = {
-      enable = true;
-      platformTheme = "gnome";
-      style = "adwaita-dark";
     };
 
     services.hyprpaper.enable = true;

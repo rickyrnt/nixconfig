@@ -39,5 +39,21 @@ in
       background_opacity = 0.2;
       background_blur = 0;
     };
+    
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      # autoSuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+
+      shellAliases = {
+        sudo = "sudo ";
+        vim = "nvim ";
+        nixedit = "nvim /home/rickyrnt/nixos/configuration.nix";
+        nixmake = "sudo nixos-rebuild switch -I /home/rickyrnt/nixos/configuration.nix";
+      };
+      
+      history.size = 10000;
+    };
   };
 }

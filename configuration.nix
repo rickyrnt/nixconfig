@@ -51,6 +51,8 @@
     layout = "us";
     variant = "";
   };
+  
+  programs.zsh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rickyrnt = {
@@ -58,6 +60,7 @@
     description = "rickyrnt";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   services.isw.enable = true;
