@@ -54,7 +54,7 @@
 	
 	programs.zsh.enable = true;
 
-	# Define a user account. Don't forget to set a password with ‘passwd’.
+	# Define a user account. Don\"t forget to set a password with ‘passwd’.
 	users.users.rickyrnt = {
 		isNormalUser = true;
 		description = "rickyrnt";
@@ -65,15 +65,6 @@
 
 	services.isw.enable = true;
 	services.udisks2.enable = true; # For calibre to see ereaders
-
-	services.displayManager.sddm = {
-		package = pkgs.kdePackages.sddm;
-		enable = true;
-		wayland.enable = true;
-		# theme = "${import ./sddm-themes.nix { inherit pkgs; }}";
-		theme = "sddm-astronaut-theme";
-		extraPackages = with pkgs; [sddm-astronaut];
-	};
 
 	security.rtkit.enable = true;
 	services.pipewire = {
@@ -145,7 +136,6 @@
 		bluetui
 		brightnessctl
 
-		sddm-astronaut
 		libsForQt5.qt5.qtquickcontrols2
 		libsForQt5.qt5.qtgraphicaleffects
 
