@@ -43,17 +43,29 @@ in
     programs.zsh = {
       enable = true;
       enableCompletion = true;
-      # autoSuggestions.enable = true;
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
 
       shellAliases = {
         sudo = "sudo ";
         vim = "nvim ";
         nixedit = "nvim /home/rickyrnt/nixos/configuration.nix";
-        nixmake = "sudo nixos-rebuild switch -I /home/rickyrnt/nixos/configuration.nix";
+        nixmake = "sudo nixos-rebuild switch -I nixos-config=/home/rickyrnt/nixos/configuration.nix";
       };
       
+      initExtra = ''
+        neofetch | lolcat
+        eval "$(thefuck --alias)"
+        eval "$(ssh-agent -s)"
+      '';
+      
       history.size = 10000;
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ ];
+        theme = "agnoster";
+      };
     };
   };
 }
