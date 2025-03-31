@@ -47,8 +47,6 @@ in
 			syntaxHighlighting.enable = true;
 
 			shellAliases = {
-				sudo = "sudo ";
-				vim = "nvim ";
 				nixedit = "nvim /home/rickyrnt/nixos/configuration.nix";
 				nixmake = "sudo nixos-rebuild switch -I nixos-config=/home/rickyrnt/nixos/configuration.nix";
 			};
@@ -66,6 +64,28 @@ in
 				plugins = [ ];
 				theme = "agnoster";
 			};
+		};
+		
+		programs.neovim = {
+			enable = true;
+			viAlias = true;
+			vimAlias = true;
+			defaultEditor = true;
+			
+			plugins = with pkgs.vimPlugins; [
+				transparent-nvim
+				vimtex
+				vim-numbertoggle
+			];
+			
+			extraConfig = ''
+				set number
+			'';
+			
+			extraLuaConfig = ''
+				vim.opt.tabstop = 2
+				vim.opt.shiftwidth = 2
+			'';
 		};
 	};
 }
