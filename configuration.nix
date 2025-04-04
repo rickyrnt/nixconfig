@@ -132,7 +132,7 @@
 		hyprlock
 		# hyprsysteminfo # unstable
 		hyprlang
-		waybar
+		# waybar
 		bluetui
 		brightnessctl
 
