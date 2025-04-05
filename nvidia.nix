@@ -10,6 +10,8 @@
 	hardware.opengl = {
 	};
 
+	services.supergfxd.enable = true;
+
 	# Load nvidia driver for Xorg and Wayland
 	services.xserver.videoDrivers = ["nvidia"];
 
