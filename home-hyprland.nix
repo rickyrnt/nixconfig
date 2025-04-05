@@ -89,6 +89,10 @@ in
 		imports = [
 			./mechabar.nix
 		];
+		
+		home.packages = with pkgs; [
+			grimblast
+		];
 
 		gtk = {
 			enable = true;
@@ -226,7 +230,9 @@ in
 
 			# Keybinds
 			"$mod" = "SUPER";
-			bind = [
+			bind = let 
+				grmblstfy = "grimblast --notify --freeze";
+			in [
 				"ALT, f1, exec, $terminal"
 				"ALT, f2, exec, $menu"
 				"$mod, f2, exec, $supermenu"
@@ -252,6 +258,16 @@ in
 				"ALT, l, movefocus, r"
 				"ALT, k, movefocus, u"
 				"ALT, j, movefocus, d"
+				
+				"$mod, f10, exec, ${grmblstfy} copy screen"
+				"$mod, f11, exec, ${grmblstfy} copy output"
+				"$mod, f12, exec, ${grmblstfy} copy area"
+				"$mod SHIFT, f10, exec, ${grmblstfy} copysave screen"
+				"$mod SHIFT, f11, exec, ${grmblstfy} copysave output"
+				"$mod SHIFT, f12, exec, ${grmblstfy} copysave area"
+				"$mod ALT, f10, exec, ${grmblstfy} edit screen"
+				"$mod ALT, f11, exec, ${grmblstfy} edit output"
+				"$mod ALT, f12, exec, ${grmblstfy} edit area"
 
 				"$mod, B, togglespecialworkspace, magic"
 				"$mod SHIFT, B, movetoworkspace, special:magic"
@@ -273,7 +289,7 @@ in
 						"CTRL ALT, code:1${toString i}, workspace, ${toString ws}"
 						"ALT SHIFT, code:1${toString i}, movetoworkspacesilent, ${toString ws}"
 					]
-				)9)
+				)10)
 			);
 
 			bindm = [
