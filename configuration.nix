@@ -74,6 +74,11 @@
 		pulse.enable = true;
 		jack.enable = true;
 	};
+	
+	# Mount windows drive
+	fileSystems."/win" = {
+		device = "/dev/nvme0n1p3";
+	};
 
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
