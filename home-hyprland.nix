@@ -85,14 +85,24 @@ in
 		extraPackages = with pkgs; [my-astronaut-theme];
 	};
 
-	home-manager.users.rickyrnt = {
+	home-manager.users.rickyrnt = rec {
 		imports = [
 			./mechabar.nix
 		];
 		
+		xdg.userDirs = {
+			enable = true;
+			createDirectories = true;
+			pictures = "${config.users.users.rickyrnt.home}/Pictures";
+		};
+
 		home.packages = with pkgs; [
 			grimblast
 		];
+		
+		home.sessionVariables = {
+			XDG_SCREENSHOTS_DIR = "${xdg.userDirs.pictures}/Screenshots";
+		};
 
 		gtk = {
 			enable = true;
