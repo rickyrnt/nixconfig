@@ -38,6 +38,7 @@ in
 			confirm_os_window_close = 0;
 			background_opacity = 0.2;
 			background_blur = 0;
+			background = "#100008";
 		};
 		
 		programs.zsh = {

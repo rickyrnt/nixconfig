@@ -208,7 +208,7 @@ in
 
 				# https:#wiki.hyprland.org/Configuring/Variables/#blur
 				blur = {
-					enabled = false;
+					enabled = true;
 					size = 3;
 					passes = 1;
 
@@ -258,6 +258,7 @@ in
 				"ALT, l, movefocus, r"
 				"ALT, k, movefocus, u"
 				"ALT, j, movefocus, d"
+				"ALT, TAB, cyclenext"
 				
 				"$mod, f10, exec, ${grmblstfy} copy screen"
 				"$mod, f11, exec, ${grmblstfy} copy output"
@@ -321,10 +322,13 @@ in
 
 			windowrulev2 = [
 				"noborder, class:vesktop, floating:0, onworkspace:w[tv1] s[true]"
+				"noborder, class:vesktop, fullscreen:1, onworkspace:s[true]"
+				"noblur, class:vesktop, floating:0, onworkspace:s[true]"
 				"rounding 0, class:vesktop, floating:0, onworkspace:w[tv1] s[true]"
 				"noborder, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
 				"rounding 0, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
 				"workspace special:discord, class:vesktop"
+				"noblur, floating:0, onworkspace:s[false]"
 			];
 
 			animations = {
