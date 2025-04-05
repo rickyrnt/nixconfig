@@ -224,6 +224,7 @@ in
 			input = {
 				follow_mouse = 2;
 				touchpad.natural_scroll = true;
+				float_switch_override_focus = 0;
 			};
 
 			gestures.workspace_swipe = true;

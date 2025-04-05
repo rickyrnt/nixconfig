@@ -84,6 +84,16 @@
 		noto-fonts-emoji
 		liberation_ttf
 	];
+	
+	# File manager
+	programs.thunar.enable = true;
+	programs.xfconf.enable = true;
+	services.gvfs.enable = true; # Mount, trash, and other functionalities
+	services.tumbler.enable = true; # Thumbnail support for images
+	programs.thunar.plugins = with pkgs.xfce; [
+		thunar-archive-plugin
+		thunar-volman
+	];
 
 	programs.firefox.enable = true;
 	services.mullvad-vpn.enable = true;
@@ -111,8 +121,6 @@
 		kitty
 		lxappearance-gtk2
 		wofi
-		xfce.thunar
-		xfce.tumbler
 		killall
 		tlp
 		powertop
@@ -132,7 +140,6 @@
 		hyprlock
 		# hyprsysteminfo # unstable
 		hyprlang
-		# waybar
 		bluetui
 		brightnessctl
 
