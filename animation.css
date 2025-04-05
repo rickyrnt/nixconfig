@@ -147,7 +147,8 @@
 @keyframes distro_in {
   to {
     color: @distro-fg;
-    text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
+    text-shadow: none;
+    /* text-shadow: 0 0 1.5px rgba(0, 0, 0, 1); */
   }
 }
 
@@ -159,11 +160,11 @@
   }
 }
 
-@keyframes power_in {
-  to {
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-  }
-}
+/* @keyframes power_in { */
+  /* to { */
+    /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.6); */
+  /* } */
+/* } */
 
 /* <<--< modules >-->> */
 
@@ -176,7 +177,8 @@
 @keyframes module_in {
   to {
     color: @module-fg;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+    /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.6); */
   }
 }
 
@@ -195,7 +197,8 @@
 @keyframes battery_in {
   to {
     color: @module-fg;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+    /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.6); */
   }
 }
 
@@ -204,20 +207,23 @@
 @keyframes state_warning_in {
   to {
     color: @warning;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+    /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.6); */
   }
 }
 
 @keyframes state_critical_in {
   to {
     color: @critical;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+    /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.6); */
   }
 }
 
 @keyframes state_charging_in {
   to {
     color: @charging;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+    /* text-shadow: 0 0 2px rgba(0, 0, 0, 0.6); */
   }
 }

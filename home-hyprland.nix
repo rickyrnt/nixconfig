@@ -363,9 +363,11 @@ in
 					"custom/paddw"
 					"hyprland/window"       # window title
 				];
+				
+				fixed-center = true;
 
 				modules-center = [
-					"custom/paddc"
+					# "custom/paddc"
 					"custom/left2"
 					"custom/cpuinfo"       # temperature
 
@@ -390,7 +392,7 @@ in
 
 					"custom/wifi"          # wi-fi
 					"bluetooth"            # bluetooth
-					"custom/update"        # system update
+					# "custom/update"        # system update
 					"custom/right5"
 				];
 

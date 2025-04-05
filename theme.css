@@ -14,18 +14,18 @@
 @define-color sapphire        #7dc4e4;
 @define-color blue            #8aadf4;
 @define-color lavender        #b7bdf8;
-@define-color text            #cad3f5;
-@define-color subtext1        #b8c0e0;
-@define-color subtext0        #a5adcb;
-@define-color overlay2        #939ab7;
-@define-color overlay1        #8087a2;
-@define-color overlay0        #6e738d;
-@define-color surface2        #5b6078;
-@define-color surface1        #494d64;
-@define-color surface0        #363a4f;
-@define-color base            #24273a;
-@define-color mantle          #1e2030;
-@define-color crust           #181926;
+@define-color text            #f4baf5;
+@define-color subtext1        #dcc8e0;
+@define-color subtext0        #c685cb;
+@define-color overlay2        #b773b6;
+@define-color overlay1        #a2609b;
+@define-color overlay0        #894e8d;
+@define-color surface2        #783b76;
+@define-color surface1        #642962;
+@define-color surface0        #4f164d;
+@define-color base            #3a1438;
+@define-color mantle          #300e2e;
+@define-color crust           #260825;
 
 @define-color white           #ffffff;
 @define-color black           #000000;
@@ -43,16 +43,17 @@
 @define-color main-bg         @crust;
 @define-color main-br         @text;
 
-@define-color active-bg       @overlay2;
-@define-color active-fg       @crust;
+@define-color active-bg       @base;
+@define-color active-fg       @overlay2;
 
-@define-color hover-bg        @surface0;
+@define-color hover-bg        @surface1;
 @define-color hover-fg        alpha(@text, 0.75);
 
 /* Module Colors */
 
 @define-color module-fg       @text;
-@define-color workspaces      @mantle;
+@define-color white-module-fg @crust;
+@define-color workspaces      @text;
 
 @define-color cpuinfo         @mantle;
 @define-color memory          @base;
@@ -66,7 +67,7 @@
 @define-color pulseaudio      @mantle;
 @define-color backlight       @base;
 @define-color battery         @surface0;
-@define-color power           @overlay2;
+@define-color power           @text;
 
 /* State Colors */
 
