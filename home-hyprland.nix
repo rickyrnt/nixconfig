@@ -285,9 +285,11 @@ in
 				"$mod, f2, exec, $supermenu"
 				"ALT, f3, exec, firefox"
 				"ALT, f4, killactive,"
+				# "$mod, f4, forcekillactive"
 				"ALT, f5, exec, $fileManager"
 				"ALT, f6, exec, code"
 				"ALT, f11, exec, $vencordize"
+				"CTRL SHIFT, ESCAPE, exec, kitty -e 'btop'"
 
 				"$mod, ESCAPE, exec, $rebar"
 				"$mod, S, togglefloating,"
@@ -375,7 +377,14 @@ in
 				"noborder, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
 				"rounding 0, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
 				"workspace special:discord, class:vesktop"
+
 				"noblur, floating:0, onworkspace:s[false]"
+
+				"maximize, class:factorio"
+				"rounding 0, class:factorio, floating:0, onworkspace:w[tv1]"
+				"rounding 0, class:factorio, fullscreen:1"
+				"noborder, class:factorio, floating:0, onworkspace:w[tv1]"
+				"noborder, class:factorio, fullscreen:1"
 			];
 
 			animations = {
@@ -412,6 +421,7 @@ in
 				];
 			};
 		};
+	
 		programs.waybar.settings = {
 			mainBar = {
 				layer = "top";
