@@ -64,6 +64,13 @@
 	};
 
 	services.isw.enable = true;
+	services.tlp.enable = true;
+	services.tlp.settings = {
+		PLATFORM_PROFILE_ON_AC = "performance";
+		PLATFORM_PROFILE_ON_BAT = "low-power";
+		CPU_MAX_PERF_ON_BAT = 70;
+		CPU_MAX_PERF_ON_AC = 100;
+	};
 	services.udisks2.enable = true; # For calibre to see ereaders
 
 	security.rtkit.enable = true;
@@ -127,7 +134,6 @@
 		lxappearance-gtk2
 		wofi
 		killall
-		tlp
 		powertop
 		btop
 		qpwgraph
