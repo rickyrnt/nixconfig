@@ -76,12 +76,15 @@ tooltip label {
 #custom-wifi,
 #bluetooth,
 #custom-update,
-#mpris,
+#mpris {
+  color: @text;
+}
 #pulseaudio,
 #backlight,
 #battery,
 #custom-power {
   opacity: 1;
+  box-shadow: none;
   color: @white-module-fg;
   padding: 0 4px;
 }

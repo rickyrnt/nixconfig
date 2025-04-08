@@ -5,6 +5,12 @@ let
 		name = "wallpaper-photo";
 		hash = "sha256-i94PzTtGdLVQlujgwrTB4NuJ/Zb58SCfo0g26NQXbH0=";
 	};
+	mechasrc = pkgs.fetchFromGitHub {
+		owner = "rickyrnt";
+		repo = "mechabar-nix";
+		rev = "623211b04279b868ee84af27c01ca25fd5a8c9f0";
+		hash = "sha256-1HC8RIJq4ano6V3EmDQfd/NAnoYI2mUTl6vGn8ZajgQ=";
+	};
 in
 {
 	qt = {
@@ -87,7 +93,7 @@ in
 
 	home-manager.users.rickyrnt = rec {
 		imports = [
-			./mechabar.nix
+			"${mechasrc}/mechabar.nix"
 		];
 		
 		xdg.userDirs = {
@@ -98,6 +104,7 @@ in
 
 		home.packages = with pkgs; [
 			grimblast
+			playerctl
 		];
 		
 		home.sessionVariables = {
@@ -111,6 +118,8 @@ in
 				package = pkgs.gnome-themes-extra;
 			};
 		};
+		
+		services.playerctld.enable = true;
 
 		services.hyprpaper.enable = true;
 		services.hyprpaper.settings = {
@@ -422,16 +431,38 @@ in
 			};
 		};
 	
-		programs.waybar.settings = {
-			mainBar = {
-				layer = "top";
-				position = "top";
-				mode = "dock";
-				reload_style_on_change = true;
-				gtk-layer-shell = true;
+		programs.waybar.mechabar = {
+			enable = true;
+			colors = {
+				text      = "#f4baf5";
+				subtext1  = "#dcc8e0";
+				subtext0  = "#c685cb";
+				overlay2  = "#b773b6";
+				overlay1  = "#a2609b";
+				overlay0  = "#894e8d";
+				surface2  = "#783b76";
+				surface1  = "#642962";
+				surface0  = "#4f164d";
+				base      = "#3a1438";
+				mantle    = "#300e2e";
+				crust     = "#260825";
+			};
+			
+			themeColors = {
+				active-bg       = "@base";
+				active-fg       = "@overlay2";
 
-				# <<--< Positions >-->>
+				hover-bg        = "@surface1";
+				hover-fg        = "alpha(@text, 0.75)";
 
+				module-fg       = "@text";
+				white-module-fg = "@crust";
+				workspaces      = "@text";
+
+				power           = "@text";
+			};
+			
+			modules = {
 				modules-left = [
 					# "custom/left5"
 					"custom/distro"        # distro icon
@@ -488,6 +519,26 @@ in
 					"custom/leftin2"
 					"custom/power"          # power button
 				];
+			};
+			
+			extraConfig = {
+				"hyprland/workspaces".persistent-workspaces = {};
+				memory.tooltip = true;
+			};
+			
+			style = ./style.css;
+			animation = ./animation.css;
+		};
+		/*programs.waybar.settings = {
+			mainBar = {
+				layer = "top";
+				position = "top";
+				mode = "dock";
+				reload_style_on_change = true;
+				gtk-layer-shell = true;
+
+				# <<--< Positions >-->>
+
 
 				# <<--< Modules >-->>
 
@@ -890,6 +941,6 @@ in
 					tooltip = false;
 				};
 			};
-		};
+		};*/
 	};
 }
