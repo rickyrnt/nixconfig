@@ -11,12 +11,12 @@
 			./isw-module.nix
 			./nvidia.nix
 			./homemanager.nix
+			./laptop.nix
 		];
 
 	# Bootloader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
-	systemd.targets.multi-user.wants = ["isw@16S3EMS1.service"];
 
 	networking.hostName = "M04RYS8"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -59,18 +59,9 @@
 		isNormalUser = true;
 		description = "rickyrnt";
 		extraGroups = [ "networkmanager" "wheel" ];
-		packages = with pkgs; [];
 		shell = pkgs.zsh;
 	};
 
-	services.isw.enable = true;
-	services.tlp.enable = true;
-	services.tlp.settings = {
-		PLATFORM_PROFILE_ON_AC = "performance";
-		PLATFORM_PROFILE_ON_BAT = "low-power";
-		CPU_MAX_PERF_ON_BAT = 70;
-		CPU_MAX_PERF_ON_AC = 100;
-	};
 	services.udisks2.enable = true; # For calibre to see ereaders
 
 	security.rtkit.enable = true;
@@ -80,11 +71,6 @@
 		alsa.support32Bit = true;
 		pulse.enable = true;
 		jack.enable = true;
-	};
-	
-	# Mount windows drive
-	fileSystems."/win" = {
-		device = "/dev/nvme0n1p3";
 	};
 
 	# Allow unfree packages
@@ -189,11 +175,6 @@
 		#  wget
 	];
 
-	nixpkgs.overlays = [
-		(self: super: {
-			isw = super.callPackage ./isw.nix { };
-		})
-	];
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.
