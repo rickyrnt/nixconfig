@@ -94,6 +94,8 @@ in
 		# theme = "sddm-astronaut-theme";
 		extraPackages = with pkgs; [my-astronaut-theme];
 	};
+	
+	programs.hyprland.enable = true;
 
 	home-manager.users.rickyrnt = rec {
 		imports = [
