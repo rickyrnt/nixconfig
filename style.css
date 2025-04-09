@@ -13,7 +13,7 @@
 
 window#waybar > box {
   background-color: @main-bg;
-  margin: 2px;
+  margin: 0px;
 }
 
 /* <<--< Drop Shadow >-->> */

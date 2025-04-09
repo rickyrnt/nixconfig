@@ -337,6 +337,8 @@ in
 				"CTRL ALT, mouse_down, workspace, e-1"
 				"CTRL ALT, l, workspace, r+1"
 				"CTRL ALT, h, workspace, r-1"
+				"CTRL ALT, G, workspace, 101"
+				"CTRL ALT SHIFT, G, movetoworkspace, 101"
 
 				",PGUP, exec, playerctl next"
 				",HOME, exec, playerctl play-pause"
@@ -376,6 +378,8 @@ in
 			workspace = [
 				"n[e:discord] w[tv1], gapsout:0, gapsin:0"
 				"n[e:discord] f[1], gapsout:0, gapsin:0"
+				"101, gapsout:0, gapsin:0"
+				# "101, gapsout:0, gapsin:0"
 			];
 
 			windowrulev2 = [
@@ -386,14 +390,17 @@ in
 				"noborder, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
 				"rounding 0, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
 				"workspace special:discord, class:vesktop"
-
+				
 				"noblur, floating:0, onworkspace:s[false]"
 
-				"maximize, class:factorio"
-				"rounding 0, class:factorio, floating:0, onworkspace:w[tv1]"
-				"rounding 0, class:factorio, fullscreen:1"
-				"noborder, class:factorio, floating:0, onworkspace:w[tv1]"
-				"noborder, class:factorio, fullscreen:1"
+				"rounding 0, floating:0, onworkspace:101 w[tv1]"
+				"rounding 0, fullscreen:1, onworkspace:101"
+				"noborder, floating:0, onworkspace:101 w[tv1]"
+				"noborder, fullscreen:1, onworkspace:101"
+				"noshadow, floating:0, onworkspace:101 w[tv1]"
+				"noshadow, fullscreen:1, onworkspace:101"
+
+				"workspace 101, class:factorio"
 			];
 
 			animations = {
@@ -523,7 +530,20 @@ in
 			
 			extraConfig = {
 				"hyprland/workspaces".persistent-workspaces = {};
-				memory.tooltip = true;
+				memory = {
+					states = {
+						warning = 75;
+						critical = 90;
+					};
+
+					format = "󰘚 {percentage}%";
+					format-critical = "󰀦 {percentage}%";
+					tooltip = true;
+					tooltip-format = "Memory Used: {used:0.1f} GB / {total:0.1f} GB";
+					interval = 5;
+					min-length = 7;
+					max-length = 7;
+				};
 			};
 			
 			style = ./style.css;
