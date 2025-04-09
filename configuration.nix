@@ -8,7 +8,6 @@
 	imports =
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
-			./isw-module.nix
 			./nvidia.nix
 			./home.nix
 			./laptop.nix
@@ -126,50 +125,17 @@
 		vlc
 		lm_sensors
 		wl-clipboard
-		dunst
 		pulseaudio
 		pwvucontrol
 
-		hyprpaper
-		hyprcursor
-		hyprpicker
-		hypridle
-		hyprlock
-		# hyprsysteminfo # unstable
-		hyprlang
 		bluetui
-		brightnessctl
-
-		libsForQt5.qt5.qtquickcontrols2
-		libsForQt5.qt5.qtgraphicaleffects
 
 		fuse
 		ntfs3g
 		rclone
 		comma
 
-		python3
-		python311Packages.pip
-		pipx
-		vscode
-		obsidian
-		git
-		texliveBasic
-		libgcc
-		libreoffice-qt6-fresh
-
-		mtpaint
-		vesktop
-		steam
-		bottles
-		cider
-		kdenlive
-		zoom-us
-		calibre
-		graphviz
-
 		thefuck
-		cmatrix
 		neofetch
 		lolcat
 		#  wget
@@ -195,7 +161,6 @@
 	# Or disable the firewall altogether.
 	# networking.firewall.enable = false;
 
-	programs.hyprland.enable = true;
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 	# This value determines the NixOS release from which the default

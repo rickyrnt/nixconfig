@@ -19,6 +19,10 @@ in
 		style = "adwaita-dark";
 	};
 
+	environment.systemPackages = with pkgs.libsForQt5.qt5; [
+		qtquickcontrols2
+		qtgraphicaleffects
+	];
 	services.displayManager.sddm = let
 		my-astronaut-theme = pkgs.sddm-astronaut.override {
 			themeConfig = {
@@ -105,6 +109,11 @@ in
 		home.packages = with pkgs; [
 			grimblast
 			playerctl
+			hyprpicker
+			hyprcursor
+			# hyprsysteminfo # unstable
+			hyprlang
+			brightnessctl
 		];
 		
 		home.sessionVariables = {

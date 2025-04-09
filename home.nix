@@ -21,11 +21,37 @@ in
 				color-scheme = "prefer-dark";
 			};
 		};
+		
+		home.packages = with pkgs; [
+			python3
+			python311Packages.pip
+			pipx
+			vscode
+			obsidian
+			git
+			texliveBasic
+			libgcc
+			libreoffice-qt6-fresh
+
+			mtpaint
+			vesktop
+			steam
+			bottles
+			cider
+			kdenlive
+			zoom-us
+			calibre
+			graphviz
+
+			cmatrix
+		];
 
 		xdg.enable = true;
 
 		# Wayland, X, etc. support for session vars
 		systemd.user.sessionVariables = config.home-manager.users.rickyrnt.home.sessionVariables;
+		
+		services.dunst.enable = true;
 
 		programs.git = {
 			enable = true;
