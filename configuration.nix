@@ -10,7 +10,7 @@
 			./hardware-configuration.nix
 			./isw-module.nix
 			./nvidia.nix
-			./homemanager.nix
+			./home.nix
 			./laptop.nix
 		];
 
