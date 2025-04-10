@@ -102,12 +102,6 @@ in
 			"${mechasrc}/mechabar.nix"
 		];
 		
-		xdg.userDirs = {
-			enable = true;
-			createDirectories = true;
-			pictures = "${config.users.users.rickyrnt.home}/Pictures";
-		};
-
 		home.packages = with pkgs; [
 			grimblast
 			playerctl
@@ -118,10 +112,6 @@ in
 			brightnessctl
 		];
 		
-		home.sessionVariables = {
-			XDG_SCREENSHOTS_DIR = "${xdg.userDirs.pictures}/Screenshots";
-		};
-
 		gtk = {
 			enable = true;
 			theme = {
@@ -557,8 +547,8 @@ in
 				};
 			};
 			
-			style = ./style.css;
-			animation = ./animation.css;
+			style = ./dotfiles/mechabar/style.css;
+			animation = ./dotfiles/mechabar/animation.css;
 		};
 		/*programs.waybar.settings = {
 			mainBar = {

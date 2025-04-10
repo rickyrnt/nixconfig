@@ -10,7 +10,7 @@ in
 
 	home-manager.backupFileExtension = "backup";
 
-	home-manager.users.rickyrnt = {
+	home-manager.users.rickyrnt = rec {
 		/* The home.stateVersion option does not have a default and must be set */
 		home.stateVersion = "18.09";
 		/* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
@@ -47,6 +47,20 @@ in
 		];
 
 		xdg.enable = true;
+
+		xdg.userDirs = {
+			enable = true;
+			createDirectories = true;
+			pictures = "${config.users.users.rickyrnt.home}/Pictures";
+		};
+
+		home.sessionVariables = {
+			XDG_SCREENSHOTS_DIR = "${xdg.userDirs.pictures}/Screenshots";
+		};
+		
+		xdg.configFile = {
+			"vesktop/themes/theme.css".source = ./dotfiles/discordtransparent.css;
+		};
 
 		# Wayland, X, etc. support for session vars
 		systemd.user.sessionVariables = config.home-manager.users.rickyrnt.home.sessionVariables;
@@ -114,6 +128,24 @@ in
 				vim.opt.tabstop = 4
 				vim.opt.shiftwidth = 4
 			'';
+		};
+		
+		systemd.user.services.rclone-mount = let
+			homedir = config.users.users.rickyrnt.home;
+		in {
+			Unit = {
+				# Mounts onedrive folders to the filesystem. Requires rclone to be set up manually.
+				Description = "mount onedrive";
+				After = [ "network-online.target" ];
+			};
+			Service = {
+				Type = "notify";
+				ExecStartPre = "/run/current-system/sw/bin/mkdir -p ${homedir}/OneDrive";
+				ExecStart = "${pkgs.rclone}/bin/rclone --config=${homedir}/.config/rclone/rclone.conf --vfs-cache-mode writes --ignore-checksum mount \"onedrive:\" \"OneDrive\"";
+				ExecStop="${pkgs.fuse}/bin/fusermount -u ${homedir}/OneDrive/%i";
+				Environment = [ "PATH=/run/wrappers/bin/:$PATH" ];
+			};
+			Install.WantedBy = [ "default.target" ];
 		};
 	};
 }
