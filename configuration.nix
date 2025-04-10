@@ -93,6 +93,8 @@
 		thunar-archive-plugin
 		thunar-volman
 	];
+	
+	hardware.bluetooth.enable = true;
 
 	programs.firefox.enable = true;
 	services.mullvad-vpn.enable = true;

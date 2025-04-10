@@ -8,8 +8,8 @@ let
 	mechasrc = pkgs.fetchFromGitHub {
 		owner = "rickyrnt";
 		repo = "mechabar-nix";
-		rev = "623211b04279b868ee84af27c01ca25fd5a8c9f0";
-		hash = "sha256-1HC8RIJq4ano6V3EmDQfd/NAnoYI2mUTl6vGn8ZajgQ=";
+		rev = "459dcd9d6b4ed438aae1515ab8db1de425d0a30a";
+		hash = "sha256-PkV7q6Wcfs20RpPT2dUZMB5dCJfGAdT1wvh52muSGb4=";
 	};
 in
 {
@@ -530,20 +530,8 @@ in
 			};
 			
 			extraConfig = {
-				"hyprland/workspaces".persistent-workspaces = {};
-				memory = {
-					states = {
-						warning = 75;
-						critical = 90;
-					};
-
-					format = "󰘚 {percentage}%";
-					format-critical = "󰀦 {percentage}%";
-					tooltip = true;
-					tooltip-format = "Memory Used: {used:0.1f} GB / {total:0.1f} GB";
-					interval = 5;
-					min-length = 7;
-					max-length = 7;
+				mainBar = {
+					memory.tooltip = true;
 				};
 			};
 			
