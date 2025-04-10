@@ -72,6 +72,14 @@ in
 			userEmail = "rick.yarnot.255@gmail.com";
 			userName = "rickyrnt";
 		};
+		
+		programs.rofi = {
+			enable = true;
+			location = "top";
+			package = pkgs.rofi-wayland;
+			terminal = "${pkgs.kitty}/bin/kitty";
+			theme = "purple";
+		};
 
 		programs.kitty.enable = true;
 		programs.kitty.settings = {

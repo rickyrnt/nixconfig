@@ -219,8 +219,8 @@ in
 			# Programs
 			"$terminal" = "kitty";
 			"$fileManager" = "thunar";
-			"$menu" = "wofi --show drun";
-			"$supermenu" = "wofi --show run";
+			"$menu" = "rofi -show drun -show-icons";
+			"$supermenu" = "rofi -show run";
 			"$rebar" = "killall -v .waybar-wrapped; waybar &";
 			"$vencordize" = "hyprctl dispatch exec vesktop";
 
@@ -379,8 +379,8 @@ in
 			workspace = [
 				"n[e:discord] w[tv1], gapsout:0, gapsin:0"
 				"n[e:discord] f[1], gapsout:0, gapsin:0"
-				"101, gapsout:0, gapsin:0"
-				# "101, gapsout:0, gapsin:0"
+				"r[101-105] w[tv1], gapsout:0, gapsin:0"
+				"r[101-105] f[1], gapsout:0, gapsin:0"
 			];
 
 			windowrulev2 = [
@@ -540,15 +540,6 @@ in
 		};
 		/*programs.waybar.settings = {
 			mainBar = {
-				layer = "top";
-				position = "top";
-				mode = "dock";
-				reload_style_on_change = true;
-				gtk-layer-shell = true;
-
-				# <<--< Positions >-->>
-
-
 				# <<--< Modules >-->>
 
 				"custom/ws" = {
@@ -564,101 +555,6 @@ in
 					on-scroll-up = "hyprctl dispatch workspace -1";
 					on-scroll-down = "hyprctl dispatch workspace +1";
 					persistent-workspaces = {
-					};
-				};
-
-				"hyprland/window" = {
-					format = "{}";
-					min-length = 5;
-
-					rewrite = {
-						# Desktop
-						""= 
-							"<span foreground='#8aadf4'> </span> Hyprland";
-
-						# Terminal
-						"~" = "  Terminal";
-						zsh = "  Terminal";
-						kitty = "  Terminal";
-
-						# Browser
-
-						"(.*)Mozilla Firefox" = 
-							"<span foreground='#ed8796'>󰈹 </span> Firefox";
-						"(.*) — Mozilla Firefox" = 
-							"<span foreground='#ed8796'>󰈹 </span> $1";
-
-						"(.*)Zen Browser" = 
-							"<span foreground='#f5a97f'>󰺕 </span> Zen Browser";
-						"(.*) — Zen Browser" = 
-							"<span foreground='#f5a97f'>󰺕 </span> $1";
-
-						# Development
-
-						"(.*) - Visual Studio Code" = 
-							"<span foreground='#8aadf4'>󰨞 </span> $1";
-						"(.*)Visual Studio Code" = 
-							"<span foreground='#8aadf4'>󰨞 </span> Visual Studio Code";
-
-						nvim = 
-							"<span foreground='#a6da95'> </span> Neovim";
-						"nvim (.*)" = 
-							"<span foreground='#a6da95'> </span> $1";
-
-						vim = 
-							"<span foreground='#a6da95'> </span> Vim";
-						"vim (.*)" = 
-							"<span foreground='#a6da95'> </span> $1";
-
-						# Media
-
-						"(.*)Spotify" = 
-							"<span foreground='#a6da95'> </span> Spotify";
-						"(.*)Spotify Premium" = 
-							"<span foreground='#a6da95'> </span> Spotify Premium";
-
-						"OBS(.*)" = 
-							"<span foreground='#a5adcb'> </span> OBS Studio";
-
-						"VLC media player" = 
-							"<span foreground='#f5a97f'>󰕼 </span> VLC Media Player";
-						"(.*) - VLC media player" = 
-							"<span foreground='#f5a97f'>󰕼 </span> $1";
-
-						"(.*) - mpv" = 
-							"<span foreground='#c6a0f6'> </span> $1";
-
-						qView = "  qView";
-
-						"(.*).jpg" = "  $1.jpg";
-						"(.*).png" = "  $1.png";
-						"(.*).svg" = "  $1.svg";
-
-						# Social
-
-						vesktop = 
-							"<span foreground='#8aadf4'> </span> Discord";
-
-						"• Discord(.*)" = "Discord$1";
-						"(.*)Discord(.*)" = 
-							"<span foreground='#8aadf4'> </span> $1Discord$2";
-
-						# Documents
-
-						"ONLYOFFICE Desktop Editors" = 
-							"<span foreground='#ed8796'> </span> OnlyOffice Desktop";
-
-						"(.*).docx" = 
-							"<span foreground='#8aadf4'> </span> $1.docx";
-						"(.*).xlsx" = 
-							"<span foreground='#a6da95'> </span> $1.xlsx";
-						"(.*).pptx" = 
-							"<span foreground='#f5a97f'> </span> $1.pptx";
-						"(.*).pdf" = 
-							"<span foreground='#ed8796'> </span> $1.pdf";
-
-						# System
-						Authenticate = "  Authenticate";
 					};
 				};
 

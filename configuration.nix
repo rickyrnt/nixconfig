@@ -95,6 +95,7 @@
 	];
 	
 	hardware.bluetooth.enable = true;
+	hardware.bluetooth.powerOnBoot = true;
 
 	programs.firefox.enable = true;
 	services.mullvad-vpn.enable = true;
@@ -120,7 +121,6 @@
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
 		lxappearance-gtk2
-		wofi
 		killall
 		powertop
 		btop
