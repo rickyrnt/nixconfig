@@ -381,6 +381,8 @@ in
 				"n[e:discord] f[1], gapsout:0, gapsin:0"
 				"r[101-105] w[tv1], gapsout:0, gapsin:0"
 				"r[101-105] f[1], gapsout:0, gapsin:0"
+				"r[1-5], monitor:eDP-1"
+				"r[6-10], monitor:HDMI-A-1"
 			];
 
 			windowrulev2 = [
@@ -394,12 +396,12 @@ in
 				
 				"noblur, floating:0, onworkspace:s[false]"
 
-				"rounding 0, floating:0, onworkspace:101 w[tv1]"
-				"rounding 0, fullscreen:1, onworkspace:101"
-				"noborder, floating:0, onworkspace:101 w[tv1]"
-				"noborder, fullscreen:1, onworkspace:101"
-				"noshadow, floating:0, onworkspace:101 w[tv1]"
-				"noshadow, fullscreen:1, onworkspace:101"
+				"rounding 0, floating:0, onworkspace:r[101-105] w[tv1]"
+				"rounding 0, fullscreen:1, onworkspace:r[101-105]"
+				"noborder, floating:0, onworkspace:r[101-105] w[tv1]"
+				"noborder, fullscreen:1, onworkspace:r[101-105]"
+				"noshadow, floating:0, onworkspace:r[101-105] w[tv1]"
+				"noshadow, fullscreen:1, onworkspace:r[101-105]"
 
 				"workspace 101, class:factorio"
 			];
@@ -532,6 +534,16 @@ in
 			extraConfig = {
 				mainBar = {
 					memory.tooltip = true;
+					"hyprland/workspaces" = {
+						persistent-workspaces = {
+							"eDP-1" = [ 1 ];
+							"HDMI-A-1" = [ 6 ];
+						};
+						format = "{icon}";
+						format-icons = {
+							"101" = "󰊖 ";
+						};
+					};
 				};
 			};
 			
