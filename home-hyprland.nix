@@ -42,8 +42,8 @@ in
 				FormPosition="\"center\"";
 				BackgroundImageHAlignment="\"center\"";
 				BackgroundImageVAlignment="\"center\"";
-				MainColor="\"#F8F8F2\"";
-				AccentColor="\"#343746\"";
+				MainColor="\"#F8F8F8\"";
+				AccentColor="\"#9686aa\"";
 				OverrideTextFieldColor="\"\"";
 				BackgroundColor="\"#21222C\"";
 				placeholderColor="\"#bbbbbb\"";
@@ -51,7 +51,7 @@ in
 				OverrideLoginButtonTextColor="\"\"";
 				InterfaceShadowSize="\"6\"";
 				InterfaceShadowOpacity="\"0.6\"";
-				RoundCorners="\"20\"";
+				RoundCorners="\"4\"";
 				ScreenPadding="\"0\"";
 				Font="\"Open Sans\"";
 				FontSize="\"\"";
