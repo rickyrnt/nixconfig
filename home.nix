@@ -66,6 +66,24 @@ in
 		systemd.user.sessionVariables = config.home-manager.users.rickyrnt.home.sessionVariables;
 		
 		services.dunst.enable = true;
+		services.dunst.settings = {
+			global = {
+				follow = "keyboard";
+				frame_width = 1;
+				font = "Monospace 10";
+				corner_radius = 4;
+				corners = "top_left, bottom_right";
+				mouse_right_click = "do_action, close_current";
+				mouse_middle_click = "close_all";
+				
+				background = "#20001088";
+				foreground = "#FFF";
+				frame_color = "#00AAAAAA";
+				highlight = "#A40A60";
+			};
+			urgency_critical.frame_color = "#CC0099AA";
+			urgency_low.frame_color = "#20001088";
+		};
 
 		programs.git = {
 			enable = true;
