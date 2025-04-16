@@ -37,6 +37,10 @@ in
 			vesktop
 			steam
 			bottles
+			# wine
+			wine64
+			jack2
+			wineasio
 			cider
 			kdenlive
 			zoom-us
@@ -70,7 +74,7 @@ in
 			global = {
 				follow = "keyboard";
 				frame_width = 1;
-				font = "Monospace 10";
+				font = "Monospace 9";
 				corner_radius = 4;
 				corners = "top_left, bottom_right";
 				mouse_right_click = "do_action, close_current";
@@ -78,10 +82,10 @@ in
 				
 				background = "#20001088";
 				foreground = "#FFF";
-				frame_color = "#00AAAAAA";
+				frame_color = "#CC0099AA";
 				highlight = "#A40A60";
 			};
-			urgency_critical.frame_color = "#CC0099AA";
+			urgency_critical.frame_color = "#00AAAAAA";
 			urgency_low.frame_color = "#20001088";
 		};
 
@@ -116,6 +120,7 @@ in
 			shellAliases = {
 				nixedit = "nvim /home/rickyrnt/nixos/configuration.nix";
 				nixmake = "sudo nixos-rebuild switch -I nixos-config=/home/rickyrnt/nixos/configuration.nix";
+				nvidiacheck = "cat /sys/class/drm/card2/device/power_state";
 			};
 			
 			initExtra = ''

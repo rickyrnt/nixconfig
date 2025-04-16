@@ -256,7 +256,7 @@ in
 				inactive_opacity = 1.0;
 
 				shadow = {
-					enabled = true;
+					enabled = false;
 					range = 4;
 					render_power = 3;
 					color = "rgba(1a1a1aee)";
@@ -382,7 +382,8 @@ in
 				"r[101-105] w[tv1], gapsout:0, gapsin:0"
 				"r[101-105] f[1], gapsout:0, gapsin:0"
 				"r[1-5], monitor:eDP-1"
-				"r[6-10], monitor:HDMI-A-1"
+				"r[7-10], monitor:HDMI-A-1"
+				"6, monitor:HDMI-A-1, default"
 			];
 
 			windowrulev2 = [
@@ -551,6 +552,6 @@ in
 			animation = ./dotfiles/mechabar/animation.css;
 		};
 		
-		
+
 	};
 }

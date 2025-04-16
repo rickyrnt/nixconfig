@@ -3,6 +3,8 @@
   imports = [
     ./isw-module.nix
   ];
+  
+  boot.resumeDevice = "/dev/nvme1n1p1";
 
   # isw fan management for msi laptops
 	nixpkgs.overlays = [
