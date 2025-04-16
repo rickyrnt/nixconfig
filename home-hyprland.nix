@@ -341,9 +341,6 @@ in
 				"CTRL ALT, G, workspace, 101"
 				"CTRL ALT SHIFT, G, movetoworkspace, 101"
 
-				",PGUP, exec, playerctl next"
-				",HOME, exec, playerctl play-pause"
-				",PGDN, exec, playerctl previous"
 			] ++ (
 				builtins.concatLists(builtins.genList(i:
 					let ws = i + 1;
@@ -369,10 +366,17 @@ in
 			];
 
 			bindl = [
+				",code:112, exec, playerctl next"
+				",HOME, exec, playerctl play-pause"
+				",code:117, exec, playerctl previous"
 				",XF86AudioNext, exec, playerctl next"
 				",XF86AudioPause, exec, playerctl play-pause"
 				",XF86AudioPlay, exec, playerctl play-pause"
 				",XF86AudioPrev, exec, playerctl previous"
+			];
+			
+			binds = [
+				"ALT, F&I&S&H, exec, altfish"
 			];
 
 
