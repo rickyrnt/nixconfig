@@ -120,6 +120,14 @@ in
 			};
 		};
 		
+		home.pointerCursor = {
+			enable = true;
+			gtk.enable = true;
+			hyprcursor.enable = true;
+			package = pkgs.qogir-icon-theme;
+			name = "Qogir";
+		};
+		
 		services.playerctld.enable = true;
 
 		services.hyprpaper.enable = true;
