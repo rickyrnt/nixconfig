@@ -112,6 +112,12 @@
       background_blur = 0;
       background = "#100008";
     };
+    
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
 
     programs.zsh = {
       enable = true;
@@ -128,7 +134,7 @@
       initExtra = ''
         				neofetch | lolcat
         				eval "$(thefuck --alias)"
-        				eval "$(ssh-agent -s)"
+        				eval "$(ssh-agent -s)" &> /dev/null
         			'';
 
       history.size = 10000;
