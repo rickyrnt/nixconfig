@@ -18,6 +18,11 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    alt-fish = {
+      url = github:rickyrnt/women-me-fear-fish-me-want;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

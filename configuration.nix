@@ -135,6 +135,10 @@
   };
 
   environment.variables.SUDO_EDITOR = "nvim";
+  
+  environment.sessionVariables.LD_LIBRARY_PATH = [
+    "${pkgs.espeak}/lib"
+  ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;
