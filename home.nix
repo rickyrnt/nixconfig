@@ -67,6 +67,8 @@
     xdg.configFile = {
       "vesktop/themes/theme.css".source = ./dotfiles/discordtransparent.css;
     };
+    
+    programs.feh.enable = true;
 
     # Wayland, X, etc. support for session vars
     systemd.user.sessionVariables = config.home-manager.users.rickyrnt.home.sessionVariables;
