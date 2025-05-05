@@ -403,7 +403,7 @@ in
         "r[101-105] f[1], gapsout:0, gapsin:0"
         "r[1-5], monitor:eDP-1"
         "r[7-10], monitor:HDMI-A-1"
-        "6, monitor:HDMI-A-1, default"
+        "6, monitor:HDMI-A-1, default:true"
       ];
 
       windowrulev2 = [
