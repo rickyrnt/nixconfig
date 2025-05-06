@@ -6,6 +6,14 @@
 }:
 {
 
+  # boot.kernelParams = [
+    # "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    # "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+    # "nvidia_drm.modeset=1"
+    # "nvidia_drm.fbdev=1"
+    # "nvidia.NVreg_EnableGpuFirmware=0"
+  # ];
+
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
@@ -27,7 +35,7 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     nvidiaPersistenced = true;
 

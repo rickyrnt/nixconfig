@@ -339,13 +339,15 @@ in
           "$mod SHIFT, B, movetoworkspace, special:magic"
           "$mod, D, togglespecialworkspace, discord"
           "$mod SHIFT, D, movetoworkspace, special:discord"
+          "$mod, T, togglespecialworkspace, tunes"
+          "$mod SHIFT, T, movetoworkspace, special:tunes"
 
           "CTRL ALT, mouse_up, workspace, e+1"
           "CTRL ALT, mouse_down, workspace, e-1"
           "CTRL ALT, l, workspace, r+1"
           "CTRL ALT, h, workspace, r-1"
           "CTRL ALT, G, workspace, 101"
-          "CTRL ALT SHIFT, G, movetoworkspace, 101"
+          "CTRL SHIFT, G, movetoworkspace, 101"
         ]
         ++ (builtins.concatLists (
           builtins.genList (
@@ -419,6 +421,8 @@ in
         "noshadow, fullscreen:1, onworkspace:r[101-105]"
 
         "workspace 101, class:factorio"
+        "workspace 101, class:hollow knight"
+        "workspace special:tunes, class:Cider"
       ];
 
       animations = {

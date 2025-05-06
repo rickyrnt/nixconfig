@@ -9,6 +9,10 @@
     inputs.home-manager.nixosModules.default
     ./home-hyprland.nix
   ];
+  
+  nixpkgs.overlays = [
+    (prev: final: {cider-2 = final.callPackage ./cider-2.nix {};})
+  ];
 
   home-manager.backupFileExtension = "backup";
 
@@ -43,7 +47,7 @@
       wine64
       jack2
       wineasio
-      cider
+      cider-2
       kdenlive
       zoom-us
       calibre
