@@ -347,7 +347,7 @@ in
           "CTRL ALT, l, workspace, r+1"
           "CTRL ALT, h, workspace, r-1"
           "CTRL ALT, G, workspace, 101"
-          "CTRL SHIFT, G, movetoworkspace, 101"
+          "ALT SHIFT, G, movetoworkspace, 101"
         ]
         ++ (builtins.concatLists (
           builtins.genList (
@@ -421,7 +421,7 @@ in
         "noshadow, fullscreen:1, onworkspace:r[101-105]"
 
         "workspace 101, class:factorio"
-        "workspace 101, class:hollow knight"
+        "workspace 101, class:hollow_knight.x86_64"
         "workspace special:tunes, class:Cider"
       ];
 

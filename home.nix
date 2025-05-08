@@ -10,10 +10,6 @@
     ./home-hyprland.nix
   ];
   
-  nixpkgs.overlays = [
-    (prev: final: {cider-2 = final.callPackage ./cider-2.nix {};})
-  ];
-
   home-manager.backupFileExtension = "backup";
 
   home-manager.users.rickyrnt = rec {
@@ -47,13 +43,14 @@
       wine64
       jack2
       wineasio
-      cider-2
       kdenlive
       zoom-us
       calibre
       graphviz
 
       cmatrix
+    ] ++ [
+      inputs.cider-2.packages.x86_64-linux.cider-2
     ];
 
     xdg.enable = true;

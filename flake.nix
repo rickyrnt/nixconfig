@@ -23,6 +23,11 @@
       url = github:rickyrnt/women-me-fear-fish-me-want;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    cider-2 = {
+      url = "/home/rickyrnt/repos/cider-2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
