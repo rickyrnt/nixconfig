@@ -328,6 +328,8 @@ in
           "$mod ALT, f10, exec, ${grmblstfy} edit screen"
           "$mod ALT, f11, exec, ${grmblstfy} edit output"
           "$mod ALT, f12, exec, ${grmblstfy} edit area"
+          
+          "$mod, C, exec, hyprpicker -a"
 
           "$mod, B, togglespecialworkspace, magic"
           "$mod SHIFT, B, movetoworkspace, special:magic"
@@ -413,6 +415,7 @@ in
         "noborder, fullscreen:1, onworkspace:r[101-105]"
         "noshadow, floating:0, onworkspace:r[101-105] w[tv1]"
         "noshadow, fullscreen:1, onworkspace:r[101-105]"
+        "tile, class:libresprite"
 
         "workspace 101, class:factorio"
         "workspace 101, class:hollow_knight.x86_64"

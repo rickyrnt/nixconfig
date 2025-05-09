@@ -11,6 +11,8 @@
   ];
   
   home-manager.backupFileExtension = "backup";
+  
+  hardware.opentabletdriver.enable = true;
 
   home-manager.users.rickyrnt = rec {
     # The home.stateVersion option does not have a default and must be set
@@ -47,6 +49,9 @@
       zoom-us
       calibre
       graphviz
+      libresprite
+      libinput
+      libwacom
 
       cmatrix
     ] ++ [
