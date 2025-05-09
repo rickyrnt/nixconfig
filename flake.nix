@@ -47,7 +47,11 @@
 
       nixosConfigurations.M04RYS8 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [ ./configuration.nix ];
+        modules = [ 
+          ./configuration.nix 
+          ./nvidia.nix
+          ./laptop.nix
+        ];
       };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
