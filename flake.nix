@@ -2,20 +2,20 @@
   description = "The rickyrnt personal system";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = github:nixos/nixpkgs/nixos-24.11;
 
     home-manager = {
-      url = "github:nix-community/home-manager/0b491b460f52e87e23eb17bbf59c6ae64b7664c1";
+      url = github:nix-community/home-manager/0b491b460f52e87e23eb17bbf59c6ae64b7664c1;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {
-      url = "github:hyprwm/hyprland";
+      url = github:hyprwm/hyprland;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
+      url = github:cachix/git-hooks.nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
@@ -26,6 +26,11 @@
     
     cider-2 = {
       url = "/home/rickyrnt/repos/cider-2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    mechabar = {
+      url = github:rickyrnt/mechabar-nix/animated;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

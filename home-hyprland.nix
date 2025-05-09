@@ -5,12 +5,6 @@ let
     name = "wallpaper-photo";
     hash = "sha256-i94PzTtGdLVQlujgwrTB4NuJ/Zb58SCfo0g26NQXbH0=";
   };
-  mechasrc = pkgs.fetchFromGitHub {
-    owner = "rickyrnt";
-    repo = "mechabar-nix";
-    rev = "459dcd9d6b4ed438aae1515ab8db1de425d0a30a";
-    hash = "sha256-PkV7q6Wcfs20RpPT2dUZMB5dCJfGAdT1wvh52muSGb4=";
-  };
 in
 {
   qt = {
@@ -101,7 +95,7 @@ in
 
   home-manager.users.rickyrnt = rec {
     imports = [
-      "${mechasrc}/mechabar.nix"
+      inputs.mechabar.mechabar
     ];
 
     home.packages = with pkgs; [

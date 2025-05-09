@@ -468,6 +468,27 @@
         "type": "github"
       }
     },
+    "mechabar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746819639,
+        "narHash": "sha256-B+W4zAfXUV2KiMFuF24LiDgyQEBn6+afTps13kYhf9k=",
+        "owner": "rickyrnt",
+        "repo": "mechabar-nix",
+        "rev": "5bfddcfa061551c268b8b83a4732356358365b53",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rickyrnt",
+        "ref": "animated",
+        "repo": "mechabar-nix",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1745487689,
@@ -535,6 +556,7 @@
         "cider-2": "cider-2",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "mechabar": "mechabar",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks_2"
       }
