@@ -416,6 +416,7 @@ in
         "noshadow, floating:0, onworkspace:r[101-105] w[tv1]"
         "noshadow, fullscreen:1, onworkspace:r[101-105]"
         "tile, class:libresprite"
+        "tile, title:FL Studio \\d+"
 
         "workspace 101, class:factorio"
         "workspace 101, class:hollow_knight.x86_64"

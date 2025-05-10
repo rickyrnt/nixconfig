@@ -70,6 +70,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "pipewire"
+      "audio"
     ];
     shell = pkgs.zsh;
   };
