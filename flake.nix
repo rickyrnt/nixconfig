@@ -10,8 +10,8 @@
     };
 
     hyprland = {
-      url = github:hyprwm/hyprland;
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = github:hyprwm/hyprland/v0.48.1;
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     pre-commit-hooks = {
