@@ -381,6 +381,20 @@ tooltip label {
   box-shadow: none;
 }
 
+/* Funny mode */
+#custom-funnymode {
+  color: @text;
+}
+#custom-funnymode:hover {
+  color: @hover-fg;
+}
+#custom-funnyreload {
+  color: @text;
+}
+#custom-funnyreload:hover {
+  color: @hover-fg;
+}
+
 /* <<--< FONT SIZES >-->> */
 
 /*

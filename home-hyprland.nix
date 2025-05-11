@@ -5,7 +5,7 @@ let
     name = "wallpaper-photo";
     hash = "sha256-i94PzTtGdLVQlujgwrTB4NuJ/Zb58SCfo0g26NQXbH0=";
   };
-in
+in rec
 {
   qt = {
     enable = true;
@@ -93,6 +93,32 @@ in
 
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  
+  systemd.user.timers."funnyModeTimer" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "0s";
+      OnUnitActiveSec = "10m";
+      Unit = "funnyModeSwitch.service";
+    };
+  };
+  
+  systemd.user.services."funnyModeSwitch" = {
+    script = ''
+      WALLPAPER_DIR="$HOME/OneDrive/Pictures/Backgroun"
+      CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+
+      # Get a random wallpaper that is not the current one
+      WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+      # Apply the selected wallpaper
+      hyprctl hyprpaper reload ,"contain:$WALLPAPER"
+    '';
+    path = [programs.hyprland.package];
+    serviceConfig = {
+      Type = "oneshot";
+    };
+  };
 
   home-manager.users.rickyrnt = rec {
     imports = [
@@ -535,6 +561,9 @@ in
         modules-right = [
           "mpris" # media info
 
+          "custom/funnymode"
+          "custom/funnyreload"
+
           "custom/left6"
           "pulseaudio" # output device
 
@@ -561,6 +590,53 @@ in
             format-icons = {
               "101" = "󰊖 ";
             };
+          };
+          
+          "custom/funnymode" = let
+            funnymodeSwitch = pkgs.writeShellScriptBin "funnymodeSwitch" ''
+              status=$(systemctl --user status funnyModeTimer.timer | awk '/Active:/ {print $2}')
+              case "$status" in 
+                "active")
+                  hyprctl hyprpaper reload , ${wallpaper-photo}
+                  systemctl --user stop funnyModeTimer.timer ;;
+                "inactive")
+                  systemctl --user start funnyModeTimer.timer 
+                  systemctl --user start funnyModeSwitch.service ;;
+              esac
+            '';
+            checkEnabled = pkgs.writeShellScriptBin "checkFunnyEnabled" ''
+              sleep 0.1
+              status=$(systemctl --user status funnyModeTimer.timer | awk '/Active:/ {print $2}')
+              echo "{\"alt\": \"$status\"}"
+            '';
+          in {
+            exec = "${checkEnabled}/bin/checkFunnyEnabled";
+            interval = "once";
+            exec-on-event = true;
+            on-click = "${funnymodeSwitch}/bin/funnymodeSwitch";
+            format = "{icon}";
+            return-type = "json";
+            tooltip-format = "Funny mode {alt}";
+            format-icons = {
+              inactive = "󰨙 ";
+              active = "󰔡 ";
+            };
+          };
+          
+          "custom/funnyreload" = let
+            funnymodeReload = pkgs.writeShellScriptBin "funnymodeReload" ''
+              status=$(systemctl --user status funnyModeTimer.timer | awk '/Active:/ {print $2}')
+              case "$status" in 
+                "active")
+                  systemctl --user start funnyModeSwitch.service ;;
+                "inactive")
+                  hyprctl hyprpaper reload , ${wallpaper-photo} ;;
+              esac
+            '';
+          in {
+            on-click = "${funnymodeReload}/bin/funnymodeReload";
+            format = " 󰑓 ";
+            tooltip = false;
           };
         };
       };

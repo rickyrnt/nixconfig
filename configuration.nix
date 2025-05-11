@@ -163,6 +163,7 @@
     pwvucontrol
 
     bluetui
+    comma
 
     fuse
     ntfs3g
