@@ -8,6 +8,7 @@
   imports = [
     inputs.home-manager.nixosModules.default
     ./home-hyprland.nix
+    # ./comma.nix
   ];
   
   nixpkgs.overlays = [
@@ -58,6 +59,7 @@
       mtpaint
       vesktop
       steam
+      prismlauncher
       bottles
       # wine
       wine64
