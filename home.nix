@@ -8,7 +8,7 @@
   imports = [
     inputs.home-manager.nixosModules.default
     ./home-hyprland.nix
-    # ./comma.nix
+    ./comma.nix
   ];
   
   nixpkgs.overlays = [
