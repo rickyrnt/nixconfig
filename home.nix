@@ -32,6 +32,7 @@
   home-manager.backupFileExtension = "backup";
   
   hardware.opentabletdriver.enable = true;
+  services.onedrive.enable = true;
 
   home-manager.users.rickyrnt = rec {
     # The home.stateVersion option does not have a default and must be set
@@ -196,25 +197,5 @@
         				vim.opt.shiftwidth = 4
         			'';
     };
-
-    systemd.user.services.rclone-mount =
-      let
-        homedir = config.users.users.rickyrnt.home;
-      in
-      {
-        Unit = {
-          # Mounts onedrive folders to the filesystem. Requires rclone to be set up manually.
-          Description = "mount onedrive";
-          After = [ "network-online.target" ];
-        };
-        Service = {
-          Type = "notify";
-          ExecStartPre = "/run/current-system/sw/bin/mkdir -p ${homedir}/OneDrive";
-          ExecStart = "${pkgs.rclone}/bin/rclone --config=${homedir}/.config/rclone/rclone.conf --vfs-cache-mode writes --ignore-checksum mount \"onedrive:\" \"OneDrive\"";
-          ExecStop = "${pkgs.fuse}/bin/fusermount -u ${homedir}/OneDrive/%i";
-          Environment = [ "PATH=/run/wrappers/bin/:$PATH" ];
-        };
-        Install.WantedBy = [ "default.target" ];
-      };
   };
 }

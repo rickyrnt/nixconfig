@@ -166,7 +166,6 @@
 
     fuse
     ntfs3g
-    rclone
     comma
     p7zip
 
