@@ -34,6 +34,10 @@
   # Mount windows drive
   fileSystems."/win" = {
     device = "/dev/nvme0n1p3";
+    options = [
+      "users"
+      "nofail"
+    ];
   };
 
   # nvidia gpu settings
