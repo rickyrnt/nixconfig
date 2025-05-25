@@ -2,7 +2,7 @@
   description = "The rickyrnt personal system";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-24.11;
+    nixpkgs.url = github:nixos/nixpkgs/nixos-25.05;
 
     home-manager = {
       url = github:nix-community/home-manager/0b491b460f52e87e23eb17bbf59c6ae64b7664c1;

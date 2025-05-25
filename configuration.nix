@@ -95,7 +95,7 @@
   nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.hack
     noto-fonts
     noto-fonts-emoji
     liberation_ttf

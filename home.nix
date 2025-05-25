@@ -36,7 +36,7 @@
 
   home-manager.users.rickyrnt = rec {
     # The home.stateVersion option does not have a default and must be set
-    home.stateVersion = "24.11";
+    home.stateVersion = "25.05";
     # Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ];
     home.username = "rickyrnt";
     home.homeDirectory = "/home/rickyrnt";
@@ -57,7 +57,7 @@
       libgcc
       libreoffice-qt6-fresh
 
-      mtpaint
+      # mtpaint
       vesktop
       steam
       prismlauncher
@@ -66,7 +66,7 @@
       wine64
       jack2
       wineasio
-      kdenlive
+      kdePackages.kdenlive
       zoom-us
       calibre
       graphviz
@@ -75,6 +75,7 @@
       libwacom
 
       cmatrix
+      godot
     ] ++ [
       inputs.cider-2.packages.x86_64-linux.cider-2
     ];
