@@ -128,7 +128,7 @@
   ];
 
   services.resolved = {
-    enable = true;
+    enable = false;
     dnssec = "true";
     domains = [ "~." ];
     fallbackDns = [
@@ -136,6 +136,18 @@
       "1.0.0.1#one.one.one.one"
     ];
     dnsovertls = "true";
+  };
+  
+  services.dnsmasq = {
+    enable = true;
+    resolveLocalQueries = true;
+    settings = {
+      domain = "morriss";
+      server = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
+    };
   };
 
   environment.variables.SUDO_EDITOR = "nvim";
@@ -168,6 +180,7 @@
     ntfs3g
     comma
     p7zip
+    dig
 
     thefuck
     neofetch
