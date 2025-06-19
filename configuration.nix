@@ -142,7 +142,7 @@
     enable = true;
     resolveLocalQueries = true;
     settings = {
-      domain = "morriss";
+      domain = "bboysenc";
       server = [
         "1.1.1.1"
         "1.0.0.1"

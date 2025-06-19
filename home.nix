@@ -162,7 +162,7 @@
       };
 
       initExtra = ''
-        				neofetch | lolcat
+        				neofetch | lolcat 2> /dev/null
         				eval "$(thefuck --alias)"
         				eval "$(ssh-agent -s)" &> /dev/null
         			'';
