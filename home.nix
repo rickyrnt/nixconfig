@@ -97,6 +97,18 @@
     };
     
     programs.feh.enable = true;
+    programs.feh = {
+      buttons = {
+        zoom_in = 5;
+        zoom_out = 4;
+      };
+      themes = {
+        feh = [
+          "--image-bg" "#110011"
+          "--scale-down"
+        ];
+      };
+    };
 
     # Wayland, X, etc. support for session vars
     systemd.user.sessionVariables = config.home-manager.users.rickyrnt.home.sessionVariables;
