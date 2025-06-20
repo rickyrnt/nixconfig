@@ -54,6 +54,27 @@
         "type": "github"
       }
     },
+    "banner": {
+      "inputs": {
+        "nixpkgs": [
+          "gtk-nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1669224926,
+        "narHash": "sha256-UK19yx8jNqbPfBZNUeJr2Sms7BhbDAUyJBF5w2CT6Hc=",
+        "owner": "the-argus",
+        "repo": "banner.nix",
+        "rev": "253556f4068f5cb9728e49ac42d630cdc0ccfd58",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "banner.nix",
+        "type": "github"
+      }
+    },
     "cider-2": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -140,6 +161,24 @@
         "type": "github"
       }
     },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1689068808,
+        "narHash": "sha256-6ixXo3wt24N/melDWjq70UuHQLxGV8jZvooRanIHXw0=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "919d646de7be200f3bf08cb76ae1f09402b6f9b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -180,6 +219,28 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
+    "gtk-nix": {
+      "inputs": {
+        "banner": "banner",
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1692384535,
+        "narHash": "sha256-lFOEsDLV7kuEAcHS7HfyGewTcdSkzTxM+l3XwGhzLgU=",
+        "owner": "the-argus",
+        "repo": "gtk-nix",
+        "rev": "e77b9e68aa818b87389c682b4fd018ad451a85d3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "the-argus",
+        "repo": "gtk-nix",
         "type": "github"
       }
     },
@@ -274,7 +335,7 @@
         "hyprwayland-scanner": "hyprwayland-scanner",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",
-        "systems": "systems_3",
+        "systems": "systems_4",
         "xdph": "xdph"
       },
       "locked": {
@@ -586,12 +647,14 @@
       "inputs": {
         "alt-fish": "alt-fish",
         "cider-2": "cider-2",
+        "gtk-nix": "gtk-nix",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "mechabar": "mechabar",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
-        "pre-commit-hooks": "pre-commit-hooks_2"
+        "pre-commit-hooks": "pre-commit-hooks_2",
+        "wallpaper-photo": "wallpaper-photo"
       }
     },
     "systems": {
@@ -626,6 +689,21 @@
     },
     "systems_3": {
       "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_4": {
+      "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
         "owner": "nix-systems",
@@ -637,6 +715,18 @@
         "owner": "nix-systems",
         "repo": "default-linux",
         "type": "github"
+      }
+    },
+    "wallpaper-photo": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-nAGgiIaNGgrTzLr4vZmE7zchrjT2c3bgbsF0zg8jNEE=",
+        "type": "file",
+        "url": "https://images.steamusercontent.com/ugc/1170321140105641126/47F1E70BD90DB25A97F3B761B07764F7F947287E/?ima=fit&imcolor=%23000000&imh=5000&impolicy=Letterbox&imw=5000&letterbox=false"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://images.steamusercontent.com/ugc/1170321140105641126/47F1E70BD90DB25A97F3B761B07764F7F947287E/?ima=fit&imcolor=%23000000&imh=5000&impolicy=Letterbox&imw=5000&letterbox=false"
       }
     },
     "xdph": {

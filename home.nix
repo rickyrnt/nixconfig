@@ -29,7 +29,7 @@
     })
   ];
   
-  home-manager.backupFileExtension = "backup";
+  home-manager.backupFileExtension = "hm-backup";
   
   hardware.opentabletdriver.enable = true;
   services.onedrive.enable = true;
