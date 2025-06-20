@@ -413,6 +413,7 @@ in rec
           "$mod ALT, f12, exec, ${grmblstfy} edit area"
           
           "$mod, C, exec, hyprpicker -a"
+          "$mod, V, exec, GTK_THEME=Adwaita-dark pwvucontrol"
 
           "$mod, B, togglespecialworkspace, magic"
           "$mod SHIFT, B, movetoworkspace, special:magic"
@@ -500,6 +501,8 @@ in rec
         "noshadow, fullscreen:1, onworkspace:r[101-105]"
         "tile, class:libresprite"
         "tile, title:FL Studio \\d+"
+        
+        "float, class:.+pwvucontrol"
 
         "workspace 101, class:factorio"
         "workspace 101, class:hollow_knight.x86_64"
