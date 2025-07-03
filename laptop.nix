@@ -37,6 +37,7 @@
     options = [
       "users"
       "nofail"
+      "exec"
     ];
   };
 

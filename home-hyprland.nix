@@ -142,6 +142,8 @@ in rec
         # package = pkgs.qogir-theme;
         # name = "Qogir-Dark";
       # };
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+      gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
       iconTheme = {
         package = pkgs.qogir-icon-theme;
         name = "Qogir-Dark";
@@ -149,7 +151,7 @@ in rec
     };
     gtkNix = {
       enable = true;
-      palette = {
+      palette = rec {
         scheme = "Nord";
         author = "arcticicestudio";
         base00 = "2E3440";
