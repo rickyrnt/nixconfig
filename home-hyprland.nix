@@ -7,6 +7,14 @@ let
   };
 in rec
 {
+  
+  nixpkgs.overlays = [
+    (final: prev: {
+      qogir-icon-theme = prev.qogir-icon-theme.overrideAttrs {
+        patches = [./dotfiles/qogir-color-change.patch ];
+      };
+    })
+  ];
   qt = {
     enable = true;
     platformTheme = "gnome";
@@ -149,46 +157,57 @@ in rec
         name = "Qogir-Dark";
       };
     };
-    gtkNix = {
+    gtkNix = rec {
       enable = true;
+      
+      configuration = {
+        disabled-opacity = 0.8;
+        border-size = "1px";
+      };
+      
+      extraColorSCSS = ''
+        @define-color theme_selected_bg_color #${palette.highlight};
+        @define-color theme_unfocused_selected_bg_color #${palette.highlight};
+      '';
+      
       palette = rec {
-        scheme = "Nord";
-        author = "arcticicestudio";
-        base00 = "2E3440";
-        base01 = "3B4252";
-        base02 = "434C5E";
-        base03 = "4C566A";
-        base04 = "5a6478";
-        base05 = "E5E9F0";
-        base06 = "ECEFF4";
-        base07 = "8FBCBB";
-        base08 = "88C0D0";
-        base09 = "81A1C1";
-        base0A = "5E81AC";
-        base0B = "BF616A";
-        base0C = "D08770";
-        base0D = "EBCB8B";
-        base0E = "A3BE8C";
-        base0F = "B48EAD";
+        scheme = "Ekor";
+        author = "rickyrnt";
+        base00 = "26081a";
+        base01 = "2d1025";
+        base02 = "3a1733";
+        base03 = "632959";
+        base04 = "b773b6";
+        base05 = "dcc8e0";
+        base06 = "f4baf5";
+        base07 = "fecdff";
+        base08 = "ac0552";
+        base09 = "9b0334";
+        base0A = "b20d6f";
+        base0B = "18b59b";
+        base0C = "141980";
+        base0D = "0086af";
+        base0E = "0a5098";
+        base0F = "0c9ea5";
 
         # banner extensions
-        highlight = "8FBCBB";
-        hialt0 = "81A1C1";
-        hialt1 = "8FBCBB";
-        hialt2 = "ECEFF4";
-        urgent = "BF616A";
-        warn = "D08770";
-        confirm = "A3BE8C";
-        link = "5E81AC";
+        highlight = "00658a";
+        hialt0 = "0c9ea5";
+        hialt1 = "0a5098";
+        hialt2 = "0086af";
+        urgent = "d1263d";
+        warn = "d15426";
+        confirm = "18b554";
+        link = "00aaaa";
 
-        pfg-highlight = "2E3440";
-        pfg-hialt0 = "2E3440";
-        pfg-hialt1 = "2E3440";
-        pfg-hialt2 = "2E3440";
-        pfg-urgent = "2E3440";
-        pfg-warn = "2E3440";
-        pfg-confirm = "2E3440";
-        pfg-link = "E5E9F0";
+        pfg-highlight = "2c0109";
+        pfg-hialt0 = "2c0109";
+        pfg-hialt1 = "2c0109";
+        pfg-hialt2 = "2c0109";
+        pfg-urgent = "2c0109";
+        pfg-warn = "2c0109";
+        pfg-confirm = "2c0109";
+        pfg-link = "2c0109";
 
         ansi00 = "2E3440";
         ansi01 = "BF616A";
