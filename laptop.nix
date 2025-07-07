@@ -38,6 +38,8 @@
       "users"
       "nofail"
       "exec"
+      "uid=rickyrnt"
+      "gid=users"
     ];
   };
 
