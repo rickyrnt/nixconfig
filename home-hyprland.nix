@@ -404,6 +404,7 @@ in rec
           "ALT, f6, exec, code"
           "ALT, f11, exec, $vencordize"
           "CTRL SHIFT, ESCAPE, exec, kitty -e 'btop'"
+          "$mod ALT, F, exec, steam steam://rungameid/427520"
 
           "$mod, ESCAPE, exec, $rebar"
           "$mod, S, togglefloating,"
@@ -529,6 +530,7 @@ in rec
         "workspace 101, class:factorio"
         "workspace 101, class:hollow_knight.x86_64"
         "workspace 101, class:[Mm]inecraft.+"
+        "workspace 101, initialClass:steam_app.+"
         "workspace special:tunes, class:Cider"
       ];
 
