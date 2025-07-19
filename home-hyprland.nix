@@ -29,7 +29,7 @@ in rec
     let
       my-astronaut-theme = pkgs.sddm-astronaut.override {
         themeConfig = {
-          Background = "\"${wallpaper-photo}\"";
+          Background = "\"${inputs.wallpaper-photo}\"";
           DimBackgroundImage = "\"0.0\"";
           ScaleImageCropped = "\"true\"";
           ScreenWidth = "\"1920\"";
