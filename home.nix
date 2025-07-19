@@ -79,6 +79,13 @@
     ] ++ [
       inputs.cider-2.packages.x86_64-linux.cider-2
     ];
+    
+    programs.obs-studio = {
+      enable = true;
+      plugins = with pkgs; [
+        obs-studio-plugins.obs-pipewire-audio-capture
+      ];
+    };
 
     xdg.enable = true;
 
