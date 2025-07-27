@@ -76,6 +76,7 @@
 
       cmatrix
       godot
+      jellyfin-media-player
     ] ++ [
       inputs.cider-2.packages.x86_64-linux.cider-2
     ];
