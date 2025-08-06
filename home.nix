@@ -178,7 +178,7 @@
       shellAliases = {
         nixedit = "nvim /home/rickyrnt/nixos/configuration.nix";
         nixmake = "sudo nixos-rebuild switch --flake /home/rickyrnt/nixos#M04RYS8";
-        nvidiacheck = "cat /sys/class/drm/card2/device/power_state";
+        nvidiacheck = "cat /sys/class/drm/card0/device/power_state";
       };
 
       initExtra = ''

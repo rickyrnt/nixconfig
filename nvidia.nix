@@ -6,13 +6,13 @@
 }:
 {
 
-  # boot.kernelParams = [
-    # "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    # "nvidia.NVreg_TemporaryFilePath=/var/tmp"
-    # "nvidia_drm.modeset=1"
-    # "nvidia_drm.fbdev=1"
-    # "nvidia.NVreg_EnableGpuFirmware=0"
-  # ];
+  boot.kernelParams = [
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+    "nvidia_drm.modeset=1"
+    "nvidia_drm.fbdev=1"
+    "nvidia.NVreg_EnableGpuFirmware=0"
+  ];
 
   # Enable OpenGL
   hardware.graphics = {

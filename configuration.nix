@@ -42,7 +42,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Los_Angeles";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -181,11 +181,17 @@
     comma
     p7zip
     dig
+    ventoy
+    rcopy
 
     thefuck
     neofetch
     lolcat
     #  wget
+  ];
+  
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.05"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
