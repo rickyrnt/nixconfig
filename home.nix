@@ -60,6 +60,7 @@
       # mtpaint
       vesktop
       steam
+      steam-run
       prismlauncher
       bottles
       # wine

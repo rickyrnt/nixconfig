@@ -42,7 +42,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -99,6 +99,7 @@
     noto-fonts
     noto-fonts-emoji
     liberation_ttf
+    inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.bahnschrift
   ];
 
   # File manager
@@ -182,7 +183,6 @@
     p7zip
     dig
     ventoy
-    rcopy
 
     thefuck
     neofetch
