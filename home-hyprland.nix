@@ -402,6 +402,7 @@ in rec
           # "$mod, f4, forcekillactive"
           "ALT, f5, exec, $fileManager"
           "ALT, f6, exec, code"
+          "ALT, f7, exec, obsidian"
           "ALT, f11, exec, $vencordize"
           "CTRL SHIFT, ESCAPE, exec, kitty -e 'btop'"
           "$mod ALT, F, exec, steam steam://rungameid/427520"

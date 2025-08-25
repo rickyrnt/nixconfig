@@ -114,6 +114,8 @@
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  
+  services.printing.enable = true;
 
   programs.firefox.enable = true;
   services.mullvad-vpn.enable = true;

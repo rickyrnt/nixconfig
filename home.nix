@@ -137,6 +137,8 @@
         foreground = "#FFF";
         frame_color = "#CC0099AA";
         highlight = "#A40A60";
+        origin = "top-center";
+        offset = "(0, 0)";
       };
       urgency_critical.frame_color = "#00AAAAAA";
       urgency_low.frame_color = "#20001088";
