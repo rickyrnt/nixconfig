@@ -189,6 +189,8 @@
     thefuck
     neofetch
     lolcat
+    
+    kdePackages.ark
     #  wget
   ];
   

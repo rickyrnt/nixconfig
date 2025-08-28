@@ -61,6 +61,7 @@
       vesktop
       steam
       steam-run
+      vice
       prismlauncher
       bottles
       # wine
