@@ -444,6 +444,8 @@ in rec
           "$mod SHIFT, D, movetoworkspace, special:discord"
           "$mod, T, togglespecialworkspace, tunes"
           "$mod SHIFT, T, movetoworkspace, special:tunes"
+          "$mod, N, togglespecialworkspace, notes"
+          "$mod SHIFT, N, movetoworkspace, special:notes"
 
           "CTRL ALT, mouse_up, workspace, e+1"
           "CTRL ALT, mouse_down, workspace, e-1"
@@ -514,6 +516,7 @@ in rec
         "noborder, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
         "rounding 0, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
         "workspace special:discord, class:vesktop"
+        "workspace special:notes, class:obsidian"
 
         "noblur, floating:0, onworkspace:s[false]"
 
