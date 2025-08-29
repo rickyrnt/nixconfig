@@ -163,6 +163,12 @@
     defaultEditor = true;
   };
 
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "rickyrnt" ];
+  
+  security.polkit.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -176,6 +182,8 @@
     wl-clipboard
     pulseaudio
     pwvucontrol
+    gparted
+    hyprpolkitagent
 
     bluetui
 

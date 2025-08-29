@@ -329,6 +329,7 @@ in rec
       # Autostart
       exec-once = [
         "waybar & hyprpaper"
+        "systemctl --user start hyprpolkitagent"
       ];
 
       general = {

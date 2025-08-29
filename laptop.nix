@@ -31,17 +31,17 @@
     RESTORE_DEVICE_STATE_ON_STARTUP = 1;
   };
 
-  # Mount windows drive
-  fileSystems."/win" = {
-    device = "/dev/nvme0n1p3";
-    options = [
-      "users"
-      "nofail"
-      "exec"
-      "uid=rickyrnt"
-      "gid=users"
-    ];
-  };
+  # Mount second drive
+  # fileSystems."/home/rickyrnt/tebi" = {
+    # device = "/dev/nvme0n1p2";
+    # options = [
+      # "users"
+      # "nofail"
+      # "exec"
+      # "uid=rickyrnt"
+      # "gid=users"
+    # ];
+  # };
 
   # nvidia gpu settings
   services.supergfxd.enable = true;
