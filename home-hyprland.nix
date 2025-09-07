@@ -99,8 +99,11 @@ in rec
       extraPackages = with pkgs; [ my-astronaut-theme ];
     };
 
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    withUWSM = true;
+  };
   
   systemd.user.timers."funnyModeTimer" = {
     wantedBy = lib.mkForce []; #[ "timers.target" ];
@@ -518,6 +521,8 @@ in rec
         "rounding 0, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
         "workspace special:discord, class:vesktop"
         "workspace special:notes, class:obsidian"
+        
+        "maximize, class:.*qemu.*"
 
         "noblur, floating:0, onworkspace:s[false]"
 

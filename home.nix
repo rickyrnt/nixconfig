@@ -75,6 +75,7 @@
       libresprite
       libinput
       libwacom
+      libnotify
 
       cmatrix
       godot
@@ -106,6 +107,19 @@
       "vesktop/themes/theme.css".source = ./dotfiles/discordtransparent.css;
     };
     
+    dconf.settings = {
+      "org/gnome/mutter/wayland" = {
+        xwayland-allow-grabs = true;
+        # idfk which program name works because there's no fucking docs so here's ALL of them
+        xwayland-grab-access-rules = ["qemu" "qemu-system-x86_64" "windows-10" ".qemu-system-x86_64" "qemu-system-x86_64-wrapped" ".qemu-system-x86_64-wrapped" 
+        "vmplayer" "vmware-vmx" "mksSandbox" "virt-viewer" "quickemu" ];
+      };
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
+    };
+    
     programs.feh.enable = true;
     programs.feh = {
       buttons = {
@@ -127,10 +141,11 @@
     services.dunst.settings = {
       global = {
         follow = "keyboard";
+        # monitor = 1;
         frame_width = 1;
         font = "Monospace 9";
         corner_radius = 4;
-        corners = "top_left, bottom_right";
+        corners = "top-left, bottom-right";
         mouse_right_click = "do_action, close_current";
         mouse_middle_click = "close_all";
 
@@ -138,12 +153,13 @@
         foreground = "#FFF";
         frame_color = "#CC0099AA";
         highlight = "#A40A60";
-        origin = "top-center";
-        offset = "(0, 0)";
+        origin = "top-right";
+        offset = "(800, 0)";
       };
       urgency_critical.frame_color = "#00AAAAAA";
       urgency_low.frame_color = "#20001088";
     };
+    services.dunst.waylandDisplay = "wayland-1";
 
     programs.git = {
       enable = true;

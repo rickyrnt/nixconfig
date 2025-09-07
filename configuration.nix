@@ -76,6 +76,7 @@
       "wheel"
       "pipewire"
       "audio"
+      "libvirtd"
     ];
     shell = pkgs.zsh;
   };
@@ -150,7 +151,13 @@
         "1.1.1.1"
         "1.0.0.1"
       ];
+      bind-dynamic = true;
+      interface= ["enp4s0" "wlp6s0"];
     };
+  };
+  systemd.services.dnsmasq = {
+    requires = ["network-online.target"];
+    after = ["network-online.target"];
   };
 
   environment.variables.SUDO_EDITOR = "nvim";
@@ -163,15 +170,18 @@
     defaultEditor = true;
   };
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "rickyrnt" ];
+  # virtualization
+  programs.virt-manager.enable = true;
+  users.groups.livirtd.members = ["rickyrnt"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
   
   security.polkit.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    tmux
     lxappearance-gtk2
     killall
     powertop
@@ -183,6 +193,8 @@
     pulseaudio
     pwvucontrol
     gparted
+    virtio-win
+    libvirt-glib
     hyprpolkitagent
 
     bluetui
