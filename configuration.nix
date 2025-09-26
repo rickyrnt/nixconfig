@@ -159,6 +159,12 @@
     requires = ["network-online.target"];
     after = ["network-online.target"];
   };
+  
+  services.openvpn.servers.bboysenc = {
+    autoStart = false;
+    updateResolvConf = true;
+    config = "config /home/rickyrnt/client.ovpn";
+  };
 
   environment.variables.SUDO_EDITOR = "nvim";
   
