@@ -415,7 +415,7 @@ in rec
           "$mod, S, togglefloating,"
           "$mod, M, fullscreen, 1"
           "$mod, F, fullscreen, 0"
-          "$mod, P, pseudo,"
+          "$mod, P, exec, $HOME/.config/waybar/scripts/switchmonitor.sh"
           "$mod, J, togglesplit,"
           "$mod, L, exec, hyprlock"
 
@@ -739,5 +739,12 @@ in rec
       animation = ./dotfiles/mechabar/animation.css;
     };
 
+    xdg.configFile = {
+      "rofi/monitor-menu.rasi".source = ./dotfiles/monitor-menu.rasi;
+      "waybar/scripts/switchmonitor.sh" = {
+        source = ./dotfiles/switchmonitor.sh;
+        executable = true;
+      };
+    };
   };
 }
