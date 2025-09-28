@@ -49,6 +49,11 @@
       flake = false;
     };
     
+    nix4nvchad = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     fonts = {
       url = path:/home/rickyrnt/nixos/dotfiles/fonts;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,7 +61,7 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, nixpkgs, home-manager, ... }@inputs:
     {
       checks.x86_64-linux.pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {
         src = ./.;
@@ -70,6 +75,15 @@
         modules = [ 
           ./configuration.nix 
           ./nvidia.nix
+          home-manager.nixosModules.home-manager { 
+            home-manager = {
+              extraSpecialArgs = { inherit inputs; };
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "hm-backup";
+              users.rickyrnt = ./home.nix;
+            };
+          }
           ./laptop.nix
         ];
       };

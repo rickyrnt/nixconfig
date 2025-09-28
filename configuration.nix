@@ -13,7 +13,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./home.nix
+    ./customization.nix
   ];
 
   nix.settings = {
@@ -166,7 +166,10 @@
     config = "config /home/rickyrnt/client.ovpn";
   };
 
-  environment.variables.SUDO_EDITOR = "nvim";
+  environment.variables = {
+    SUDO_EDITOR = "nvim";
+    EDITOR = "nvim";
+  };
   
   environment.sessionVariables.LD_LIBRARY_PATH = [
     "${pkgs.espeak}/lib"

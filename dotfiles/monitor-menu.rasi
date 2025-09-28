@@ -38,29 +38,6 @@ textbox-custom {
   content:                  "󰍺  Monitors";
 }
 
-/* Input */
-
-inputbar {
-  margin:                   -32px 6px 6px;
-  border-radius:            6px;
-  spacing:                  inherit;
-  background-color:         @input-bg;
-  text-color:               inherit;
-  children:                 [ prompt, entry ];
-}
-prompt {
-  padding:                  6px 6px 6px 12px;
-  background-color:         inherit;
-  text-color:               inherit;
-}
-entry {
-  placeholder:              "Search";
-  padding:                  6px 0;
-  cursor:                   text;
-  background-color:         inherit;
-  text-color:               inherit;
-}
-
 /* List */
 
 listview {
