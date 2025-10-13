@@ -160,6 +160,13 @@
     after = ["network-online.target"];
   };
   
+  fileSystems."/mnt/jellyfin" = {
+    device = "casey.bboysenc:/home/jellyfin";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" ];
+  };
+  boot.supportedFilesystems = [ "nfs" ];
+  
   services.openvpn.servers.bboysenc = {
     autoStart = false;
     updateResolvConf = true;
@@ -184,6 +191,8 @@
   users.groups.livirtd.members = ["rickyrnt"];
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
+  
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   
   security.polkit.enable = true;
 

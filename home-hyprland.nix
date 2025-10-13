@@ -265,6 +265,8 @@ in rec
     };
 
     gestures.workspace_swipe = true;
+    
+    ecosystem.no_update_news = true;
 
     # Keybinds
     "$mod" = "SUPER";
