@@ -24,7 +24,7 @@ mainbox {
   spacing:                  0;
   background-color:         @main-br;
   text-color:               @main-fg;
-  children:                 [ textbox-custom, listview, inputbar ];
+  children:                 [ textbox-custom, listview ];
 }
 
 textbox-custom {

@@ -42,7 +42,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Los_Angeles";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -98,7 +98,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.hack
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
     inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.bahnschrift
   ];
@@ -224,7 +224,7 @@
     dig
     ventoy
 
-    thefuck
+    pay-respects
     neofetch
     lolcat
     
@@ -233,7 +233,8 @@
   ];
   
   nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.05"
+    "ventoy-1.1.07"
+    # "qtwebengine-5.15.19"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

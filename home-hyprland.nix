@@ -264,7 +264,9 @@ in rec
       float_switch_override_focus = 0;
     };
 
-    gestures.workspace_swipe = true;
+    gesture = [
+      "3, horizontal, workspace"
+    ];
     
     ecosystem.no_update_news = true;
 
@@ -423,7 +425,6 @@ in rec
 
     animations = {
       enabled = "yes, please :)";
-      first_launch_animation = false;
 
       # Default animations, see https:#wiki.hyprland.org/Configuring/Animations/ for more
 
@@ -452,6 +453,8 @@ in rec
         "workspaces, 1, 1.94, almostLinear, fade"
         "workspacesIn, 1, 1.21, almostLinear, fade"
         "workspacesOut, 1, 1.94, almostLinear, fade"
+        "zoomFactor, 0"
+        "monitorAdded, 0"
       ];
     };
   };

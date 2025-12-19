@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   lib,
+  pkgs-unstable,
   ...
 }:
 rec {
@@ -23,7 +24,23 @@ rec {
     };
   };
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs; let 
+    VPN_HOST = "vpn2.case.edu";
+    VPN_PORT = "443";
+    startVpn = pkgs.writeShellApplication {
+      name = "startCwruVpn";
+
+      runtimeInputs = [
+        openfortivpn-webview
+      ];
+      
+      text = ''
+        openfortivpn-webview "${VPN_HOST}:${VPN_PORT}" 2>/dev/null \
+          | sudo openfortivpn "${VPN_HOST}:${VPN_PORT}" --cookie-on-stdin --pppd-accept-remote
+      '';
+    };
+    
+  in [
     python3
     python311Packages.pip
     pipx
@@ -33,11 +50,18 @@ rec {
     texliveBasic
     libgcc
     libreoffice-qt6-fresh
+    
+    openfortivpn
+    startVpn
+    bitwarden-desktop
+    
+    virt-viewer
 
     # mtpaint
     vesktop
     steam
     steam-run
+    pkgs-unstable.heroic
     vice
     prismlauncher
     bottles
@@ -55,8 +79,9 @@ rec {
     libnotify
 
     cmatrix
+    terminal-toys
     godot
-    jellyfin-media-player
+    # jellyfin-media-player
   ] ++ [
     inputs.cider-2.packages.x86_64-linux.cider-2
   ];
@@ -85,12 +110,6 @@ rec {
   };
   
   dconf.settings = {
-    "org/gnome/mutter/wayland" = {
-      xwayland-allow-grabs = true;
-      # idfk which program name works because there's no fucking docs so here's ALL of them
-      xwayland-grab-access-rules = ["qemu" "qemu-system-x86_64" "windows-10" ".qemu-system-x86_64" "qemu-system-x86_64-wrapped" ".qemu-system-x86_64-wrapped" 
-      "vmplayer" "vmware-vmx" "mksSandbox" "virt-viewer" "quickemu" ];
-    };
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];
       uris = ["qemu:///system"];
@@ -140,14 +159,13 @@ rec {
 
   programs.git = {
     enable = true;
-    userEmail = "rick.yarnot.255@gmail.com";
-    userName = "rickyrnt";
+    settings.user.email = "rick.yarnot.255@gmail.com";
+    settings.user.name = "rickyrnt";
   };
 
   programs.rofi = {
     enable = true;
     location = "top";
-    package = pkgs.rofi-wayland;
     terminal = "${pkgs.kitty}/bin/kitty";
     theme = "purple";
   };
@@ -177,11 +195,11 @@ rec {
       nixmake = "sudo nixos-rebuild switch --flake /home/rickyrnt/nixos#M04RYS8";
       nvidiacheck = "cat /sys/class/drm/card0/device/power_state";
       vim = "nvim";
+      s = "kitten ssh";
     };
 
-    initExtra = ''
+    initContent = ''
               neofetch | lolcat 2> /dev/null
-              eval "$(thefuck --alias)"
               eval "$(ssh-agent -s)" &> /dev/null
             '';
 

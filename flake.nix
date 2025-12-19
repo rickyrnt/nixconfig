@@ -2,10 +2,12 @@
   description = "The rickyrnt personal system";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-25.05;
+    nixpkgs.url = github:nixos/nixpkgs/nixos-25.11;
+    
+    nixpkgs-unstable.url = github:nixos/nixpkgs/nixos-unstable;
 
     home-manager = {
-      url = github:nix-community/home-manager/0b491b460f52e87e23eb17bbf59c6ae64b7664c1;
+      url = github:nix-community/home-manager/release-25.11;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -61,7 +63,10 @@
   };
 
   outputs =
-    { self, nixpkgs, home-manager, ... }@inputs:
+    { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+    in
     {
       checks.x86_64-linux.pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {
         src = ./.;
@@ -72,12 +77,14 @@
 
       nixosConfigurations.M04RYS8 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [ 
+        modules = let
+          pkgs-unstable = import nixpkgs-unstable { inherit system; };
+        in [ 
           ./configuration.nix 
           ./nvidia.nix
           home-manager.nixosModules.home-manager { 
             home-manager = {
-              extraSpecialArgs = { inherit inputs; };
+              extraSpecialArgs = { inherit system inputs pkgs-unstable; };
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "hm-backup";
