@@ -1,12 +1,5 @@
 { config, pkgs, inputs, lib, ... }:
-let
-  wallpaper-photo = pkgs.fetchurl {
-    url = "https:#images.steamusercontent.com/ugc/1170321140105641126/47F1E70BD90DB25A97F3B761B07764F7F947287E/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
-    name = "wallpaper-photo";
-    hash = "sha256-i94PzTtGdLVQlujgwrTB4NuJ/Zb58SCfo0g26NQXbH0=";
-  };
-in rec
-{
+rec {
   imports = [
     inputs.mechabar.mechabar
     inputs.gtk-nix.homeManagerModule
@@ -111,17 +104,17 @@ in rec
   services.hyprpaper.enable = true;
   services.hyprpaper.settings = {
     preload = [
-      "${wallpaper-photo}"
+      "${inputs.wallpaper-photo}"
     ];
     wallpaper = [
-      ", ${wallpaper-photo}"
+      ", ${inputs.wallpaper-photo}"
     ];
   };
 
   programs.hyprlock.enable = true;
   programs.hyprlock.settings = {
     background = {
-      path = "${wallpaper-photo}";
+      path = "${inputs.wallpaper-photo}";
       color = "rgba(25,20,20,1.0)";
     };
     label = {
@@ -571,7 +564,7 @@ in rec
             status=$(systemctl --user status funnyModeTimer.timer | awk '/Active:/ {print $2}')
             case "$status" in 
               "active")
-                hyprctl hyprpaper reload , ${wallpaper-photo}
+                hyprctl hyprpaper reload , ${inputs.wallpaper-photo}
                 systemctl --user stop funnyModeTimer.timer ;;
               "inactive")
                 systemctl --user start funnyModeTimer.timer 
@@ -604,7 +597,7 @@ in rec
               "active")
                 systemctl --user start funnyModeSwitch.service ;;
               "inactive")
-                hyprctl hyprpaper reload , ${wallpaper-photo} ;;
+                hyprctl hyprpaper reload , ${inputs.wallpaper-photo} ;;
             esac
           '';
         in {
