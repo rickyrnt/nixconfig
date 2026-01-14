@@ -287,6 +287,7 @@ rec {
         "ALT, f11, exec, $vencordize"
         "CTRL SHIFT, ESCAPE, exec, kitty -e 'btop'"
         "$mod ALT, F, exec, steam steam://rungameid/427520"
+        "$mod ALT, C, exec, firefox --new-window https://calendar.google.com"
 
         "$mod, ESCAPE, exec, $rebar"
         "$mod, S, togglefloating,"
