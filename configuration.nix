@@ -213,6 +213,7 @@
     gparted
     virtio-win
     libvirt-glib
+    virtiofsd
     hyprpolkitagent
 
     bluetui

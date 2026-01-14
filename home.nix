@@ -109,6 +109,8 @@ rec {
     "vesktop/themes/theme.css".source = ./dotfiles/discordtransparent.css;
   };
   
+  xdg.portal.enable = true;
+  
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];

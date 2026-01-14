@@ -182,7 +182,12 @@ rec {
   };
 
   wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.systemd.enable = false;
   wayland.windowManager.hyprland.settings = {
+
+    # stop the "you didn't use start-hyprland" warning until the nixfolk fix UWSM (cuz i'm too lazy to do it myself)
+    misc.disable_watchdog_warning = true;
+
     # Monitors
     monitor = [
       "eDP-1,highres@highrr,0x0,1"
@@ -327,8 +332,8 @@ rec {
         "CTRL ALT, mouse_down, workspace, e-1"
         "CTRL ALT, l, workspace, r+1"
         "CTRL ALT, h, workspace, r-1"
-        "CTRL ALT, G, workspace, 101"
-        "ALT SHIFT, G, movetoworkspace, 101"
+        "CTRL ALT, G, workspace, name:gaming"
+        "ALT SHIFT, G, movetoworkspace, name:gaming"
       ]
       ++ (builtins.concatLists (
         builtins.genList (
@@ -375,45 +380,36 @@ rec {
     ];
 
     workspace = [
+      "special:discord, on-created-empty:$vencordize"
+      "special:magic, on-created-empty:$terminal"
       "n[e:discord] w[tv1], gapsout:0, gapsin:0"
       "n[e:discord] f[1], gapsout:0, gapsin:0"
-      "r[101-105] w[tv1], gapsout:0, gapsin:0"
-      "r[101-105] f[1], gapsout:0, gapsin:0"
+      "name:gaming, monitor:id:0"
+      "n[e:gaming] w[tv1], gapsout:0, gapsin:0"
+      "n[e:gaming] f[1], gapsout:0, gapsin:0"
       "r[1-5], monitor:eDP-1"
       "r[7-10], monitor:HDMI-A-1"
       "6, monitor:HDMI-A-1, default:true"
     ];
 
-    windowrulev2 = [
-      "noborder, class:vesktop, floating:0, onworkspace:w[tv1] s[true]"
-      "noborder, class:vesktop, fullscreen:1, onworkspace:s[true]"
-      "noblur, class:vesktop, floating:0, onworkspace:s[true]"
-      "rounding 0, class:vesktop, floating:0, onworkspace:w[tv1] s[true]"
-      "noborder, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
-      "rounding 0, class:vesktop, floating:0, onworkspace:s[true], onworkspace:f[1]"
-      "workspace special:discord, class:vesktop"
-      "workspace special:notes, class:obsidian"
-      
-      "maximize, class:.*qemu.*"
+    windowrule = [
+      "match:class vesktop, workspace special:discord"
+      "match:class obsidian, workspace special:notes"
+      "match:class cider, workspace special:tunes"
+      "match:class libresprite, tile true"
+      "match:class .+pwvucontrol, float true"
+      "match:class factorio, workspace name:gaming"
+      "match:class hollow_knight.x86_64, workspace name:gaming"
+      "match:class [Mm]inecraft.+, workspace name:gaming"
+      "match:initial_class steam_app.+, workspace name:gaming"
 
-      "noblur, floating:0, onworkspace:s[false]"
+      "match:class vesktop, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
+      "match:class vesktop, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
 
-      "rounding 0, floating:0, onworkspace:r[101-105] w[tv1]"
-      "rounding 0, fullscreen:1, onworkspace:r[101-105]"
-      "noborder, floating:0, onworkspace:r[101-105] w[tv1]"
-      "noborder, fullscreen:1, onworkspace:r[101-105]"
-      "noshadow, floating:0, onworkspace:r[101-105] w[tv1]"
-      "noshadow, fullscreen:1, onworkspace:r[101-105]"
-      "tile, class:libresprite"
-      "tile, title:FL Studio \\d+"
-      
-      "float, class:.+pwvucontrol"
+      "match:float false, match:workspace s[false], no_blur true"
 
-      "workspace 101, class:factorio"
-      "workspace 101, class:hollow_knight.x86_64"
-      "workspace 101, class:[Mm]inecraft.+"
-      "workspace 101, initialClass:steam_app.+"
-      "workspace special:tunes, class:Cider"
+      "match:workspace n[e:gaming] w[tv1], match:float false, rounding 0, border_size 0, no_shadow true"
+      "match:workspace n[e:gaming], match:fullscreen 1, rounding 0, border_size 0, no_shadow true"
     ];
 
     animations = {
@@ -555,7 +551,7 @@ rec {
           };
           format = "{icon}";
           format-icons = {
-            "101" = "󰊖 ";
+            "gaming" = "󰊖 ";
           };
         };
         

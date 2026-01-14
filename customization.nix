@@ -129,7 +129,8 @@ rec {
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    withUWSM = false;
+    # package = pkgs.hyprland;
+    withUWSM = true;
   };
   
   systemd.user.timers."funnyModeTimer" = {
