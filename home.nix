@@ -106,7 +106,8 @@ rec {
   };
 
   xdg.configFile = {
-    "vesktop/themes/theme.css".source = ./dotfiles/discordtransparent.css;
+    "vesktop/themes/theme.css".source = ./dotfiles/ClearVision_v7.theme.css;
+    # "vesktop/themes/theme.css".source = ./dotfiles/discordtransparent.css;
   };
   
   xdg.portal.enable = true;
