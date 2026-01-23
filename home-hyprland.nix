@@ -306,6 +306,9 @@ rec {
         "ALT, k, movefocus, u"
         "ALT, j, movefocus, d"
         "ALT, TAB, cyclenext"
+        "ALT, TAB, fullscreen, 1 set"
+        "CTRL MOD ALT, 1, movecurrentworkspacetomonitor, eDP-1"
+        "CTRL MOD ALT, 2, movecurrentworkspacetomonitor, 1"
 
         "$mod, f10, exec, ${grmblstfy} copy screen"
         "$mod, f11, exec, ${grmblstfy} copy output"
@@ -396,7 +399,7 @@ rec {
     windowrule = [
       "match:class vesktop, workspace special:discord"
       "match:class obsidian, workspace special:notes"
-      "match:class cider, workspace special:tunes"
+      "match:class Cider, workspace special:tunes"
       "match:class libresprite, tile true"
       "match:class .+pwvucontrol, float true"
       "match:class factorio, workspace name:gaming"
