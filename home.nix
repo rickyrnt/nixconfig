@@ -77,6 +77,8 @@ rec {
     libinput
     libwacom
     libnotify
+    musescore
+    handbrake
 
     cmatrix
     terminal-toys

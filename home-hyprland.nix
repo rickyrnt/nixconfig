@@ -250,6 +250,10 @@ rec {
         vibrancy = 0.1696;
       };
     };
+    
+    cursor = {
+      no_hardware_cursors = 0;
+    };
 
     misc = {
       force_default_wallpaper = 0;
@@ -409,6 +413,8 @@ rec {
 
       "match:class vesktop, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
       "match:class vesktop, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
+
+      "match:title Friends List, match:class steam, float true"
 
       "match:float false, match:workspace s[false], no_blur true"
 
