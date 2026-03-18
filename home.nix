@@ -79,6 +79,8 @@ rec {
     libnotify
     musescore
     handbrake
+    audacity
+    mathematica
 
     cmatrix
     terminal-toys
