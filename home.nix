@@ -86,8 +86,8 @@ rec {
     terminal-toys
     godot
     # jellyfin-media-player
-  ] ++ [
-    inputs.cider-2.packages.x86_64-linux.cider-2
+
+    (callPackage ./cider-2.nix {})
   ];
   
   programs.obs-studio = {

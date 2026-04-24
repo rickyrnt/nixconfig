@@ -26,11 +26,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    cider-2 = {
-      url = "/home/rickyrnt/repos/cider-2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    
     mechabar = {
       url = github:rickyrnt/mechabar-nix/animated;
       inputs.nixpkgs.follows = "nixpkgs";
