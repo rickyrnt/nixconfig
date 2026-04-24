@@ -40,6 +40,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openvpn
+  ];
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -132,9 +135,9 @@
   ];
 
   services.resolved = {
-    enable = false;
+    enable = true;
     dnssec = "true";
-    domains = [ "~." ];
+    domains = [ "~." "bboysenc" ];
     fallbackDns = [
       "1.1.1.1#one.one.one.one"
       "1.0.0.1#one.one.one.one"
@@ -143,7 +146,7 @@
   };
   
   services.dnsmasq = {
-    enable = true;
+    enable = false;
     resolveLocalQueries = true;
     settings = {
       domain = "bboysenc";
@@ -172,6 +175,8 @@
     updateResolvConf = true;
     config = "config /home/rickyrnt/client.ovpn";
   };
+
+  services.tailscale.enable = true;
 
   environment.variables = {
     SUDO_EDITOR = "nvim";

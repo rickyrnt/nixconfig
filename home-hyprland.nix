@@ -292,6 +292,9 @@ rec {
         "CTRL SHIFT, ESCAPE, exec, kitty -e 'btop'"
         "$mod ALT, F, exec, steam steam://rungameid/427520"
         "$mod ALT, C, exec, firefox --new-window https://calendar.google.com"
+        "$mod ALT, G, exec, firefox --new-window https://online-go.com"
+        "$mod ALT, O, exec, code ~/nixos"
+        "$mod ALT, O, exec, firefox --new-window https://search.nixos.org/options"
 
         "$mod, ESCAPE, exec, $rebar"
         "$mod, S, togglefloating,"
@@ -311,8 +314,8 @@ rec {
         "ALT, j, movefocus, d"
         "ALT, TAB, cyclenext"
         "ALT, TAB, fullscreen, 1 set"
-        "CTRL MOD ALT, 1, movecurrentworkspacetomonitor, eDP-1"
-        "CTRL MOD ALT, 2, movecurrentworkspacetomonitor, 1"
+        "CTRL $mod ALT, 1, movecurrentworkspacetomonitor, eDP-1"
+        "CTRL $mod ALT, 2, movecurrentworkspacetomonitor, 1"
 
         "$mod, f10, exec, ${grmblstfy} copy screen"
         "$mod, f11, exec, ${grmblstfy} copy output"
