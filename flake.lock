@@ -187,15 +187,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1754444286,
-        "narHash": "sha256-KhTZjRvDY/4WINYpEhjMT8dz7nV3PVG8Mx2ieQFxsVI=",
-        "path": "/home/rickyrnt/nixos/dotfiles/fonts",
+        "path": "./dotfiles/fonts",
         "type": "path"
       },
       "original": {
-        "path": "/home/rickyrnt/nixos/dotfiles/fonts",
+        "path": "./dotfiles/fonts",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "gitignore": {
       "inputs": {

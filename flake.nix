@@ -52,7 +52,7 @@
     };
     
     fonts = {
-      url = path:/home/rickyrnt/nixos/dotfiles/fonts;
+      url = path:./dotfiles/fonts;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

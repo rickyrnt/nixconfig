@@ -8,4 +8,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Run nixos-rebuild
-        run: nixos-rebuild build --flake github:rickyrnt/nixconfig#M04RYS8
+        run: nixos-rebuild build --flake github:rickyrnt/nixconfig#M04RYS8 --show-trace
