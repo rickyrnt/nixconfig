@@ -17,7 +17,7 @@
         src = prev.fetchFromGitHub {
           owner = "Vencord";
           repo = "Vesktop";
-          rev = "v${finalAttrs.version}";
+          rev = "v${final.finalAttrs.version}";
           hash = "sha256-VtiMiOpqinD7oBtE6hSBDf25oLrjzAiYapyuHGKI118=";
         };
       };
