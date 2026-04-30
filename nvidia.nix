@@ -21,7 +21,7 @@
   in {
     enable = true;
     enable32Bit = true;
-    package = hypr-pkgs.mesa;
+    # package = hypr-pkgs.mesa;
   };
 
   hardware.opengl = {
