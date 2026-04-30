@@ -13,7 +13,7 @@
 
     hyprland = {
       url = github:hyprwm/hyprland/v0.54.3;
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     pre-commit-hooks = {
