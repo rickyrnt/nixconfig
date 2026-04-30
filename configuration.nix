@@ -210,6 +210,7 @@
     
     kdePackages.ark
     #  wget
+    inputs.hyprtoolkit.packages.${system}.default
   ];
   
   nixpkgs.config.permittedInsecurePackages = [
