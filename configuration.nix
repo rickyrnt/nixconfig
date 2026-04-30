@@ -14,7 +14,7 @@
     (final: prev: {
       vesktop = prev.vesktop.overrideAttrs {
         version = "1.6.5";
-        src = fetchFromGitHub {
+        src = prev.fetchFromGitHub {
           owner = "Vencord";
           repo = "Vesktop";
           rev = "v${finalAttrs.version}";
