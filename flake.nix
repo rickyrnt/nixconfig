@@ -15,6 +15,11 @@
       url = github:hyprwm/hyprland/v0.54.3;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    hyprtoolkit = {
+      url = github:hyprwm/hyprtoolkit/v0.5.3;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     pre-commit-hooks = {
       url = github:cachix/git-hooks.nix;
@@ -73,7 +78,7 @@
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+    { self, nixpkgs, nixpkgs-unstable, home-manager, hyprtoolkit, ... }@inputs:
     let
       system = "x86_64-linux";
     in

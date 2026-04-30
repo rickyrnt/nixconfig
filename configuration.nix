@@ -11,6 +11,7 @@
 
 {
   nixpkgs.overlays = [
+    inputs.hyprtoolkit.overlays.default
   ];
 
   imports = [
