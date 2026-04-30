@@ -133,36 +133,8 @@
     "1.1.1.1#one.one.one.one"
     "1.0.0.1#one.one.one.one"
   ];
+  programs.openvpn3.enable = true;
 
-  services.resolved = {
-    enable = true;
-    dnssec = "true";
-    domains = [ "~." "bboysenc" ];
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-    ];
-    dnsovertls = "true";
-  };
-  
-  services.dnsmasq = {
-    enable = false;
-    resolveLocalQueries = true;
-    settings = {
-      domain = "bboysenc";
-      server = [
-        "1.1.1.1"
-        "1.0.0.1"
-      ];
-      bind-dynamic = true;
-      interface= ["enp4s0" "wlp6s0"];
-    };
-  };
-  systemd.services.dnsmasq = {
-    requires = ["network-online.target"];
-    after = ["network-online.target"];
-  };
-  
   fileSystems."/mnt/jellyfin" = {
     device = "casey.bboysenc:/home/jellyfin";
     fsType = "nfs";
