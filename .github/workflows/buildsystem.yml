@@ -1,0 +1,11 @@
+name: Build Nix System
+
+on: push
+runs-on: self-hosted
+
+jobs:
+  nixmake:
+    name: Build
+    steps:
+      - name: Run nixos-rebuild
+        run: nixos-rebuild build --flake github:rickyrnt/nixconfig#M04RYS8
