@@ -56,6 +56,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+  
+  nixConfig = {
+    substituters = [
+      "https://hyprland.cachix.org"
+      "https://ford.zubron-tetra.ts.net?trusted=1"
+    ];
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "ford.zubron-tetra.ts.net:C22wBOL1baaXKU0r50WJjhtsRIVVaIOY6LaakPUFSXE="
+    ];
+    trusted-substituters = [
+      "https://ford.zubron-tetra.ts.net"
+      "rickyrnt"
+    ];
+  };
 
   outputs =
     { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
