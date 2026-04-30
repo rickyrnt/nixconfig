@@ -20,6 +20,17 @@
           rev = "v1.6.5";
           hash = "sha256-YPDlqiO+0BtDgC7aFl8B2KPYsT41WqzOQ7et2Tejs3M=";
         };
+        pnpmDeps = prev.fetchPnpmDeps {
+          inherit (finalAttrs)
+            pname
+            version
+            src
+            patches
+            ;
+          pnpm = pnpm_10;
+          fetcherVersion = 2;
+          hash = "";
+        };
       };
     })
   ];
