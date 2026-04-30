@@ -18,7 +18,7 @@
           owner = "Vencord";
           repo = "Vesktop";
           rev = "v1.6.5";
-          hash = "sha256-VtiMiOpqinD7oBtE6hSBDf25oLrjzAiYapyuHGKI118=";
+          hash = "sha256-YPDlqiO+0BtDgC7aFl8B2KPYsT41WqzOQ7et2Tejs3M=";
         };
       };
     })
