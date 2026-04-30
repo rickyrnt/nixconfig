@@ -73,7 +73,7 @@ rec {
     zoom-us
     calibre
     graphviz
-    libresprite
+    aseprite
     libinput
     libwacom
     libnotify
