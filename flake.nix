@@ -115,8 +115,6 @@
             };
           }
           ./laptop.nix
-          hyprland.overlays.default
-          hyprtoolkit.overlays.default
         ];
       };
 
