@@ -14,6 +14,7 @@
     hyprland = {
       url = github:hyprwm/hyprland/v0.54.3;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprtoolkit.follows = "hyprtoolkit";
     };
     
     hyprtoolkit = {

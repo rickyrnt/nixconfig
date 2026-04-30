@@ -11,7 +11,6 @@
 
 {
   nixpkgs.overlays = [
-    inputs.hyprtoolkit.overlays.default
   ];
 
   imports = [
@@ -210,7 +209,6 @@
     
     kdePackages.ark
     #  wget
-    inputs.hyprtoolkit.packages.${system}.default
   ];
   
   nixpkgs.config.permittedInsecurePackages = [
