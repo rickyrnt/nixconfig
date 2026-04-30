@@ -10,6 +10,20 @@
 }:
 
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      vesktop = prev.vesktop.overrideAttrs {
+        version = "1.6.5";
+        src = fetchFromGitHub {
+          owner = "Vencord";
+          repo = "Vesktop";
+          rev = "v${finalAttrs.version}";
+          hash = "sha256-VtiMiOpqinD7oBtE6hSBDf25oLrjzAiYapyuHGKI118=";
+        };
+      };
+    })
+  ];
+
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix

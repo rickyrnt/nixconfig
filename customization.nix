@@ -37,9 +37,6 @@ rec {
         patches = [ ./dotfiles/qogir-color-change.patch ];
       };
     })
-    (self: super: {
-      libresprite = super.callPackage ./libresprite-1.1.nix {};
-    })
   ];
 
   qt = {
