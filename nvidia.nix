@@ -16,7 +16,7 @@
 
   # Enable OpenGL
   hardware.graphics = let 
-    hypr-pkgs = nputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+    hypr-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in {
     enable = true;
     enable32Bit = true;
