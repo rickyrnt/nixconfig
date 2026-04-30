@@ -11,7 +11,6 @@
 
 {
   nixpkgs.overlays = [
-    inputs.hyprland.overlays.default
   ];
 
   imports = [
