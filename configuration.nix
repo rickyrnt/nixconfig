@@ -206,7 +206,7 @@
     comma
     p7zip
     dig
-    ventoy
+    # ventoy
 
     pay-respects
     neofetch
@@ -217,7 +217,7 @@
   ];
   
   nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.10"
+    # "ventoy-1.1.10"
     # "qtwebengine-5.15.19"
   ];
 
