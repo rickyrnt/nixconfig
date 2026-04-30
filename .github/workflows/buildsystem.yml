@@ -7,9 +7,10 @@ jobs:
     name: Build
     runs-on: self-hosted
     steps:
-      - name: run_nixos-rebuild
+      - name: Run nixos-rebuild
+        id: nixbuild
         continue-on-error: true
         run: nixos-rebuild build --flake github:rickyrnt/nixconfig#M04RYS8
-      - name: failure_trace
-        if: ${{ steps.run_nixos-rebuild.outcome == 'failure' }}
+      - name: Failure trace
+        if: ${{ steps.nixbuild.outcome == 'failure' }}
         run: nixos-rebuild build --flake github:rickyrnt/nixconfig#M04RYS8 --show-trace
