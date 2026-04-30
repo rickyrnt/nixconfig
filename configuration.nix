@@ -11,29 +11,6 @@
 
 {
   nixpkgs.overlays = [
-    (final: prev: {
-      vesktop = prev.vesktop.overrideAttrs (finalAttrs: prevAttrs: rec {
-        version = "4/21/2026";
-        src = final.fetchFromGitHub {
-          owner = "Vencord";
-          repo = "Vesktop";
-          rev = "dab413c3761c7e1dbe2656b162ed71cb7a010870";
-          # rev = "v${finalAttrs.version}";
-          hash = "sha256-YPDlqiO+0BtDgC7aFl8B2KPYsT41WqzOQ7et2Tejs3M=";
-        };
-        pnpmDeps = final.fetchPnpmDeps {
-          inherit (finalAttrs)
-            pname
-            version
-            src
-            patches
-            ;
-          pnpm = final.pnpm_10;
-          fetcherVersion = 2;
-          hash = "sha256-o9dxtqXfCKTQpvNrbD/h0F3Hh39TEEA1qqYA9tN3j5I=";
-        };
-      });
-    })
   ];
 
   imports = [

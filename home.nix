@@ -58,7 +58,6 @@ rec {
     virt-viewer
 
     # mtpaint
-    vesktop
     steam
     steam-run
     pkgs-unstable.heroic
@@ -90,6 +89,338 @@ rec {
     (callPackage ./cider-2.nix {})
   ];
   
+  programs.vesktop = {
+    enable = true;
+    vencord.settings = {
+      enabledThemes = [ "clearvision.css" ];
+      transparent = "true";
+      autoUpdate = true;
+      autoUpdateNotification = true;
+      plugins = {
+        ChatInputButtonAPI.enabled = true;
+        CommandsAPI.enabled = true;
+        DynamicImageModalAPI.enabled = true;
+        MemberListDecoratorsAPi.enabled = true;
+        MessageAccessoriesAPI.enabled = true;
+        MessageDecorationsAPI.enabled = true;
+        MessageEventsAPI.enabled = true;
+        MessagePopoverAPI.enabled = true;
+        MessageUpdaterAPI.enabled = true;
+        ServerListAPI.enabled = true;
+        UserSettingsAPi.enabled = true;
+        AlwaysExpandRoles.enabled = true;
+        AlwaysTrust = {
+          enabled = true;
+          domain = true;
+          file = true;
+        };
+        BetterFolders = {
+          enabled = true;
+          sidebar = true;
+          showFolderIcon = 1;
+          keepIcons = false;
+          closeAllHomeButton = false;
+          closeAllFolders = false;
+          forceOpen = false;
+          sidebarAnim = true;
+          closeOthers = false;
+        };
+        BetterGifAltText.enabled = true;
+        BetterGifPicker.enabled = true;
+        BetterSettings = {
+          enabled = true;
+          disableFade = true;
+          eagerLoad = true;
+          organizeMenu = true;
+        };
+        BetterUploadButton.enabled = true;
+        BiggerStreamPreview.enabled = true;
+        CallTimer = {
+          enabled = true;
+          format = "stopwatch";
+        };
+        ClearURLs.enabled = true;
+        CopyFileContents.enabled = true;
+        CopyUserURLs.enabled = true;
+        CrashHandler.enabled = true;
+        CustomRPC = {
+            enabled = true;
+            type = 0;
+            timestampMode = 2;
+            appName = "with MAGIC";
+            appID = "1134332107544592486";
+            details = "IAMA MAGIC MAN";
+            state = "HHHAHHAHAHHAAAHAHAAAHAHAA";
+            imageBig = "ganglemicrowave";
+            imageBigTooltip = "goodness";
+            buttonOneText = "BUTTON";
+            buttonOneURL = "https://en.wikipedia.org/wiki/Button";
+        };
+        Dearrow = {
+          enabled = true;
+          hideButton = false;
+          replaceElements = 0;
+          dearrowByDefault = true;
+        };
+        DontRoundMyTimestamps.enabled = true;
+        Experiments = {
+          enabled = true;
+          toolbarDevMenu = false;
+        };
+        FakeNitro = {
+            enabled = true;
+            enableStickerBypass = true;
+            enableStreamQualityBypass = true;
+            enableEmojiBypass = true;
+            transformEmojis = true;
+            transformStickers = true;
+            transformCompoundSentence = false;
+            emojiSize = 48;
+            hyperLinkText = "{{NAME}}";
+            useHyperLinks = true;
+            disableEmbedPermissionCheck = false;
+        };
+        FavoriteEmojiFirst.enabled = true;
+        FavoriteGifSearch = {
+          enabled = true;
+          searchOption = "hostandpath";
+        };
+        FixSpotifyEmbeds.enabled = true;
+        FixYoutubeEmbeds.enabled = true;
+        FriendsSince.enabled = true;
+        FullSearchContext.enabled = true;
+        FullUserInChatbox.enabled = true;
+        GameActivityToggle = {
+          enabled = true;
+          oldIcon = false;
+          location = "PANEL";
+        };
+        GifPaste.enabled = true;
+        GreetStickerPicker.enabled = true;
+        HideMedia.enabled = true;
+        ImageZoom = {
+            enabled = true;
+            saveZoomValues = true;
+            invertScroll = true;
+            nearestNeighbour = false;
+            square = false;
+            zoom = 1.6;
+            size = 560.9025270758123;
+            zoomSpeed = 0.5;
+        };
+        ImplicitRelationships = {
+          enabled = true;
+          sortByAffinity = true;
+        };
+        KeepCurrentChannel.enabled = true;
+        MemberCount = {
+          enabled = true;
+          memberList = true;
+          toolTip = true;
+          voiceActivity = true;
+        };
+        MentionAvatars = {
+          enabled = true;
+          showAtSymbol = true;
+        };
+        MessageClickActions = {
+          enabled = true;
+          requireModifier = false;
+          enableDoubleClickToEdit = true;
+          enableDoubleClickToReply = true;
+        };
+        MessageLinkEmbeds = {
+          enabled = true;
+          listMode = "blacklist";
+          idList = "";
+          outomodEmbeds = "never";
+        };
+        MessageLogger = {
+            enabled = true;
+            deleteStyle = "text";
+            logDeletes = true;
+            collapseDeleted = false;
+            logEdits = true;
+            inlineEdits = true;
+            ignoreBots = false;
+            ignoreSelf = false;
+            ignoreUsers = "";
+            ignoreChannels = "";
+            ignoreGuilds = "";
+        };
+        MutualGroupDMs.enabled = true;
+        NoOnboardingDelay.enabled = true;
+        NoTypingAnimation.enabled = true;
+        NormalizeMessageLinks.enabled = true;
+        OpenInApp = {
+            enabled = true;
+            spotify = true;
+            steam = true;
+            epic = true;
+            tidal = true;
+            itunes = true;
+        };
+        PauseInvitesForever.enabled = true;
+        PermissionFreeWill = {
+          enabled = true;
+          lockout = true;
+          onboarding = true;
+        };
+        petpet.enabled = true;
+        PictureInPicture.enabled = true;
+        PinDMs = {
+          enabled = true;
+          userBasedCategoryList = {
+            "276163256949800973" = [];
+          };
+          pinOrder = 0;
+          canCollapseDmSection = false;
+        };
+        PreviewMessage.enabled = true;
+        ReactErrorDecoder.enabled = true;
+        ReadAllNotificationsButton.enabled = true;
+        RelationshipNotifier = {
+            enabled = true;
+            offlineRemovals = true;
+            groups = true;
+            servers = true;
+            friends = true;
+            friendRequestCancels = true;
+            notices = false;
+        };
+        ReplyTimestamp.enabled = true;
+        RevealAllSpoilers.enabled = true;
+        ReverseImageSearch.enabled = true;
+        SendTimestamps = {
+          enabled = true;
+          replaceMessageContents = true;
+        };
+        ServerInfo.enabled = true;
+        ServerListIndicators = {
+          enabled = true;
+          mode = 2;
+        };
+        ShikiCodeblocks = {
+            enabled = true;
+            useDevIcon = "GREYSCALE";
+            theme = "https://raw.githubusercontent.com/shikijs/textmate-grammars-themes/2d87559c7601a928b9f7e0f0dda243d2fb6d4499/packages/tm-themes/themes/dark-plus.json";
+        };
+        ShowHiddenThings = {
+          enabled = true;
+          showTimeouts = true;
+          showInvitesPaused = true;
+          showModView = true;
+        };
+        SilentMessageToggle = {
+          enabled = true;
+          persistState = false;
+        };
+        SilentTyping = {
+          enabled = true;
+          isEnabled = true;
+          showIcon = false;
+        };
+        SortFriendRequests = {
+          enabled = true;
+          showDates = false;
+        };
+        SpotifyCrack = {
+          enabled = true;
+          noSpotifyAutoPause = true;
+          keepSpotifyActivityOnIdle = false;
+        };
+        StartupTimings.enabled = true;
+        Translate = {
+            enabled = true;
+            showChatBarButton = true;
+            service = "google";
+            deeplApiKey = "";
+            autoTranslate = false;
+            showAutoTranslateTooltip = true;
+            receivedInput = "auto";
+            receivedOutput = "en";
+            sentInput = "auto";
+            sentOutput = "es";
+        };
+        TypingIndicator = {
+          enabled = true;
+          includeMutedChannels = false;
+          includeCurrentChannel = true;
+          indicatorMode = 3;
+        };
+        TypingTweaks = {
+          enabled = true;
+          alternativeFormatting = true;
+          showRoleColors = true;
+          showAvatars = true;
+        };
+        Unindent.enabled = true;
+        UnlockedAvatarZoom.enabled = true;
+        UnsuppressEmbeds.enabled = true;
+        UserMessagesPronouns = {
+          enabled = true;
+          showSelf = true;
+          pronounsFormat = "LOWERCASE";
+        };
+        UserVoiceShow = {
+          enabled = true;
+          showInUserProfileModal = true;
+          showInMemberList = true;
+          showInMessages = true;
+        };
+        ValidReply.enabled = true;
+        ValidUser.enabled = true;
+        VencordToolbox.enabled = true;
+        ViewIcons = {
+          enabled = true;
+          format = "webp";
+          imgSize = "1024";
+        };
+        ViewRaw = {
+          enabled = true;
+          clickMethod = "Left";
+          messageContextMenu = false;
+        };
+        VolumeBooster = {
+          enabled = true;
+          multiplier = 2;
+        };
+        WebKeybinds.enabled = true;
+        WebScreenShareFixes = {
+          enabled = true;
+          experimentalAV1Support = false;
+        };
+        WhoReacted.enabled = true;
+        YoutubeAdblock.enabled = true;
+        BadgeAPI.enabled = true;
+        NoTrack = {
+          enabled = true;
+          disableAnalytics = true;
+        };
+        WebContextMenus = {
+          enabled = true;
+          addBack = true;
+        };
+        Settings = {
+          enabled = true;
+          settingsLocation = "aboveNitro";
+        };
+        SupportHelper.enabled = true;
+        ExpressionCloner.enabled = true;
+        DisableDeepLinks.enabled = true;
+        CustomCommands = {
+          enabled = true;
+          clyde = true;
+          tagList = {};
+        };
+        CharacterCounter.enabled = true;
+      };
+    };
+    vencord.themes = {
+      "clearvision" = ./dotfiles/ClearVision_v7.theme.css;
+    };
+  };
+  
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs; [
@@ -110,7 +441,6 @@ rec {
   };
 
   xdg.configFile = {
-    "vesktop/themes/theme.css".source = ./dotfiles/ClearVision_v7.theme.css;
     # "vesktop/themes/theme.css".source = ./dotfiles/discordtransparent.css;
   };
   
