@@ -23,7 +23,7 @@
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "ford.zubron-tetra.ts.net:yK69Sx+XPM1nbUXugCDip3NIcZ2X6SMYSR8oZ8jVff4="
+      "ford.zubron-tetra.ts.net:4vkQaMu9DkVSxwBYEwWeC//swooF6py6Vj6jd3lJBk8="
     ];
     experimental-features = [
       "nix-command"
