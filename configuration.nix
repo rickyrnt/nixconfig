@@ -29,7 +29,7 @@
             ;
           pnpm = final.pnpm_10;
           fetcherVersion = 2;
-          hash = "";
+          hash = "sha256-o9dxtqXfCKTQpvNrbD/h0F3Hh39TEEA1qqYA9tN3j5I=";
         };
       });
     })
