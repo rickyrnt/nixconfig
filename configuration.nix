@@ -13,11 +13,12 @@
   nixpkgs.overlays = [
     (final: prev: {
       vesktop = prev.vesktop.overrideAttrs (finalAttrs: prevAttrs: rec {
-        version = "1.6.5";
+        version = "4/21/2026";
         src = final.fetchFromGitHub {
           owner = "Vencord";
           repo = "Vesktop";
-          rev = "v${finalAttrs.version}";
+          rev = "dab413c3761c7e1dbe2656b162ed71cb7a010870";
+          # rev = "v${finalAttrs.version}";
           hash = "sha256-YPDlqiO+0BtDgC7aFl8B2KPYsT41WqzOQ7et2Tejs3M=";
         };
         pnpmDeps = final.fetchPnpmDeps {
