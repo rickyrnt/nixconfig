@@ -183,7 +183,6 @@ rec {
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.systemd.enable = false;
-  wayland.windowManager.hyprland.portalPackage = pkgs.xdg-desktop-portal-hyprland;
   # wayland.windowManager.hyprland.portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   wayland.windowManager.hyprland.settings = {
 

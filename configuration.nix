@@ -11,17 +11,6 @@
 
 {
   nixpkgs.overlays = [
-    (final: prev: {
-      xdg-desktop-portal-hyprland = prev.xdg-desktop-portal-hyprland.overrideAttrs (finalAttrs: prevAttrs: {
-        version = "1.3.6";
-        src = final.fetchFromGitHub {
-          owner = "hyprwm";
-          repo = "xdg-desktop-portal-hyprland";
-          tag = "v${finalAttrs.version}";
-          hash = "sha256-1DGktDtSWIJpnDbVoj/qpvJSH5zg6JbOfuh6xqZMap0=";
-        };
-      });
-    })
   ];
 
   imports = [
