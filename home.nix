@@ -89,8 +89,11 @@ rec {
     (callPackage ./cider-2.nix {})
   ];
   
-  programs.vesktop = {
+  programs.vesktop = let
+    hypr-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in {
     enable = true;
+    package = hypr-pkgs.vesktop;
     vencord.settings = {
       enabledThemes = [ "clearvision.css" ];
       transparent = "true";
