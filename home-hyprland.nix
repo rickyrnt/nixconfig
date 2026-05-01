@@ -201,7 +201,7 @@ rec {
     "$menu" = "rofi -show drun -show-icons";
     "$supermenu" = "rofi -show run";
     "$rebar" = "killall -v .waybar-wrapped; waybar &";
-    "$vencordize" = "hyprctl dispatch exec vesktop";
+    "$vencordize" = "hyprctl dispatch exec equibop";
 
     # Autostart
     exec-once = [
@@ -406,6 +406,8 @@ rec {
 
     windowrule = [
       "match:class vesktop, workspace special:discord"
+      "match:initial_title .*Discord.*, workspace special:discord"
+      "match:initial_title equibop, workspace special:discord"
       "match:class obsidian, workspace special:notes"
       "match:class Cider, workspace special:tunes"
       "match:class libresprite, tile true"
@@ -417,6 +419,10 @@ rec {
 
       "match:class vesktop, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
       "match:class vesktop, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
+      "match:initial_title .*Discord.*, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
+      "match:initial_title .*Discord.*, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
+      "match:initial_title equibop, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
+      "match:initial_title equibop, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
 
       "match:title Friends List, match:class steam, float true"
 
