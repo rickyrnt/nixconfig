@@ -87,6 +87,8 @@ rec {
     # jellyfin-media-player
 
     (callPackage ./cider-2.nix {})
+
+    pkgs-unstable.make-minimal-bootstrap-sources
   ];
   
   programs.vesktop = let
