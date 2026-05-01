@@ -91,11 +91,11 @@ rec {
     pkgs-unstable.make-minimal-bootstrap-sources
   ];
   
-  programs.vesktop = let
+  programs.equibop = let
     # hypr-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in {
     enable = true;
-    vencord.settings = {
+    equicord.settings = {
       enabledThemes = [ "clearvision.css" ];
       transparent = "true";
       autoUpdate = true;
@@ -420,7 +420,7 @@ rec {
         CharacterCounter.enabled = true;
       };
     };
-    vencord.themes = {
+    equicord.themes = {
       "clearvision" = ./dotfiles/ClearVision_v7.theme.css;
     };
   };
