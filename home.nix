@@ -95,7 +95,6 @@ rec {
     # hypr-pkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in {
     enable = true;
-    package = pkgs-unstable.vesktop;
     vencord.settings = {
       enabledThemes = [ "clearvision.css" ];
       transparent = "true";
