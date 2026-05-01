@@ -201,7 +201,7 @@ rec {
     "$menu" = "rofi -show drun -show-icons";
     "$supermenu" = "rofi -show run";
     "$rebar" = "killall -v .waybar-wrapped; waybar &";
-    "$vencordize" = "hyprctl dispatch exec equibop";
+    "$vencordize" = "hyprctl dispatch exec Discord";
 
     # Autostart
     exec-once = [

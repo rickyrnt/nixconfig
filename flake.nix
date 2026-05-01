@@ -7,7 +7,7 @@
     nixpkgs-unstable.url = github:nixos/nixpkgs/nixos-unstable;
 
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = github:nix-community/home-manager/release-25.11;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -91,11 +91,11 @@
         };
       };
 
-      nixosConfigurations.M04RYS8 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = let
-          pkgs-unstable = import nixpkgs-unstable { inherit system; };
-        in [ 
+      nixosConfigurations.M04RYS8 = let
+        pkgs-unstable = import nixpkgs-unstable { inherit system; };
+      in nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs pkgs-unstable; };
+        modules = [ 
           ./configuration.nix 
           ./nvidia.nix
           home-manager.nixosModules.home-manager { 

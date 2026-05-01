@@ -5,12 +5,30 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   inputs,
   ...
 }:
 
 {
   nixpkgs.overlays = [
+    (final: prev: {
+      equicord = prev.equicord.overrideAttrs (finalAttrs: prevAttrs: {
+        version = "2026-05-01";
+        src = final.fetchFromGitHub {
+          owner = "Equicord";
+          repo = "Equicord";
+          tag = finalAttrs.version;
+          hash = "sha256-58UE2G2Pvay4wfQuH4CD7QFGizPKWYuLJgJLLJp+6lA=";
+        };
+        pnpmDeps = final.fetchPnpmDeps {
+          inherit (finalAttrs) pname version src;
+          pnpm = final.pnpm_10;
+          fetcherVersion = 3;
+          hash = "sha256-RwppRWrEzIKZDb3QLVAMd1bHXyFwiatYNiNccVgrcWA=";
+        };
+      });
+    })
   ];
 
   imports = [
