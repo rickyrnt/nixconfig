@@ -409,6 +409,7 @@ rec {
       "match:initial_title .*Discord.*, workspace special:discord"
       "match:initial_title equibop, workspace special:discord"
       "match:class obsidian, workspace special:notes"
+      "match:initial_title .*[Oo]bsidian.*, workspace special:notes"
       "match:class Cider, workspace special:tunes"
       "match:class libresprite, tile true"
       "match:class .+pwvucontrol, float true"
@@ -416,6 +417,7 @@ rec {
       "match:class hollow_knight.x86_64, workspace name:gaming"
       "match:class [Mm]inecraft.+, workspace name:gaming"
       "match:initial_class steam_app.+, workspace name:gaming"
+      "match:initial_class Slay the Spire 2, workspace name:gaming"
 
       "match:class vesktop, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
       "match:class vesktop, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
