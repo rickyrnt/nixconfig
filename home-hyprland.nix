@@ -302,7 +302,7 @@ rec {
         "$mod, M, fullscreen, 1"
         "$mod, F, fullscreen, 0"
         "$mod, P, exec, $HOME/.config/waybar/scripts/switchmonitor.sh"
-        "$mod, J, togglesplit,"
+        # "$mod, J, togglesplit,"
         "$mod, L, exec, hyprlock"
 
         "ALT, left, movefocus, l"
