@@ -117,6 +117,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  programs.nix-ld.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack
