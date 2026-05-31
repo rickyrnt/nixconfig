@@ -27,6 +27,7 @@ rec {
       package = pkgs.qogir-icon-theme;
       name = "Qogir-Dark";
     };
+    gtk4.theme = config.gtk.theme;
   };
   gtkNix = rec {
     enable = true;
@@ -183,6 +184,7 @@ rec {
 
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.systemd.enable = false;
+  wayland.windowManager.hyprland.configType = "hyprlang";
   # wayland.windowManager.hyprland.portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   wayland.windowManager.hyprland.settings = {
 
