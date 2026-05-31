@@ -234,8 +234,7 @@
   ];
   
   nixpkgs.config.permittedInsecurePackages = [
-    # "ventoy-1.1.10"
-    # "qtwebengine-5.15.19"
+    "electron-39.8.10"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
