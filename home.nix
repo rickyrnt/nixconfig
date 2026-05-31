@@ -443,8 +443,6 @@ rec {
     };
   };
   
-  gtk.gtk4.theme = 
-  
   xdg.portal.enable = true;
   
   dconf.settings = {
