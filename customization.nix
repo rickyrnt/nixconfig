@@ -7,25 +7,22 @@
   ...
 }:
 rec {
-  # home.nix
-
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     wineasio = prev.wineasio.overrideAttrs {
-  #       installPhase = ''
-  #         runHook preInstall
-  #         install -D build32/wineasio32.dll    $out/lib/wine/i386-windows/wineasio32.dll
-  #         install -D build32/wineasio32.dll.so $out/lib/wine/i386-unix/wineasio32.dll.so
-  #         install -D build64/wineasio64.dll    $out/lib/wine/x86_64-windows/wineasio64.dll
-  #         install -D build64/wineasio64.dll.so $out/lib/wine/x86_64-unix/wineasio64.dll.so
-  #         install -D $src/wineasio-register    $out/bin/wineasio-register
-  #         sed -i "s/u32=(/u32=(\n\"''${out//\//\\/}\/lib\/wine\/i386-unix\/wineasio32.dll.so\"/" $out/bin/wineasio-register
-  #         sed -i "s/u64=(/u64=(\n\"''${out//\//\\/}\/lib\/wine\/x86_64-unix\/wineasio64.dll.so\"/" $out/bin/wineasio-register
-  #         runHook postInstall
-  #       '';
-  #     };
-  #   })
-  # ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      qogir-icon-theme = prev.qogir-icon-theme.overrideAttrs (oldAttrs: {
+        patches = [ ./dotfiles/qogir-color-change.patch ];
+        # fix the noBrokenSymlinks error from upstream
+        preFixup = (oldAttrs.preFixup or "") + ''
+          rm $out/share/icons/Qogir/symbolic/status/microphone-sensitivity-muted-symbolic.svg
+          rm $out/share/icons/Qogir/symbolic/status/microphone-sensitivity-none-symbolic.svg
+          rm $out/share/icons/Qogir-Manjaro/symbolic/status/microphone-sensitivity-muted-symbolic.svg
+          rm $out/share/icons/Qogir-Manjaro/symbolic/status/microphone-sensitivity-none-symbolic.svg
+          rm $out/share/icons/Qogir-Ubuntu/symbolic/status/microphone-sensitivity-muted-symbolic.svg
+          rm $out/share/icons/Qogir-Ubuntu/symbolic/status/microphone-sensitivity-none-symbolic.svg
+        '';
+      });
+    })
+  ];
 
   hardware.opentabletdriver.enable = true;
   services.onedrive.enable = true;

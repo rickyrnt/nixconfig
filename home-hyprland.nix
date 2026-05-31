@@ -31,9 +31,7 @@ rec {
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
     iconTheme = {
-      package = pkgs-unstable.qogir-icon-theme.overrideAttrs {
-        patches = [ ./dotfiles/qogir-color-change.patch ];
-      };
+      package = pkgs.qogir-icon-theme;
       name = "Qogir-Dark";
     };
     gtk4.theme = config.gtk.theme;
