@@ -115,8 +115,12 @@ rec {
       "${inputs.wallpaper-photo}"
     ];
     wallpaper = [
-      ", ${inputs.wallpaper-photo}"
+      {
+        monitor = "";
+        path = "${inputs.wallpaper-photo}";
+      }
     ];
+    splash = false;
   };
 
   programs.hyprlock.enable = true;
