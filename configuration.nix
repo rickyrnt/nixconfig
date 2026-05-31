@@ -226,7 +226,7 @@
     # ventoy
 
     pay-respects
-    neofetch
+    fastfetch
     lolcat
     
     kdePackages.ark

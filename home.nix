@@ -535,7 +535,7 @@ rec {
     };
 
     initContent = ''
-              neofetch | lolcat 2> /dev/null
+              fastfetch | lolcat 2> /dev/null
               eval "$(ssh-agent -s)" &> /dev/null
             '';
 
