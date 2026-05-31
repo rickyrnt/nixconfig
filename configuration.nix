@@ -103,6 +103,8 @@
     ];
     shell = pkgs.zsh;
   };
+  
+  programs.wireshark.enable = true;
 
   services.udisks2.enable = true; # For calibre to see ereaders
 
