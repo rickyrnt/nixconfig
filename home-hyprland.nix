@@ -1,4 +1,11 @@
-{ config, pkgs, inputs, lib, ... }:
+{ 
+  config, 
+  pkgs,
+  pkgs-unstable,
+  inputs, 
+  lib, 
+  ... 
+}:
 rec {
   imports = [
     inputs.mechabar.mechabar
@@ -24,7 +31,9 @@ rec {
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
     iconTheme = {
-      package = pkgs.qogir-icon-theme;
+      package = pkgs-unstable.qogir-icon-theme.overrideAttrs {
+        patches = [ ./dotfiles/qogir-color-change.patch ];
+      };
       name = "Qogir-Dark";
     };
     gtk4.theme = config.gtk.theme;

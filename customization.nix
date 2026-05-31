@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  pkgs-unstable,
   ...
 }:
 rec {
@@ -30,14 +31,6 @@ rec {
   services.onedrive.enable = true;
 
   # home-hyprland.nix
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      qogir-icon-theme = prev.qogir-icon-theme.overrideAttrs {
-        patches = [ ./dotfiles/qogir-color-change.patch ];
-      };
-    })
-  ];
 
   qt = {
     enable = true;

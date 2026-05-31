@@ -525,6 +525,7 @@ rec {
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
 
     shellAliases = {
       nixedit = "nvim /home/rickyrnt/nixos/configuration.nix";
@@ -565,7 +566,7 @@ rec {
               autocmd Filetype nix setlocal ts=2 sw=2 expandtab
             '';
 
-    extraLuaConfig = ''
+    initLua = ''
               vim.opt.tabstop = 4
               vim.opt.shiftwidth = 4
             '';

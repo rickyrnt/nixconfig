@@ -68,7 +68,6 @@
     ];
     trusted-substituters = [
       "https://ford.zubron-tetra.ts.net"
-      "rickyrnt"
     ];
   };
 
