@@ -231,6 +231,7 @@
     
     kdePackages.ark
     #  wget
+    pkgs-unstable.wireshark
   ];
   
   nixpkgs.config.permittedInsecurePackages = [
