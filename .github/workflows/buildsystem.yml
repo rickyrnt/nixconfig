@@ -7,7 +7,7 @@ jobs:
     name: Build
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Run nixos-rebuild
         id: nixbuild
         continue-on-error: true
