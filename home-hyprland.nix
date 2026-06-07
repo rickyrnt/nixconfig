@@ -427,6 +427,7 @@ rec {
       "match:class libresprite, tile true"
       "match:class .+pwvucontrol, float true"
       "match:class factorio, workspace name:gaming"
+      "match:class Clocktower.+, workspace name:gaming"
       "match:class hollow_knight.x86_64, workspace name:gaming"
       "match:class [Mm]inecraft.+, workspace name:gaming"
       "match:initial_class steam_app.+, workspace name:gaming"

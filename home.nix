@@ -78,6 +78,8 @@ rec {
     handbrake
     audacity
     mathematica
+    
+    gzdoom
 
     cmatrix
     terminal-toys
