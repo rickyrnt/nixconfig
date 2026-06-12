@@ -88,6 +88,8 @@ rec {
       withEquicord = true;
     })
     # jellyfin-media-player
+    
+    # yabridge
 
     (callPackage ./cider-2.nix {})
 

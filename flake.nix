@@ -51,6 +51,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/v0.7.0";
+    };
+    
     fonts = {
       url = path:./dotfiles/fonts;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,6 +81,7 @@
       nixpkgs, 
       nixpkgs-unstable, 
       home-manager, 
+      nix-flatpak,
       ...
     }@inputs:
     let
@@ -97,6 +102,7 @@
         modules = [ 
           ./configuration.nix 
           ./nvidia.nix
+          nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager { 
             home-manager = {
               extraSpecialArgs = { inherit system inputs pkgs-unstable; };

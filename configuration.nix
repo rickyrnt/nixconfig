@@ -233,6 +233,14 @@
     #  wget
     # pkgs-unstable.wireshark
   ];
+
+  # putting this here bcus home manager won't play nice
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "io.github.Soundux"
+    ];
+  };
   
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
