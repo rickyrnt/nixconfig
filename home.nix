@@ -90,6 +90,7 @@ rec {
     })
     # jellyfin-media-player
     
+    carla
     yabridge
 
     (callPackage ./cider-2.nix {})
