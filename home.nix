@@ -92,6 +92,7 @@ rec {
     
     carla
     yabridge
+    yabridgectl
 
     (callPackage ./cider-2.nix {})
 
