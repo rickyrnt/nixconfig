@@ -9,6 +9,7 @@
 rec {
   imports = [
     inputs.nix4nvchad.homeManagerModule
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./home-hyprland.nix
     ./comma.nix
   ];
@@ -89,12 +90,18 @@ rec {
     })
     # jellyfin-media-player
     
-    # yabridge
+    yabridge
 
     (callPackage ./cider-2.nix {})
 
     pkgs-unstable.make-minimal-bootstrap-sources
   ];
+
+  services.flatpak = {
+    packages = [
+      "io.github.Soundux"
+    ];
+  };
   
   programs.obs-studio = {
     enable = true;

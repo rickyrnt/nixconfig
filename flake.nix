@@ -66,6 +66,7 @@
       "https://hyprland.cachix.org"
       "https://ford.zubron-tetra.ts.net?trusted=1"
     ];
+    narinfo-cache-negative-ttl = 0;
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "ford.zubron-tetra.ts.net:C22wBOL1baaXKU0r50WJjhtsRIVVaIOY6LaakPUFSXE="
@@ -102,7 +103,6 @@
         modules = [ 
           ./configuration.nix 
           ./nvidia.nix
-          nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager { 
             home-manager = {
               extraSpecialArgs = { inherit system inputs pkgs-unstable; };
