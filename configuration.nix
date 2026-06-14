@@ -209,7 +209,7 @@
     lm_sensors
     wl-clipboard
     pulseaudio
-    pwvucontrol
+    pavucontrol
     gparted
     virtio-win
     libvirt-glib

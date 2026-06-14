@@ -342,7 +342,7 @@ rec {
         "$mod ALT, f12, exec, ${grmblstfy} edit area"
         
         "$mod, C, exec, hyprpicker -a"
-        "$mod, V, exec, GTK_THEME=Adwaita-dark pwvucontrol"
+        "$mod, V, exec, GTK_THEME=Adwaita-dark pavucontrol"
 
         "$mod, B, togglespecialworkspace, magic"
         "$mod SHIFT, B, movetoworkspace, special:magic"
@@ -425,7 +425,7 @@ rec {
       "match:initial_title .*[Oo]bsidian.*, workspace special:notes"
       "match:class Cider, workspace special:tunes"
       "match:class libresprite, tile true"
-      "match:class .+pwvucontrol, float true"
+      "match:class .+pavucontrol, float true"
       "match:class factorio, workspace name:gaming"
       "match:class Clocktower.+, workspace name:gaming"
       "match:class hollow_knight.x86_64, workspace name:gaming"
