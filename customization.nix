@@ -4,6 +4,7 @@
   lib,
   inputs,
   pkgs-unstable,
+  wallpaper-photo,
   ...
 }:
 rec {
@@ -24,7 +25,6 @@ rec {
     })
   ];
 
-  hardware.opentabletdriver.enable = true;
   services.onedrive.enable = true;
 
   # home-hyprland.nix
@@ -43,7 +43,7 @@ rec {
     let
       my-astronaut-theme = pkgs.sddm-astronaut.override {
         themeConfig = {
-          Background = "\"${inputs.wallpaper-photo}\"";
+          Background = "\"${wallpaper-photo}\"";
           DimBackgroundImage = "\"0.0\"";
           ScaleImageCropped = "\"true\"";
           ScreenWidth = "\"1920\"";

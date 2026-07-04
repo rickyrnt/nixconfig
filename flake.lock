@@ -805,7 +805,8 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "pre-commit-hooks": "pre-commit-hooks_2",
-        "wallpaper-photo": "wallpaper-photo"
+        "wallpaper-photo-aola": "wallpaper-photo-aola",
+        "wallpaper-photo-morris": "wallpaper-photo-morris"
       }
     },
     "systems": {
@@ -883,10 +884,22 @@
         "type": "github"
       }
     },
-    "wallpaper-photo": {
+    "wallpaper-photo-aola": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-nAGgiIaNGgrTzLr4vZmE7zchrjT2c3bgbsF0zg8jNEE=",
+        "narHash": "sha256-kLWaAgFmXg3NXnRKTPDq9ualPJ1ZvRqeIz0f5iN0U80=",
+        "type": "file",
+        "url": "https://cdn.mos.cms.futurecdn.net/LCFTiCY5Jt7eA5hHF6zg7Y-1200-80.jpg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.mos.cms.futurecdn.net/LCFTiCY5Jt7eA5hHF6zg7Y-1200-80.jpg"
+      }
+    },
+    "wallpaper-photo-morris": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-dn3L8bFGLuoAWEGrQd1grMjLoIi3nOGtGn89rD4ocxk=",
         "type": "file",
         "url": "https://images.steamusercontent.com/ugc/1170321140105641126/47F1E70BD90DB25A97F3B761B07764F7F947287E/?ima=fit&imcolor=%23000000&imh=5000&impolicy=Letterbox&imw=5000&letterbox=false"
       },

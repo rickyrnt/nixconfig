@@ -7,6 +7,7 @@
   pkgs,
   pkgs-unstable,
   inputs,
+  hostname,
   ...
 }:
 
@@ -32,8 +33,6 @@
   ];
 
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./customization.nix
   ];
 
@@ -50,14 +49,8 @@
 
   programs.dconf.enable = true;
 
-  networking.hostName = "M04RYS8"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
+  networking.hostName = hostname; # Define your hostname.
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = with pkgs; [
     networkmanager-openvpn
@@ -87,8 +80,21 @@
     layout = "us";
     variant = "";
   };
+  
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  
+  services.printing.enable = true;
 
-  programs.zsh.enable = true;
+  powerManagement.enable = true;
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+    noto-fonts
+    noto-fonts-color-emoji
+    liberation_ttf
+    inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.bahnschrift
+  ];
 
   # Define a user account. Don\"t forget to set a password with ‘passwd’.
   users.users.rickyrnt = {
@@ -103,31 +109,6 @@
     ];
     shell = pkgs.zsh;
   };
-  
-  programs.wireshark.enable = true;
-
-  services.udisks2.enable = true; # For calibre to see ereaders
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  programs.nix-ld.enable = true;
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
-    noto-fonts
-    noto-fonts-color-emoji
-    liberation_ttf
-    inputs.fonts.packages.${pkgs.stdenv.hostPlatform.system}.bahnschrift
-  ];
 
   # File manager
   programs.thunar.enable = true;
@@ -139,16 +120,9 @@
     thunar-volman
   ];
 
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  
-  services.printing.enable = true;
-
   programs.firefox.enable = true;
   services.mullvad-vpn.enable = true;
   services.mullvad-vpn.package = pkgs.mullvad-vpn;
-
-  powerManagement.enable = true;
 
   security.protectKernelImage = false;
 
@@ -158,13 +132,6 @@
   ];
   programs.openvpn3.enable = true;
 
-  fileSystems."/mnt/jellyfin" = {
-    device = "casey.bboysenc:/home/jellyfin";
-    fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
-  };
-  boot.supportedFilesystems = [ "nfs" ];
-  
   services.openvpn.servers.bboysenc = {
     autoStart = false;
     updateResolvConf = true;
@@ -186,15 +153,22 @@
     defaultEditor = true;
   };
 
-  # virtualization
-  programs.virt-manager.enable = true;
-  users.groups.livirtd.members = ["rickyrnt"];
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-  
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-  
   security.polkit.enable = true;
+
+  services.udisks2.enable = true; # For calibre to see ereaders
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+  programs.nix-ld.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -211,9 +185,6 @@
     pulseaudio
     pavucontrol
     gparted
-    virtio-win
-    libvirt-glib
-    virtiofsd
     hyprpolkitagent
 
     bluetui
@@ -223,49 +194,21 @@
     comma
     p7zip
     dig
-    # ventoy
 
     pay-respects
     fastfetch
     lolcat
     
     kdePackages.ark
-    #  wget
-    # pkgs-unstable.wireshark
   ];
 
-  services.flatpak.enable = true;
+  programs.zsh.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
 }

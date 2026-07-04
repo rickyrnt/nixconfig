@@ -8,10 +8,17 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
-      - name: Run nixos-rebuild
-        id: nixbuild
+      - name: Build Morris
+        id: nixbuildm
         continue-on-error: true
         run: nixos-rebuild build --flake ./#M04RYS8
-      - name: Failure trace
-        if: ${{ steps.nixbuild.outcome == 'failure' }}
+      - name: Morris trace
+        if: ${{ steps.nixbuildm.outcome == 'failure' }}
         run: nixos-rebuild build --flake ./#M04RYS8 --show-trace
+      - name: Build Aola
+        id: nixbuilda
+        continue-on-error: true
+        run: nixos-rebuild build --flake ./#A0LA
+      - name: Aola trace
+        if: ${{ steps.nixbuilda.outcome == 'failure' }}
+        run: nixos-rebuild build --flake ./#A0LA --show-trace

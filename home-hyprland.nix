@@ -4,6 +4,7 @@
   pkgs-unstable,
   inputs, 
   lib, 
+  wallpaper-photo,
   ... 
 }:
 rec {
@@ -112,12 +113,12 @@ rec {
   services.hyprpaper.enable = true;
   services.hyprpaper.settings = {
     preload = [
-      "${inputs.wallpaper-photo}"
+      "${wallpaper-photo}"
     ];
     wallpaper = [
       {
         monitor = "";
-        path = "${inputs.wallpaper-photo}";
+        path = "${wallpaper-photo}";
       }
     ];
     splash = false;
@@ -126,7 +127,7 @@ rec {
   programs.hyprlock.enable = true;
   programs.hyprlock.settings = {
     background = {
-      path = "${inputs.wallpaper-photo}";
+      path = "${wallpaper-photo}";
       color = "rgba(25,20,20,1.0)";
     };
     label = {
@@ -599,7 +600,7 @@ rec {
             status=$(systemctl --user status funnyModeTimer.timer | awk '/Active:/ {print $2}')
             case "$status" in 
               "active")
-                hyprctl hyprpaper reload , ${inputs.wallpaper-photo}
+                hyprctl hyprpaper reload , ${wallpaper-photo}
                 systemctl --user stop funnyModeTimer.timer ;;
               "inactive")
                 systemctl --user start funnyModeTimer.timer 
@@ -632,7 +633,7 @@ rec {
               "active")
                 systemctl --user start funnyModeSwitch.service ;;
               "inactive")
-                hyprctl hyprpaper reload , ${inputs.wallpaper-photo} ;;
+                hyprctl hyprpaper reload , ${wallpaper-photo} ;;
             esac
           '';
         in {

@@ -41,8 +41,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
-    wallpaper-photo = {
+    wallpaper-photo-morris = {
       url = https://images.steamusercontent.com/ugc/1170321140105641126/47F1E70BD90DB25A97F3B761B07764F7F947287E/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false;
+      flake = false;
+    };
+    
+    wallpaper-photo-aola = {
+      url = https://cdn.mos.cms.futurecdn.net/LCFTiCY5Jt7eA5hHF6zg7Y-1200-80.jpg;
       flake = false;
     };
     
@@ -98,21 +103,30 @@
 
       nixosConfigurations.M04RYS8 = let
         pkgs-unstable = import nixpkgs-unstable { inherit system; };
+        hostname = "M04RYS8";
+        wallpaper-photo = inputs.wallpaper-photo-morris;
       in nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgs-unstable; };
+        specialArgs = { 
+          inherit inputs pkgs-unstable hostname wallpaper-photo; 
+        };
         modules = [ 
           ./configuration.nix 
+          ./machines/M04RYS8/configuration.nix
           ./nvidia.nix
+          ./laptop.nix
+          ./machines/M04RYS8/laptop.nix
           home-manager.nixosModules.home-manager { 
             home-manager = {
-              extraSpecialArgs = { inherit system inputs pkgs-unstable; };
+              extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo; };
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "hm-backup";
-              users.rickyrnt = ./home.nix;
+              users.rickyrnt.imports = [
+                ./home.nix
+                ./machines/M04RYS8/home.nix
+              ];
             };
           }
-          ./laptop.nix
         ];
       };
 
