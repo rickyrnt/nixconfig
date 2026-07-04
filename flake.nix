@@ -64,7 +64,7 @@
   nixConfig = {
     substituters = [
       "https://hyprland.cachix.org"
-      "https://ford.zubron-tetra.ts.net?trusted=1"
+      "https://ford.zubron-tetra.ts.net/nix-store/?trusted=1"
     ];
     narinfo-cache-negative-ttl = 0;
     trusted-public-keys = [
@@ -72,7 +72,7 @@
       "ford.zubron-tetra.ts.net:C22wBOL1baaXKU0r50WJjhtsRIVVaIOY6LaakPUFSXE="
     ];
     trusted-substituters = [
-      "https://ford.zubron-tetra.ts.net"
+      "https://ford.zubron-tetra.ts.net/nix-store/"
     ];
   };
 

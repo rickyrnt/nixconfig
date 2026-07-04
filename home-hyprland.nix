@@ -215,6 +215,7 @@ rec {
     "$supermenu" = "rofi -show run";
     "$rebar" = "killall -v .waybar-wrapped; waybar &";
     "$vencordize" = "hyprctl dispatch exec Discord";
+    "$ciderize" = "hyprctl dispatch exec Cider";
 
     # Autostart
     exec-once = [
@@ -407,6 +408,7 @@ rec {
     workspace = [
       "special:discord, on-created-empty:$vencordize"
       "special:magic, on-created-empty:$terminal"
+      "special:tunes, on-created-empty:$ciderize"
       "n[e:discord] w[tv1], gapsout:0, gapsin:0"
       "n[e:discord] f[1], gapsout:0, gapsin:0"
       "name:gaming, monitor:id:0"
@@ -430,6 +432,7 @@ rec {
       "match:class Clocktower.+, workspace name:gaming"
       "match:class hollow_knight.x86_64, workspace name:gaming"
       "match:class [Mm]inecraft.+, workspace name:gaming"
+      "match:initial_class steam_app_2075070, workspace name:gaming, float true"
       "match:initial_class steam_app.+, workspace name:gaming"
       "match:initial_class Slay the Spire 2, workspace name:gaming"
 
