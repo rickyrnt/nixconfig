@@ -42,6 +42,7 @@ rec {
     };
     
   in [
+    inputs.hyprgrass.packages.${pkgs.system}.default
     python3
     vscode
     obsidian
@@ -60,7 +61,6 @@ rec {
     calibre
     graphviz
     aseprite
-    libinput
     libwacom
     libnotify
     musescore
