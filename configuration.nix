@@ -208,7 +208,13 @@
     "electron-39.8.10"
   ];
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      PasswordAuthentication = false;
+    };
+  };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

@@ -20,6 +20,8 @@
 
   hardware.opentabletdriver.enable = true;
   
+  services.openssh.authorizedKeysFiles = [ "../../secrets/aola-morris.pub" ];
+  
   environment.systemPackages = with pkgs; [
     virtio-win
     libvirt-glib

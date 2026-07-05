@@ -101,33 +101,59 @@
         };
       };
 
-      nixosConfigurations.M04RYS8 = let
+      nixosConfigurations = let
         pkgs-unstable = import nixpkgs-unstable { inherit system; };
-        hostname = "M04RYS8";
-        wallpaper-photo = inputs.wallpaper-photo-morris;
-      in nixpkgs.lib.nixosSystem {
-        specialArgs = { 
-          inherit inputs pkgs-unstable hostname wallpaper-photo; 
+      in {
+        M04RYS8 = let
+          hostname = "M04RYS8";
+          wallpaper-photo = inputs.wallpaper-photo-morris;
+        in nixpkgs.lib.nixosSystem {
+          specialArgs = { 
+            inherit inputs pkgs-unstable hostname wallpaper-photo; 
+          };
+          modules = [ 
+            ./configuration.nix 
+            ./machines/M04RYS8/configuration.nix
+            ./nvidia.nix
+            ./laptop.nix
+            home-manager.nixosModules.home-manager { 
+              home-manager = {
+                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo; };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-backup";
+                users.rickyrnt.imports = [
+                  ./home.nix
+                  ./machines/M04RYS8/home.nix
+                ];
+              };
+            }
+          ];
         };
-        modules = [ 
-          ./configuration.nix 
-          ./machines/M04RYS8/configuration.nix
-          ./nvidia.nix
-          ./laptop.nix
-          ./machines/M04RYS8/laptop.nix
-          home-manager.nixosModules.home-manager { 
-            home-manager = {
-              extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo; };
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "hm-backup";
-              users.rickyrnt.imports = [
-                ./home.nix
-                ./machines/M04RYS8/home.nix
-              ];
-            };
-          }
-        ];
+        A0LA = let
+          hostname = "A0LA";
+          wallpaper-photo = inputs.wallpaper-photo-aola;
+        in nixpkgs.lib.nixosSystem {
+          specialArgs = { 
+            inherit inputs pkgs-unstable hostname wallpaper-photo; 
+          };
+          modules = [ 
+            ./configuration.nix 
+            ./machines/A0LA/configuration.nix
+            ./laptop.nix
+            home-manager.nixosModules.home-manager { 
+              home-manager = {
+                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo; };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-backup";
+                users.rickyrnt.imports = [
+                  ./home.nix
+                ];
+              };
+            }
+          ];
+        };
       };
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
