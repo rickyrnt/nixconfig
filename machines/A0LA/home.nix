@@ -11,4 +11,15 @@
   
   home.packages = with pkgs; [
   ];
+  
+  wayland.windowManager.hyprland = {
+    plugins = [
+      inputs.hyprgrass.packages.${pkgs.system}.default
+    ];
+    settings = {
+      exec-once = [
+        "iio-hyprland"
+      ];
+    };
+  };
 }
