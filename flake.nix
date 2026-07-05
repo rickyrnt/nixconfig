@@ -148,6 +148,7 @@
                 backupFileExtension = "hm-backup";
                 users.rickyrnt.imports = [
                   ./home.nix
+                  ./machines/A0LA/home.nix
                 ];
               };
             }
