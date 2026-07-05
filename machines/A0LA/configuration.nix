@@ -40,8 +40,8 @@
           volumedown = "f11";
           volumeup = "f12";
           sleep = "delete";
-          rightalt = "leftmeta";
-          leftmeta = "capslock";
+          rightalt = "capslock";
+          # leftmeta = "capslock";
         };
       };
     };  
