@@ -56,7 +56,6 @@ rec {
     
     steam
     steam-run
-    kdePackages.kdenlive
     zoom-us
     calibre
     graphviz
