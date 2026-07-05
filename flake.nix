@@ -90,9 +90,6 @@
       nix-flatpak,
       ...
     }@inputs:
-    let
-      system = "x86_64-linux";
-    in
     {
       checks.x86_64-linux.pre-commit-check = inputs.pre-commit-hooks.lib.x86_64-linux.run {
         src = ./.;
@@ -101,10 +98,10 @@
         };
       };
 
-      nixosConfigurations = let
-        pkgs-unstable = import nixpkgs-unstable { inherit system; };
-      in {
+      nixosConfigurations = {
         M04RYS8 = let
+          system = "x86_64-linux";
+          pkgs-unstable = import nixpkgs-unstable { inherit system; };
           hostname = "M04RYS8";
           wallpaper-photo = inputs.wallpaper-photo-morris;
         in nixpkgs.lib.nixosSystem {
@@ -131,6 +128,8 @@
           ];
         };
         A0LA = let
+          system = "x86_64-linux";
+          pkgs-unstable = import nixpkgs-unstable { inherit system; };
           hostname = "A0LA";
           wallpaper-photo = inputs.wallpaper-photo-aola;
         in nixpkgs.lib.nixosSystem {
