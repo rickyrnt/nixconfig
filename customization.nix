@@ -25,8 +25,6 @@ rec {
     })
   ];
 
-  services.onedrive.enable = true;
-
   # home-hyprland.nix
 
   qt = {

@@ -16,6 +16,7 @@
     vice
     prismlauncher
     gzdoom
+    kdePackages.kdenlive
 
     bottles
     # wine

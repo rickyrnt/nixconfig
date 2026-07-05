@@ -22,6 +22,8 @@
   
   services.openssh.authorizedKeysFiles = [ "../../secrets/aola-morris.pub" ];
   
+  services.onedrive.enable = true;
+
   environment.systemPackages = with pkgs; [
     virtio-win
     libvirt-glib
