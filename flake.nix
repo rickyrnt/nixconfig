@@ -16,6 +16,11 @@
       # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    hyprgrass = {
+         url = "github:horriblename/hyprgrass";
+         inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    };
+
     pre-commit-hooks = {
       url = github:cachix/git-hooks.nix;
       inputs.nixpkgs.follows = "nixpkgs";

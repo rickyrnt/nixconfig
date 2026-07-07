@@ -188,6 +188,7 @@
     hyprpolkitagent
 
     bluetui
+    jq
 
     fuse
     ntfs3g
