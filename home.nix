@@ -514,9 +514,9 @@ rec {
     };
 
     initContent = ''
-              fastfetch | lolcat 2> /dev/null
-              eval "$(ssh-agent -s)" &> /dev/null
-            '';
+      fastfetch | lolcat 2> /dev/null
+      eval "$(ssh-agent -s)" &> /dev/null
+    '';
 
     history.size = 10000;
 
