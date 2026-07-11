@@ -23,6 +23,20 @@
   services.openssh.authorizedKeysFiles = [ "../../secrets/aola-morris.pub" ];
   
   services.onedrive.enable = true;
+  
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings.main = {
+          home = "play";
+          pageup = "nextsong";
+          pagedown = "previoussong";
+        };
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     virtio-win

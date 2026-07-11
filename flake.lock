@@ -240,6 +240,26 @@
         "type": "github"
       }
     },
+    "hmHyprLib": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783759342,
+        "narHash": "sha256-+J+lRGxxSUjDg/gTB6MRjRj56WzQBx4qJyxga4k06NM=",
+        "owner": "andiurne",
+        "repo": "hmHyprLib",
+        "rev": "72bf9278734d76a30f88fd7398fd0a8b6903ac7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andiurne",
+        "repo": "hmHyprLib",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -799,6 +819,7 @@
         "alt-fish": "alt-fish",
         "fonts": "fonts",
         "gtk-nix": "gtk-nix",
+        "hmHyprLib": "hmHyprLib",
         "home-manager": "home-manager",
         "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",

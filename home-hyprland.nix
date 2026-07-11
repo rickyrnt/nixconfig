@@ -194,296 +194,284 @@ rec {
     ];
   };
 
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.systemd.enable = false;
-  wayland.windowManager.hyprland.configType = "hyprlang";
-  # wayland.windowManager.hyprland.portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland = with inputs.hmHyprLib.lib; {
+    enable = true;
+    systemd.enable = false;
+    configType = "lua";
+    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    settings = let
+      lu = lib.generators.mkLuaInline;
+      # Programs
+      grmblstfy = "grimblast --notify --freeze";
+      terminal = "kitty";
+      fileManager = "thunar";
+      menu = "rofi -show drun -show-icons";
+      supermenu = "rofi -show run";
+      rebar = "killall -v .waybar-wrapped; waybar &";
+      vencordize = "Discord";
+      ciderize = "Cider";
+      alt-fish = inputs.alt-fish.packages.x86_64-linux.women-me-fear-fish-me-want;
+    in {
+      # Monitors
+      monitor = [
+        {
+          output = "eDP-1";
+          mode = "highres@highrr";
+          position = "0x0";
+          scale = "1";
+        }
+        {
+          output = "HDMI-A-1";
+          mode = "highres@highrr";
+          position = "auto-left";
+          scale = "1";
+        }
+      ];
 
-    # stop the "you didn't use start-hyprland" warning until the nixfolk fix UWSM (cuz i'm too lazy to do it myself)
-    misc.disable_watchdog_warning = true;
+      # Autostart
+      on = autostart [
+        "waybar"
+        "hyprpaper"
+        "systemctl --user start hyprpolkitagent"
+      ];
 
-    # Monitors
-    monitor = [
-      "eDP-1,highres@highrr,0x0,1"
-      "HDMI-A-1,highres@highrr,auto-left,1"
-    ];
+      # config
+      config = {
+        general = {
+          gaps_in = 5;
+          gaps_out = 10;
 
-    # Programs
-    "$terminal" = "kitty";
-    "$fileManager" = "thunar";
-    "$menu" = "rofi -show drun -show-icons";
-    "$supermenu" = "rofi -show run";
-    "$rebar" = "killall -v .waybar-wrapped; waybar &";
-    "$vencordize" = "hyprctl dispatch exec Discord";
-    "$ciderize" = "hyprctl dispatch exec Cider";
+          border_size = 2;
 
-    # Autostart
-    exec-once = [
-      "waybar & hyprpaper"
-      "systemctl --user start hyprpolkitagent"
-    ];
+          # https:#wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
+          "col.active_border" = lu "{colors = {'rgba(cc009977)','rgba(ee00ee33)'}, angle = 45}";
+          "col.inactive_border" = "rgba(00aaaa49)";
 
-    general = {
-      gaps_in = 5;
-      gaps_out = 10;
+          # Set to true enable resizing windows by clicking and dragging on borders and gaps
+          resize_on_border = false;
 
-      border_size = 2;
+          # Please see https:#wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+          allow_tearing = false;
 
-      # https:#wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-      "col.active_border" = "rgba(cc009977) rgba(ee00ee33) 45deg";
-      "col.inactive_border" = "rgba(00aaaa49)";
+          layout = "dwindle";
+        };
+        decoration = {
+          rounding = 3;
 
-      # Set to true enable resizing windows by clicking and dragging on borders and gaps
-      resize_on_border = false;
+          # Change transparency of focused and unfocused windows
+          active_opacity = 1.0;
+          inactive_opacity = 1.0;
 
-      # Please see https:#wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-      allow_tearing = false;
+          shadow = {
+            enabled = false;
+            range = 4;
+            render_power = 3;
+            color = "rgba(1a1a1aee)";
+          };
 
-      layout = "dwindle";
-    };
+          # https:#wiki.hyprland.org/Configuring/Variables/#blur
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 1;
 
-    decoration = {
-      rounding = 3;
+            vibrancy = 0.1696;
+          };
+        };
+        cursor = {
+          no_hardware_cursors = 0;
+        };
+        misc = {
+          # stop the "you didn't use start-hyprland" warning until the nixfolk fix UWSM (cuz i'm too lazy to do it myself)
+          disable_watchdog_warning = true;
+          force_default_wallpaper = 0;
+          disable_hyprland_logo = true;
+          enable_swallow = true;
+          swallow_regex = "kitty";
+        };
 
-      # Change transparency of focused and unfocused windows
-      active_opacity = 1.0;
-      inactive_opacity = 1.0;
+        input = {
+          follow_mouse = 2;
+          touchpad.natural_scroll = true;
+          float_switch_override_focus = 0;
+        };
 
-      shadow = {
-        enabled = false;
-        range = 4;
-        render_power = 3;
-        color = "rgba(1a1a1aee)";
+        ecosystem = {
+          no_update_news = true;
+          no_donation_nag = true;
+        };
       };
 
-      # https:#wiki.hyprland.org/Configuring/Variables/#blur
-      blur = {
-        enabled = true;
-        size = 3;
-        passes = 1;
+      gesture = [
+        {
+          fingers = 3;
+          direction = "horizontal";
+          action = "workspace";
+        }
+      ];
+      
+      # Keybinds
+      bind = [
+        (simpleBind "ALT + f1" terminal)
+        (simpleBind "ALT + f2" menu)
+        (simpleBind "SUPER + f2" supermenu)
+        (simpleBind "ALT + f3" "firefox")
+        (dspBind "ALT + f4" (window "close"))
+        (dspBind "SUPER + f4" (window "close"))
+        (simpleBind "ALT + f5" fileManager)
+        (simpleBind "ALT + f6" "code")
+        (simpleBind "ALT + f7" "obsidian")
+        (simpleBind "ALT + f11" vencordize)
+        (simpleBind "CTRL + SHIFT + ESCAPE" "kitty -e \"btop\"")
+        (simpleBind "SUPER + ALT + F" "steam steam://rungameid/427520")
+        (simpleBind "SUPER + ALT + C" "firefox --new-window https://calendar.google.com")
+        (simpleBind "SUPER + ALT + G" "firefox --new-window https://online-go.com")
+        (simpleBind "SUPER + ALT + O" "code ~/nixos")
+        (simpleBind "SUPER + ALT + O" "firefox --new-window https://search.nixos.org/options")
+        (simpleBind "Alt_L + F + I + S + H" "${alt-fish}/bin/fish.py")
 
-        vibrancy = 0.1696;
-      };
-    };
-    
-    cursor = {
-      no_hardware_cursors = 0;
-    };
+        (simpleBind "SUPER + ESCAPE" rebar)
+        (dspBind "SUPER + S" (windowArgs "float" "{action ='toggle'}"))
+        (dspBind "SUPER + M" (windowArgs "fullscreen" "{mode='maximized', action='toggle'}"))
+        (dspBind "SUPER + F" (windowArgs "fullscreen" "{mode='fullscreen', action='toggle'}"))
+        (simpleBind "SUPER + P" "$HOME/.config/waybar/scripts/switchmonitor.sh")
+        (simpleBind "SUPER + L" "hyprlock")
 
-    misc = {
-      force_default_wallpaper = 0;
-      disable_hyprland_logo = true;
-    };
+        (dspBind "ALT + left" (focus "{direction='l'}"))
+        (dspBind "ALT + right" (focus "{direction='r'}"))
+        (dspBind "ALT + up" (focus "{direction='u'}"))
+        (dspBind "ALT + down" (focus "{direction='d'}"))
+        (dspBind "ALT + h" (focus "{direction='l'}"))
+        (dspBind "ALT + l" (focus "{direction='r'}"))
+        (dspBind "ALT + k" (focus "{direction='u'}"))
+        (dspBind "ALT + j" (focus "{direction='d'}"))
+        (dspBind "ALT + TAB" (window "cycle_next"))
+        (dspBind "CTRL + SUPER + ALT + 1" (workspaceArgs "move" "{monitor=0}"))
+        (dspBind "CTRL + SUPER + ALT + 2" (workspaceArgs "move" "{monitor=1}"))
 
-    input = {
-      follow_mouse = 2;
-      touchpad.natural_scroll = true;
-      float_switch_override_focus = 0;
-    };
+        (simpleBind "SUPER + f10" "${grmblstfy} copy screen")
+        (simpleBind "SUPER + f11" "${grmblstfy} copy output")
+        (simpleBind "SUPER + f12" "${grmblstfy} copy area")
+        (simpleBind "SUPER + SHIFT + f10" "${grmblstfy} copysave screen")
+        (simpleBind "SUPER + SHIFT + f11" "${grmblstfy} copysave output")
+        (simpleBind "SUPER + SHIFT + f12" "${grmblstfy} copysave area")
+        (simpleBind "SUPER + ALT + f10" "${grmblstfy} edit screen")
+        (simpleBind "SUPER + ALT + f11" "${grmblstfy} edit output")
+        (simpleBind "SUPER + ALT + f12" "${grmblstfy} edit area")
 
-    gesture = [
-      "3, horizontal, workspace"
-    ];
-    
-    ecosystem.no_update_news = true;
+        (simpleBind "SUPER + C" "hyprpicker -a")
+        (simpleBind "SUPER + V" "GTK_THEME=Adwaita-dark pavucontrol")
 
-    # Keybinds
-    "$mod" = "SUPER";
-    bind =
-      let
-        grmblstfy = "grimblast --notify --freeze";
-      in
-      [
-        "ALT, f1, exec, $terminal"
-        "ALT, f2, exec, $menu"
-        "$mod, f2, exec, $supermenu"
-        "ALT, f3, exec, firefox"
-        "ALT, f4, killactive,"
-        # "$mod, f4, forcekillactive"
-        "ALT, f5, exec, $fileManager"
-        "ALT, f6, exec, code"
-        "ALT, f7, exec, obsidian"
-        "ALT, f11, exec, $vencordize"
-        "CTRL SHIFT, ESCAPE, exec, kitty -e 'btop'"
-        "$mod ALT, F, exec, steam steam://rungameid/427520"
-        "$mod ALT, C, exec, firefox --new-window https://calendar.google.com"
-        "$mod ALT, G, exec, firefox --new-window https://online-go.com"
-        "$mod ALT, O, exec, code ~/nixos"
-        "$mod ALT, O, exec, firefox --new-window https://search.nixos.org/options"
+        (dspBind "SUPER + B" (workspaceArgs "toggle_special" "'magic'"))
+        (dspBind "SUPER + SHIFT + B" (windowArgs "move" "{workspace='special:magic'}"))
+        (dspBind "SUPER + D" (workspaceArgs "toggle_special" "'discord'"))
+        (dspBind "SUPER + SHIFT + D" (windowArgs "move" "{workspace='special:discord'}"))
+        (dspBind "SUPER + T" (workspaceArgs "toggle_special" "'tunes'"))
+        (dspBind "SUPER + SHIFT + T" (windowArgs "move" "{workspace='special:tunes'}"))
+        (dspBind "SUPER + N" (workspaceArgs "toggle_special" "'notes'"))
+        (dspBind "SUPER + SHIFT + N" (windowArgs "move" "{workspace='special:notes'}"))
 
-        "$mod, ESCAPE, exec, $rebar"
-        "$mod, S, togglefloating,"
-        "$mod, M, fullscreen, 1"
-        "$mod, F, fullscreen, 0"
-        "$mod, P, exec, $HOME/.config/waybar/scripts/switchmonitor.sh"
-        # "$mod, J, togglesplit,"
-        "$mod, L, exec, hyprlock"
-
-        "ALT, left, movefocus, l"
-        "ALT, right, movefocus, r"
-        "ALT, up, movefocus, u"
-        "ALT, down, movefocus, d"
-        "ALT, h, movefocus, l"
-        "ALT, l, movefocus, r"
-        "ALT, k, movefocus, u"
-        "ALT, j, movefocus, d"
-        "ALT, TAB, cyclenext"
-        "ALT, TAB, fullscreen, 1 set"
-        "CTRL $mod ALT, 1, movecurrentworkspacetomonitor, eDP-1"
-        "CTRL $mod ALT, 2, movecurrentworkspacetomonitor, 1"
-
-        "$mod, f10, exec, ${grmblstfy} copy screen"
-        "$mod, f11, exec, ${grmblstfy} copy output"
-        "$mod, f12, exec, ${grmblstfy} copy area"
-        "$mod SHIFT, f10, exec, ${grmblstfy} copysave screen"
-        "$mod SHIFT, f11, exec, ${grmblstfy} copysave output"
-        "$mod SHIFT, f12, exec, ${grmblstfy} copysave area"
-        "$mod ALT, f10, exec, ${grmblstfy} edit screen"
-        "$mod ALT, f11, exec, ${grmblstfy} edit output"
-        "$mod ALT, f12, exec, ${grmblstfy} edit area"
+        (dspBind "CTRL + ALT + mouse_up" (focus "{workspace='e+1', on_current_monitor=true}"))
+        (dspBind "CTRL + ALT + mouse_down" (focus "{workspace='e-1', on_current_monitor=true}"))
+        (dspBind "CTRL + ALT + l" (focus "{workspace='r+1', on_current_monitor=true}"))
+        (dspBind "CTRL + ALT + h" (focus "{workspace='r-1', on_current_monitor=true}"))
+        (dspBind "CTRL + ALT + G" (focus "{workspace='name:gaming'}"))
+        (dspBind "ALT + SHIFT + G" (windowArgs "move" "{workspace='name:gaming'}"))
         
-        "$mod, C, exec, hyprpicker -a"
-        "$mod, V, exec, GTK_THEME=Adwaita-dark pavucontrol"
-
-        "$mod, B, togglespecialworkspace, magic"
-        "$mod SHIFT, B, movetoworkspace, special:magic"
-        "$mod, D, togglespecialworkspace, discord"
-        "$mod SHIFT, D, movetoworkspace, special:discord"
-        "$mod, T, togglespecialworkspace, tunes"
-        "$mod SHIFT, T, movetoworkspace, special:tunes"
-        "$mod, N, togglespecialworkspace, notes"
-        "$mod SHIFT, N, movetoworkspace, special:notes"
-
-        "CTRL ALT, mouse_up, workspace, e+1"
-        "CTRL ALT, mouse_down, workspace, e-1"
-        "CTRL ALT, l, workspace, r+1"
-        "CTRL ALT, h, workspace, r-1"
-        "CTRL ALT, G, workspace, name:gaming"
-        "ALT SHIFT, G, movetoworkspace, name:gaming"
+        (dspBind "SUPER + mouse:272" (window "drag"))
+        (dspBind "SUPER + mouse:273" (window "resize"))
       ]
-      ++ (builtins.concatLists (
-        builtins.genList (
-          i:
-          let
-            ws = i + 1;
-          in
-          [
-            "CTRL ALT, code:1${toString i}, workspace, ${toString ws}"
-            "ALT SHIFT, code:1${toString i}, movetoworkspacesilent, ${toString ws}"
+      ++ (builtins.concatLists (builtins.genList (
+          i: let ws = i + 1; in [
+            (dspBind "CTRL + ALT + code:1${toString i}" (focus "{workspace=${toString ws}}"))
+            (dspBind "ALT + SHIFT + code:1${toString i}" (windowArgs "move" "{workspace=${toString ws}, follow=false}"))
           ]
         ) 10
-      ));
+      ))
+      ++ (map (x: (addFlags x "{locked=true,repeating=true}"))[
+        (simpleBind "XF86AudioRaiseVolume" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
+        (simpleBind "XF86AudioLowerVolume" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+        (simpleBind "XF86AudioMute" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+        (simpleBind "XF86AudioMicMute" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
+        (simpleBind "XF86MonBrightnessUp" "brightnessctl s 10%+")
+        (simpleBind "XF86MonBrightnessDown" "brightnessctl s 10%-")
+      ])
+      ++ (map (x: (addFlags x "{locked=true}"))[
+        (simpleBind "XF86AudioNext" "playerctl next")
+        (simpleBind "XF86AudioPause" "playerctl play-pause")
+        (simpleBind "XF86AudioPlay" "playerctl play-pause")
+        (simpleBind "XF86AudioPrev" "playerctl previous")
+        (simpleBind "SUPER + r" "hyprctl reload")
+      ]);
 
-    bindm = [
-      "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
-    ];
+      workspace_rule = [
+        {workspace="special:discord"; on_created_empty=vencordize;}
+        {workspace="special:magic"; on_created_empty=terminal;}
+        {workspace="special:tunes"; on_created_empty=ciderize;}
+        {workspace="n[e:discord] w[tv1]"; gaps_out=0; gaps_in=0;}
+        {workspace="n[e:discord] f[1]"; gaps_out=0; gaps_in=0;}
+        {workspace="name:gaming"; monitor="id:0";}
+        {workspace="n[e:gaming] w[tv1]"; gaps_out=0; gaps_in=0;}
+        {workspace="n[e:gaming] f[1]"; gaps_out=0; gaps_in=0;}
+        {workspace="r[1-5]"; monitor="eDP-1";}
+        {workspace="r[7-10]"; monitor="HDMI-A-1";}
+        {workspace="6"; monitor="HDMI-A-1"; default=true;}
+      ];
 
-    bindel = [
-      ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-      ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-    ];
+      window_rule = [
+        {match.initial_title = ".*Discord.*"; workspace = "special:discord";}
+        {match.class = "obsidian"; workspace = "special:notes";}
+        {match.initial_title = ".*[Oo]bsidian.*"; workspace = "special:notes";}
+        {match.class = "Cider"; workspace = "special:tunes";}
+        {match.class = "libresprite"; tile = true;}
+        {match.class = ".+pavucontrol"; float = true;}
+        {match.class = "factorio"; workspace = "name:gaming";}
+        {match.class = "Clocktower.+"; workspace = "name:gaming";}
+        {match.class = "hollow_knight.x86_64"; workspace = "name:gaming";}
+        {match.class = "[Mm]inecraft.+"; workspace = "name:gaming";}
+        {match.initial_class = "steam_app_2075070"; workspace = "name:gaming"; float = true;}
+        {match.initial_class = "steam_app.+"; workspace = "name:gaming";}
+        {match.initial_class = "Slay the Spire 2"; workspace = "name:gaming";}
 
-    bindl = [
-      ",code:112, exec, playerctl next"
-      ",HOME, exec, playerctl play-pause"
-      ",code:117, exec, playerctl previous"
-      ",XF86AudioNext, exec, playerctl next"
-      ",XF86AudioPause, exec, playerctl play-pause"
-      ",XF86AudioPlay, exec, playerctl play-pause"
-      ",XF86AudioPrev, exec, playerctl previous"
-      "$mod, r, exec, hyprctl reload"
-    ];
+        {match = {initial_title=".*Discord.*";workspace="w[tv1] s[true]";float=false;}; no_blur = true; rounding = 0; border_size = 0;}
+        {match = {initial_title=".*Discord.*";fullscreen=1;workspace="s[true]";}; no_blur = true; rounding = 0; border_size = 0;}
 
-    binds = let
-      alt-fish = inputs.alt-fish.packages.x86_64-linux.women-me-fear-fish-me-want;
-    in [
-      "Alt_L, F&I&S&H, exec, ${alt-fish}/bin/fish.py"
-    ];
+        {match = {title="Friends List";class="steam";}; float = true;}
 
-    workspace = [
-      "special:discord, on-created-empty:$vencordize"
-      "special:magic, on-created-empty:$terminal"
-      "special:tunes, on-created-empty:$ciderize"
-      "n[e:discord] w[tv1], gapsout:0, gapsin:0"
-      "n[e:discord] f[1], gapsout:0, gapsin:0"
-      "name:gaming, monitor:id:0"
-      "n[e:gaming] w[tv1], gapsout:0, gapsin:0"
-      "n[e:gaming] f[1], gapsout:0, gapsin:0"
-      "r[1-5], monitor:eDP-1"
-      "r[7-10], monitor:HDMI-A-1"
-      "6, monitor:HDMI-A-1, default:true"
-    ];
+        {match = {float=false;workspace="s[false]";}; no_blur = true;}
 
-    windowrule = [
-      "match:class vesktop, workspace special:discord"
-      "match:initial_title .*Discord.*, workspace special:discord"
-      "match:initial_title equibop, workspace special:discord"
-      "match:class obsidian, workspace special:notes"
-      "match:initial_title .*[Oo]bsidian.*, workspace special:notes"
-      "match:class Cider, workspace special:tunes"
-      "match:class libresprite, tile true"
-      "match:class .+pavucontrol, float true"
-      "match:class factorio, workspace name:gaming"
-      "match:class Clocktower.+, workspace name:gaming"
-      "match:class hollow_knight.x86_64, workspace name:gaming"
-      "match:class [Mm]inecraft.+, workspace name:gaming"
-      "match:initial_class steam_app_2075070, workspace name:gaming, float true"
-      "match:initial_class steam_app.+, workspace name:gaming"
-      "match:initial_class Slay the Spire 2, workspace name:gaming"
-
-      "match:class vesktop, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
-      "match:class vesktop, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
-      "match:initial_title .*Discord.*, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
-      "match:initial_title .*Discord.*, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
-      "match:initial_title equibop, match:workspace w[tv1] s[true], match:float false, no_blur true, rounding 0, border_size 0"
-      "match:initial_title equibop, match:fullscreen 1, match:workspace s[true], no_blur true, rounding 0, border_size 0"
-
-      "match:title Friends List, match:class steam, float true"
-
-      "match:float false, match:workspace s[false], no_blur true"
-
-      "match:workspace n[e:gaming] w[tv1], match:float false, rounding 0, border_size 0, no_shadow true"
-      "match:workspace n[e:gaming], match:fullscreen 1, rounding 0, border_size 0, no_shadow true"
-    ];
-
-    animations = {
-      enabled = "yes, please :)";
-
-      # Default animations, see https:#wiki.hyprland.org/Configuring/Animations/ for more
-
-      bezier = [
-        "easeOutQuint,0.23,1,0.32,1"
-        "easeInOutCubic,0.65,0.05,0.36,1"
-        "linear,0,0,1,1"
-        "almostLinear,0.5,0.5,0.75,1.0"
-        "quick,0.15,0,0.1,1"
+        {match = {workspace="n[e:gaming] w[tv1]";float=false;}; rounding = 0; border_size = 0; no_shadow = true;}
+        {match = {workspace="n[e:gaming]";fullscreen=1;}; rounding = 0; border_size = 0; no_shadow = true;}
+      ];
+      
+      # animations
+      curve = [
+        (mkCurve "easeOutQuint" (bezierRule [0.23 1] [0.32 1]))
+        (mkCurve "easeInOutCubic" (bezierRule [0.65 0.05] [0.36 1]))
+        (mkCurve "linear" (bezierRule [0 0] [1 1]))
+        (mkCurve "almostLinear" (bezierRule [0.5 0.5] [0.75 1.0]))
+        (mkCurve "quick" (bezierRule [0.15 0] [0.1 1]))
       ];
 
       animation = [
-        "global, 1, 10, default"
-        "border, 1, 5.39, easeOutQuint"
-        "windows, 1, 4.79, easeOutQuint"
-        "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
-        "windowsOut, 1, 1.49, linear, popin 87%"
-        "fadeIn, 1, 1.73, almostLinear"
-        "fadeOut, 1, 1.46, almostLinear"
-        "fade, 1, 3.03, quick"
-        "layers, 1, 3.81, easeOutQuint"
-        "layersIn, 1, 4, easeOutQuint, fade"
-        "layersOut, 1, 1.5, linear, fade"
-        "fadeLayersIn, 1, 1.79, almostLinear"
-        "fadeLayersOut, 1, 1.39, almostLinear"
-        "workspaces, 1, 1.94, almostLinear, fade"
-        "workspacesIn, 1, 1.21, almostLinear, fade"
-        "workspacesOut, 1, 1.94, almostLinear, fade"
-        "zoomFactor, 0"
-        "monitorAdded, 0"
+        # {leaf = "global"; enabled = true; speed = 10; bezier = "default";}
+        {leaf = "border"; enabled = true; speed = 5.39; bezier = "easeOutQuint";}
+        {leaf = "windows"; enabled = true; speed = 4.79; bezier = "easeOutQuint";}
+        {leaf = "windowsIn"; enabled = true; speed = 4.1; bezier = "easeOutQuint"; style = "popin 87%";}
+        {leaf = "windowsOut"; enabled = true; speed = 1.49; bezier = "linear"; style = "popin 87%";}
+        {leaf = "fadeIn"; enabled = true; speed = 1.73; bezier = "almostLinear";}
+        {leaf = "fadeOut"; enabled = true; speed = 1.46; bezier = "almostLinear";}
+        {leaf = "fade"; enabled = true; speed = 3.03; bezier = "quick";}
+        {leaf = "layers"; enabled = true; speed = 3.81; bezier = "easeOutQuint";}
+        {leaf = "layersIn"; enabled = true; speed = 4; bezier = "easeOutQuint"; style = "fade";}
+        {leaf = "layersOut"; enabled = true; speed = 1.5; bezier = "linear"; style = "fade";}
+        {leaf = "fadeLayersIn"; enabled = true; speed = 1.79; bezier = "almostLinear";}
+        {leaf = "fadeLayersOut"; enabled = true; speed = 1.39; bezier = "almostLinear";}
+        {leaf = "workspaces"; enabled = true; speed = 1.94; bezier = "almostLinear"; style = "fade";}
+        {leaf = "workspacesIn"; enabled = true; speed = 1.21; bezier = "almostLinear"; style = "fade";}
+        {leaf = "workspacesOut"; enabled = true; speed = 1.94; bezier = "almostLinear"; style = "fade";}
+        {leaf = "zoomFactor"; enabled = false;}
+        {leaf = "monitorAdded"; enabled = false;}
       ];
     };
   };

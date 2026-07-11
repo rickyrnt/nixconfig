@@ -17,8 +17,13 @@
     };
 
     hyprgrass = {
-         url = "github:horriblename/hyprgrass";
-         inputs.hyprland.follows = "hyprland"; # IMPORTANT
+     url = "github:horriblename/hyprgrass";
+     inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    };
+    
+    hmHyprLib = {
+      url = "github:andiurne/hmHyprLib";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     pre-commit-hooks = {

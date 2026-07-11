@@ -16,8 +16,8 @@
     plugins = [
       inputs.hyprgrass.packages.${pkgs.system}.default
     ];
-    settings = {
-      exec-once = [
+    settings = with inputs.hmHyprLib.lib; {
+      on = autostart [
         "iio-hyprland"
       ];
     };

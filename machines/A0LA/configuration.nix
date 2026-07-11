@@ -42,6 +42,17 @@
           sleep = "delete";
           rightalt = "capslock";
           # leftmeta = "capslock";
+          rightcontrol = "layer(fnlock)";
+        };
+        settings.fnlock = {
+          brightnessdown = "brigtnessdown";
+          brightnessup = "brightnessup";
+          mute = "mute";
+          volumedown = "volumedown";
+          volumeup = "volumeup";
+          back = "previoussong";
+          forward = "nextsong";
+          refresh = "play";
         };
       };
     };  
