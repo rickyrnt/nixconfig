@@ -29,9 +29,13 @@
     })
     (final: prev: {
       wvkbd = prev.wvkbd.overrideAttrs (prevAttrs: finalAttrs: {
-        env = {
-          LAYOUT = "deskintl";
-        };
+        buildPhase = ''
+            runHook preBuild
+
+            make LAYOUT=deskintl
+
+            runHook postBuild
+          '';
       });
     })
   ];
