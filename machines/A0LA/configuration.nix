@@ -36,6 +36,7 @@
 
             runHook postBuild
           '';
+        meta.mainProgram = "wvkbd-deskintl";
       });
     })
   ];

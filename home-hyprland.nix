@@ -346,7 +346,7 @@ rec {
         (dspBind "ALT + k" (focus "{direction='u'}"))
         (dspBind "ALT + j" (focus "{direction='d'}"))
         (dspBind "ALT + TAB" (window "cycle_next"))
-        (dspBind "ALT + TAB" (windowArgs "fullscreen" "{mode='maximized', action='on'}"))
+        (dspBind "ALT + TAB" (windowArgs "fullscreen" "{mode='maximized', action='set'}"))
         (dspBind "CTRL + SUPER + ALT + 1" (workspaceArgs "move" "{monitor=0}"))
         (dspBind "CTRL + SUPER + ALT + 2" (workspaceArgs "move" "{monitor=1}"))
 
