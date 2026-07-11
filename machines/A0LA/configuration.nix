@@ -23,7 +23,7 @@
           owner = "commonkestrel";
           repo = "iio-hyprland";
           rev = "d356f13cb89ab9b080ac4b9e5579c0c2ccf46c7c";
-          hash = "";
+          hash = "sha256-K1HcwsSEHtolWltX3Qz/on31Tgi1eKjr/gRF1uu9l18=";
         };
       });
     })
