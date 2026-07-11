@@ -29,13 +29,7 @@
     })
     (final: prev: {
       wvkbd = prev.wvkbd.overrideAttrs (prevAttrs: finalAttrs: {
-        buildPhase = ''
-            runHook preBuild
-
-            make LAYOUT=deskintl
-
-            runHook postBuild
-          '';
+        makeFlags = [ "LAYOUT=deskintl" ];
         meta.mainProgram = "wvkbd-deskintl";
       });
     })
