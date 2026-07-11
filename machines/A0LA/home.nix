@@ -44,7 +44,7 @@
         workspace_name = "discord",
       })
       hl.plugin.hyprgrass.bind({
-        pattern = {kind = "pinch", fingers = 3, direction = "pinchin"},
+        pattern = {kind = "longpress", fingers = 3},
         action = hl.dsp.window.drag(),
         mouse = true,
       })

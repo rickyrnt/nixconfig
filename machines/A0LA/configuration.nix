@@ -27,6 +27,13 @@
         };
       });
     })
+    (final: prev: {
+      wvkbd = prev.wvkbd.overrideAttrs (prevAttrs: finalAttrs: {
+        env = {
+          LAYOUT = "deskintl";
+        };
+      });
+    })
   ];
 
   imports = [
