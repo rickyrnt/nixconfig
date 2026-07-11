@@ -17,6 +17,16 @@
         };
       });
     })
+    (final: prev: {
+      iio-hyprland = prev.iio-hyprland.overrideAttrs (prevAttrs: finalAttrs: {
+        src = final.fetchFromGitHub { 
+          owner = "commonkestrel";
+          repo = "iio-hyprland";
+          rev = "d356f13cb89ab9b080ac4b9e5579c0c2ccf46c7c";
+          hash = "";
+        };
+      });
+    })
   ];
 
   imports = [
@@ -53,6 +63,7 @@
           back = "previoussong";
           forward = "nextsong";
           refresh = "play";
+          "/" = "C-/";
         };
       };
     };  
