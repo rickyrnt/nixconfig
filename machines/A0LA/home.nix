@@ -54,10 +54,3 @@
       })
     '';
   };
-buildPhase = ''
-    runHook preBuild
-
-    gcc foo.c -o foo
-
-    runHook postBuild
-  '';}
