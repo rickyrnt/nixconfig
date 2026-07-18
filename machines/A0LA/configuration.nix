@@ -87,6 +87,7 @@
       vpl-gpu-rt
     ];
   };
+  services.xserver.videoDrivers = [ "modesetting" ];
   
   environment.systemPackages = with pkgs; [
     libinput-gestures
