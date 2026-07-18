@@ -81,6 +81,13 @@
     };
   };
   
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+    ];
+  };
+  
   environment.systemPackages = with pkgs; [
     libinput-gestures
   ];
