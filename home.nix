@@ -55,7 +55,6 @@ rec {
     startVpn
     bitwarden-desktop
     
-    steam
     steam-run
     zoom-us
     calibre
