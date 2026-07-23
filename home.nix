@@ -474,6 +474,7 @@ rec {
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     settings.user.email = "rick.yarnot.255@gmail.com";
     settings.user.name = "rickyrnt";
   };
