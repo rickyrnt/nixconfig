@@ -19,6 +19,9 @@
     ];
     settings = with inputs.hmHyprLib.lib; {
       on = autostart [
+        "waybar"
+        "hyprpaper"
+        "systemctl --user start hyprpolkitagent"
         "iio-hyprland"
         "wvkbd-deskintl --hidden"
       ];

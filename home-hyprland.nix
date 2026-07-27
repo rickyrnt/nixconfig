@@ -228,13 +228,6 @@ rec {
         }
       ];
 
-      # Autostart
-      on = autostart [
-        "waybar"
-        "hyprpaper"
-        "systemctl --user start hyprpolkitagent"
-      ];
-
       # config
       config = {
         general = {
