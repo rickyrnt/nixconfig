@@ -11,6 +11,7 @@
   
   home.packages = with pkgs; [
     wvkbd
+    moonlight-qt
   ];
   
   wayland.windowManager.hyprland = {
