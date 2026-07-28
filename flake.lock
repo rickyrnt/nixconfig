@@ -633,11 +633,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765232505,
-        "narHash": "sha256-PydeOmQO9uYhfU5G3ujfDdEGuM+wDr/Fr9osG4WQw7E=",
+        "lastModified": 1785206216,
+        "narHash": "sha256-FVdlA8+misnSnYV5xucNHKhpdUdA1OS1eJHgzk5hdDo=",
         "owner": "rickyrnt",
         "repo": "mechabar-nix",
-        "rev": "ebdc1c11515c65aaae86e3690fb3817d744148cb",
+        "rev": "5d582d0211f6de7408b059d297f6113b3853fa5f",
         "type": "github"
       },
       "original": {

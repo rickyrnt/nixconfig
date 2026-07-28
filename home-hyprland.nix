@@ -526,7 +526,7 @@ rec {
         "custom/leftin1"
 
         "custom/left1"
-        "hyprland/workspaces" # workspaces
+        "ext/workspaces" # workspaces
         "custom/right1"
 
         "custom/rightin1"
