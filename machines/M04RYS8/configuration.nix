@@ -38,7 +38,10 @@
     };
   };
   
-  services.sunshine.enable = true;
+  services.sunshine = {
+    enable = true;
+    package = pkgs.sunshine.override { cudaSupport = true; };
+  };
 
   environment.systemPackages = with pkgs; [
     virtio-win
