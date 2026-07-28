@@ -334,6 +334,7 @@ rec {
         (dspBind "SUPER + S" (windowArgs "float" "{action ='toggle'}"))
         (dspBind "SUPER + M" (windowArgs "fullscreen" "{mode='maximized', action='toggle'}"))
         (dspBind "SUPER + F" (windowArgs "fullscreen" "{mode='fullscreen', action='toggle'}"))
+        (dspBind "SUPER + A" (window "toggle_swallow"))
         (simpleBind "SUPER + P" "$HOME/.config/waybar/scripts/switchmonitor.sh")
         (simpleBind "SUPER + L" "hyprlock")
 
