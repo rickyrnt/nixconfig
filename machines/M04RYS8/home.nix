@@ -52,4 +52,15 @@
       nvidiacheck = "cat /sys/class/drm/card0/device/power_state";
     };
   };
+  
+  wayland.windowManager.hyprland = {
+    settings = with inputs.hmHyprLib.lib; {
+      # Autostart
+      on = autostart [
+        "waybar"
+        "hyprpaper"
+        "systemctl --user start hyprpolkitagent"
+      ];
+    };
+  };
 }
