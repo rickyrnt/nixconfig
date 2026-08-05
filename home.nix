@@ -10,7 +10,7 @@
 }:
 rec {
   imports = [
-    inputs.nix4nvchad.homeManagerModule
+    inputs.nix4nvchad.homeManagerModules.default
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./home-hyprland.nix
     ./programs/comma.nix
