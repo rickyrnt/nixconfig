@@ -17,7 +17,7 @@
     };
 
     hyprgrass = {
-     url = "github:horriblename/hyprgrass/v0.8.2";
+     url = "github:horriblename/hyprgrass";
      inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };
     
