@@ -19,6 +19,7 @@
     hyprgrass = {
      url = "github:horriblename/hyprgrass/v0.8.2";
      inputs.hyprland.follows = "hyprland"; # IMPORTANT
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     
     hmHyprLib = {
