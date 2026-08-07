@@ -12,14 +12,13 @@
     };
 
     hyprland = {
-      url = github:hyprwm/hyprland/v0.55.2;
-      # inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = github:hyprwm/hyprland/v0.56.2;
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprgrass = {
      url = "github:horriblename/hyprgrass/v0.8.2";
      inputs.hyprland.follows = "hyprland"; # IMPORTANT
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     
     hmHyprLib = {
