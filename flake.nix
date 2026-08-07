@@ -16,10 +16,10 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprgrass = {
-     url = "github:horriblename/hyprgrass/v0.8.2";
-     inputs.hyprland.follows = "hyprland"; # IMPORTANT
-    };
+    # hyprgrass = {
+    #  url = "github:horriblename/hyprgrass/v0.8.2";
+    #  inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    # };
     
     hmHyprLib = {
       url = "github:andiurne/hmHyprLib";
