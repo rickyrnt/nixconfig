@@ -13,7 +13,7 @@
 
     hyprland = {
       url = github:hyprwm/hyprland/v0.56.2;
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprgrass = {
