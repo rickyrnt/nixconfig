@@ -42,7 +42,7 @@ rec {
     };
     
   in [
-    inputs.hyprgrass.packages.${pkgs.system}.default
+    # inputs.hyprgrass.packages.${pkgs.system}.default
     python3
     vscode
     obsidian
