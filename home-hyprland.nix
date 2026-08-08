@@ -567,7 +567,7 @@ rec {
     extraConfig = {
       mainBar = {
         memory.tooltip = true;
-        "hyprland/workspaces" = {
+        "ext/workspaces" = {
           persistent-workspaces = {
             "eDP-1" = [ 1 ];
             "HDMI-A-1" = [ 6 ];

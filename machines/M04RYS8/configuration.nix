@@ -41,12 +41,16 @@
   services.sunshine = {
     enable = true;
     package = pkgs.sunshine.override { cudaSupport = true; };
+    # openFirewall = true;
   };
+  systemd.user.services.sunshine.environment.CUDA_VISIBLE_DEVICES = "1";
 
   environment.systemPackages = with pkgs; [
     virtio-win
     libvirt-glib
     virtiofsd
+    
+    archipelago
   ];
 
   programs.wireshark.enable = true;
