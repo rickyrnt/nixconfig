@@ -12,11 +12,12 @@
   home.packages = with pkgs; [
     wvkbd
     moonlight-qt
+    inputs.hyprgrass.packages.${pkgs.system}.default
   ];
   
   wayland.windowManager.hyprland = {
     plugins = [
-      # inputs.hyprgrass.packages.${pkgs.system}.default
+      inputs.hyprgrass.packages.${pkgs.system}.default
     ];
     settings = with inputs.hmHyprLib.lib; {
       on = autostart [
@@ -37,25 +38,25 @@
         };
       };
     };
-    # extraConfig = ''
-    #   hl.plugin.hyprgrass.gesture({
-    #     pattern = {kind = "swipe", fingers = 3, direction = "down"},
-    #     action = "close",
-    #   })
-    #   hl.plugin.hyprgrass.gesture({
-    #     pattern = {kind = "edge", origin = "up", direction = "down"},
-    #     action = "special",
-    #     workspace_name = "discord",
-    #   })
-    #   hl.plugin.hyprgrass.bind({
-    #     pattern = {kind = "edge", origin = "down", direction = "up"},
-    #     action = hl.dsp.exec_cmd("kill -s 34 $(ps -C wvkbd-deskintl)")
-    #   })
-    #   hl.plugin.hyprgrass.bind({
-    #     pattern = {kind = "longpress", fingers = 3},
-    #     action = hl.dsp.window.drag(),
-    #     mouse = true,
-    #   })
-    # '';
+    extraConfig = ''
+      hl.plugin.hyprgrass.gesture({
+        pattern = {kind = "swipe", fingers = 3, direction = "down"},
+        action = "close",
+      })
+      hl.plugin.hyprgrass.gesture({
+        pattern = {kind = "edge", origin = "up", direction = "down"},
+        action = "special",
+        workspace_name = "discord",
+      })
+      hl.plugin.hyprgrass.bind({
+        pattern = {kind = "edge", origin = "down", direction = "up"},
+        action = hl.dsp.exec_cmd("kill -s 34 $(ps -C wvkbd-deskintl)")
+      })
+      hl.plugin.hyprgrass.bind({
+        pattern = {kind = "longpress", fingers = 3},
+        action = hl.dsp.window.drag(),
+        mouse = true,
+      })
+    '';
   };
 }
