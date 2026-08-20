@@ -84,7 +84,19 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   
-  services.printing.enable = true;
+  # printing stuff
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      gutenprint
+      cnijfilter2
+    ];
+  };
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   powerManagement.enable = true;
 
