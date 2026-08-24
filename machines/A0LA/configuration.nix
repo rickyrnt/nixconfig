@@ -61,7 +61,7 @@
           rightcontrol = "layer(fnlock)";
         };
         settings.fnlock = {
-          brightnessdown = "brigtnessdown";
+          brightnessdown = "brightnessdown";
           brightnessup = "brightnessup";
           mute = "mute";
           volumedown = "volumedown";

@@ -22,7 +22,7 @@
   
   services.openssh.authorizedKeysFiles = [ "/home/rickyrnt/nixos/secrets/aola-morris.pub" ];
   
-  services.onedrive.enable = true;
+  services.onedrive.enable = false;
   
   services.keyd = {
     enable = true;
@@ -51,6 +51,15 @@
     virtiofsd
     
     archipelago
+  ];
+  
+  networking.firewall.allowedTCPPorts = [
+    27015
+    27016
+  ];
+  networking.firewall.allowedUDPPorts = [
+    27015
+    27016
   ];
 
   programs.wireshark.enable = true;
