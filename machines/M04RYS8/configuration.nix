@@ -18,8 +18,6 @@
   
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "x86_64-windows" ];
 
-  hardware.opentabletdriver.enable = true;
-  
   services.openssh.authorizedKeysFiles = [ "/home/rickyrnt/nixos/secrets/aola-morris.pub" ];
   
   services.onedrive.enable = false;
