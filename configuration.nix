@@ -84,6 +84,8 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   
+  hardware.opentabletdriver.enable = true;
+  
   # printing stuff
   services.printing = {
     enable = true;
