@@ -405,12 +405,13 @@ rec {
         {workspace="special:tunes"; on_created_empty=ciderize;}
         {workspace="n[e:discord] w[tv1]"; gaps_out=0; gaps_in=0;}
         {workspace="n[e:discord] f[1]"; gaps_out=0; gaps_in=0;}
-        {workspace="name:gaming"; monitor="id:0";}
+        {workspace="name:gaming"; monitor="eDP-1";}
         {workspace="n[e:gaming] w[tv1]"; gaps_out=0; gaps_in=0;}
         {workspace="n[e:gaming] f[1]"; gaps_out=0; gaps_in=0;}
         {workspace="r[1-5]"; monitor="eDP-1";}
         {workspace="r[7-10]"; monitor="HDMI-A-1";}
-        {workspace="6"; monitor="HDMI-A-1"; default=true;}
+        {workspace="1"; monitor="eDP-1"; default=true; persistent = true;}
+        {workspace="6"; monitor="HDMI-A-1"; default=true; persistent = true;}
       ];
 
       window_rule = [

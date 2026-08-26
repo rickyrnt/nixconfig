@@ -7,7 +7,7 @@
 #custom-ws {
   color: transparent;
   text-shadow: none;
-  animation: module_in 0.25s ease-in 0.5s forwards;
+  animation: module_in 0.15s ease-in 0.15s forwards;
 }
 
 #custom-distro {
@@ -29,7 +29,7 @@
 
 #workspaces label {
   opacity: 0;
-  animation: hoverable_in 0.25s ease-in 1s forwards;
+  animation: hoverable_in 0.15s ease-in 0.15s forwards;
 }
 
 /* #custom-cpu, */
@@ -91,7 +91,7 @@
   font-size: 0;
   text-shadow: none;
   animation: module_expand 0.25s ease-in 1.15s forwards,
-    module_in 0.25s ease-in 1.4s forwards;
+    module_in 0.25s ease-in 0.2s forwards;
 }
 
 #memory.warning {
@@ -99,7 +99,7 @@
   font-size: 0;
   text-shadow: none;
   animation: module_expand 0.25s ease-in 1.15s forwards,
-    state_warning_in 0.25s ease-in 1.4s forwards;
+    state_warning_in 0.25s ease-in 0.2s forwards;
 }
 
 #memory.critical {
@@ -107,7 +107,7 @@
   font-size: 0;
   text-shadow: none;
   animation: module_expand 0.25s ease-in 1.15s forwards,
-    state_critical_in 0.25s ease-in 1.4s forwards;
+    state_critical_in 0.25s ease-in 0.2s forwards;
 }
 
 #clock.date {
