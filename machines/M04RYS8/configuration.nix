@@ -38,7 +38,10 @@
   
   services.sunshine = {
     enable = true;
-    package = pkgs.sunshine.override { cudaSupport = true; };
+    package = pkgs.sunshine.override { 
+      cudaSupport = true; 
+      cudaPackages = pkgs.cudaPackages;
+    };
     # openFirewall = true;
   };
   systemd.user.services.sunshine.environment.CUDA_VISIBLE_DEVICES = "1";
