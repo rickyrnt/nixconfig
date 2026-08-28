@@ -194,13 +194,14 @@ rec {
     ];
   };
 
-  wayland.windowManager.hyprland = with inputs.hmHyprLib.lib; {
+  wayland.windowManager.hyprland = with inputs.hmHyprLib.lib; let
+    lu = lib.generators.mkLuaInline;
+  in {
     enable = true;
     systemd.enable = false;
     configType = "lua";
     # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     settings = let
-      lu = lib.generators.mkLuaInline;
       # Programs
       grmblstfy = "grimblast --notify --freeze";
       terminal = "kitty";
@@ -210,6 +211,7 @@ rec {
       rebar = "killall -v .waybar-wrapped; waybar &";
       vencordize = "Discord";
       ciderize = "Cider";
+      moonlightize = "moonlight";
       alt-fish = inputs.alt-fish.packages.x86_64-linux.women-me-fear-fish-me-want;
     in {
       # Monitors
@@ -370,6 +372,11 @@ rec {
         (dspBind "CTRL + ALT + mouse_down" (focus "{workspace='e-1', on_current_monitor=true}"))
         (dspBind "CTRL + ALT + l" (focus "{workspace='r+1', on_current_monitor=true}"))
         (dspBind "CTRL + ALT + h" (focus "{workspace='r-1', on_current_monitor=true}"))
+        (dspBind "CTRL + ALT + w" (lu ''function()
+          hl.dispatch(hl.dsp.focus({workspace='name:moonlight'}))
+          hl.dispatch(hl.dsp.submap('moonlight'))
+          end''))
+        (dspBind "ALT + SHIFT + w" (windowArgs "move" "{workspace='name:moonlight'}"))
         (dspBind "CTRL + ALT + G" (focus "{workspace='name:gaming'}"))
         (dspBind "ALT + SHIFT + G" (windowArgs "move" "{workspace='name:gaming'}"))
         
@@ -398,16 +405,19 @@ rec {
         (simpleBind "XF86AudioPrev" "playerctl previous")
         (simpleBind "SUPER + r" "hyprctl reload")
       ]);
-
+      
       workspace_rule = [
         {workspace="special:discord"; on_created_empty=vencordize;}
         {workspace="special:magic"; on_created_empty=terminal;}
         {workspace="special:tunes"; on_created_empty=ciderize;}
+        {workspace="name:moonlight"; on_created_empty=moonlightize;}
         {workspace="n[e:discord] w[tv1]"; gaps_out=0; gaps_in=0;}
         {workspace="n[e:discord] f[1]"; gaps_out=0; gaps_in=0;}
         {workspace="name:gaming"; monitor="eDP-1";}
         {workspace="n[e:gaming] w[tv1]"; gaps_out=0; gaps_in=0;}
         {workspace="n[e:gaming] f[1]"; gaps_out=0; gaps_in=0;}
+        {workspace="n[e:moonlight] w[tv1]"; gaps_out=0; gaps_in=0;}
+        {workspace="n[e:moonlight] f[1]"; gaps_out=0; gaps_in=0;}
         {workspace="r[1-5]"; monitor="eDP-1";}
         {workspace="r[7-10]"; monitor="HDMI-A-1";}
         {workspace="1"; monitor="eDP-1"; default=true; persistent = true;}
@@ -421,6 +431,7 @@ rec {
         {match.class = "Cider"; workspace = "special:tunes";}
         {match.class = "libresprite"; tile = true;}
         {match.class = ".+pavucontrol"; float = true;}
+        {match.class = "com.moonlight_stream.Moonlight"; workspace = "name:moonlight"; fullscreen = 1;}
         {match.class = "factorio"; workspace = "name:gaming";}
         {match.class = "Clocktower.+"; workspace = "name:gaming";}
         {match.class = "hollow_knight.x86_64"; workspace = "name:gaming";}
@@ -469,6 +480,17 @@ rec {
         {leaf = "zoomFactor"; enabled = false;}
         {leaf = "monitorAdded"; enabled = false;}
       ];
+    };
+    submaps = {
+      moonlight.settings = {
+        bind = [
+          (dspBind "SUPER + CTRL + ALT + e" (lu ''function()
+            hl.dispatch(hl.dsp.submap('reset'))
+            hl.dispatch(hl.dsp.focus({workspace='previous_per_monitor'}))
+            end''))
+          (dspBind "SUPER + CTRL + ALT + r" (dspCallArgs "submap" "'reset'"))
+        ];
+      };
     };
   };
 
@@ -576,6 +598,7 @@ rec {
           format = "{icon}";
           format-icons = {
             "gaming" = "󰊖 ";
+            "moonlight" = " ";
           };
         };
         
