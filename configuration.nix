@@ -120,6 +120,8 @@
       "pipewire"
       "audio"
       "libvirtd"
+      "video"
+      "nvidia"
     ];
     shell = pkgs.zsh;
   };
