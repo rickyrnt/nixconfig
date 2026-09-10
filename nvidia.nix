@@ -6,6 +6,14 @@
   ...
 }:
 {
+  nixpkgs.config = {
+    nvidia.acceptLicense = true;
+    cudaSupport = true;
+  };
+
+  environment.systemPackages = with pkgs.cudaPackages; [
+    cuda_nvcc
+  ];
 
   boot.kernelParams = [
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
