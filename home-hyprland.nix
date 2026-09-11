@@ -5,6 +5,7 @@
   inputs, 
   lib, 
   wallpaper-photo,
+  monitor-name,
   ... 
 }:
 rec {
@@ -223,7 +224,7 @@ rec {
           scale = "1";
         }
         {
-          output = "HDMI-A-1";
+          output = monitor-name;
           mode = "highres@highrr";
           position = "auto-left";
           scale = "1";
@@ -419,9 +420,9 @@ rec {
         {workspace="n[e:moonlight] w[tv1]"; gaps_out=0; gaps_in=0;}
         {workspace="n[e:moonlight] f[1]"; gaps_out=0; gaps_in=0;}
         {workspace="r[1-5]"; monitor="eDP-1";}
-        {workspace="r[7-10]"; monitor="HDMI-A-1";}
+        {workspace="r[7-10]"; monitor=monitor-name;}
         {workspace="1"; monitor="eDP-1"; default=true; persistent = true;}
-        {workspace="6"; monitor="HDMI-A-1"; default=true; persistent = true;}
+        {workspace="6"; monitor=monitor-name; default=true; persistent = true;}
       ];
 
       window_rule = [
@@ -593,7 +594,7 @@ rec {
         "ext/workspaces" = {
           persistent-workspaces = {
             "eDP-1" = [ 1 ];
-            "HDMI-A-1" = [ 6 ];
+            "${monitor-name}" = [ 6 ];
           };
           format = "{icon}";
           format-icons = {
@@ -658,7 +659,15 @@ rec {
   xdg.configFile = {
     "rofi/monitor-menu.rasi".source = ./dotfiles/monitor-menu.rasi;
     "waybar/scripts/switchmonitor.sh" = {
-      source = ./dotfiles/switchmonitor.sh;
+      source = let
+         config = builtins.replaceStrings [
+          "monitor-name"
+         ]
+         [
+          monitor-name
+         ]
+          (builtins.readFile ./dotfiles/switchmonitor.sh);
+      in pkgs.writeText "switchmonitor.sh" config;
       executable = true;
     };
   };

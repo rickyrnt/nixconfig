@@ -44,7 +44,7 @@
     };
     # openFirewall = true;
   };
-  systemd.user.services.sunshine.environment.CUDA_VISIBLE_DEVICES = "1";
+  systemd.user.services.sunshine.environment.CUDA_VISIBLE_DEVICES = "0";
 
   environment.systemPackages = with pkgs; [
     virtio-win

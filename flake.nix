@@ -114,6 +114,7 @@
           pkgs-unstable = import nixpkgs-unstable { inherit system; };
           hostname = "M04RYS8";
           wallpaper-photo = inputs.wallpaper-photo-morris;
+          monitor-name = "HDMI-A-1";
         in nixpkgs.lib.nixosSystem {
           specialArgs = { 
             inherit inputs pkgs-unstable hostname wallpaper-photo; 
@@ -125,7 +126,7 @@
             ./laptop.nix
             home-manager.nixosModules.home-manager { 
               home-manager = {
-                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo; };
+                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo monitor-name; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "hm-backup";
@@ -142,6 +143,7 @@
           pkgs-unstable = import nixpkgs-unstable { inherit system; };
           hostname = "A0LA";
           wallpaper-photo = inputs.wallpaper-photo-aola;
+          monitor-name = "DP-2";
         in nixpkgs.lib.nixosSystem {
           specialArgs = { 
             inherit inputs pkgs-unstable hostname wallpaper-photo; 
@@ -152,7 +154,7 @@
             ./laptop.nix
             home-manager.nixosModules.home-manager { 
               home-manager = {
-                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo; };
+                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo monitor-name; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "hm-backup";
