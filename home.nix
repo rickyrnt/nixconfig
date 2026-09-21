@@ -5,6 +5,7 @@
   lib,
   pkgs-unstable,
   wallpaper-photo,
+  wallpaper-photo-url,
   hostname,
   ...
 }:
@@ -100,7 +101,7 @@ rec {
       substitutions = [
         "--replace"
         "@WALLPAPER@"
-        "${wallpaper-photo}"
+        "${wallpaper-photo-url}"
       ];
     };
     "Equicord/settings/settings.json" = {
@@ -253,11 +254,11 @@ rec {
               enabled = true;
               deleteStyle = "text";
               logDeletes = true;
-              collapseDeleted = false;
               logEdits = true;
+              collapseDeleted = true;
               inlineEdits = true;
-              ignoreBots = false;
-              ignoreSelf = false;
+              ignoreBots = true;
+              ignoreSelf = true;
               ignoreUsers = "";
               ignoreChannels = "";
               ignoreGuilds = "";

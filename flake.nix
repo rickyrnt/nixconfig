@@ -126,7 +126,8 @@
             ./laptop.nix
             home-manager.nixosModules.home-manager { 
               home-manager = {
-                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo monitor-name; };
+                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo monitor-name; 
+                wallpaper-photo-url = https://images.steamusercontent.com/ugc/1170321140105641126/47F1E70BD90DB25A97F3B761B07764F7F947287E/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "hm-backup";
@@ -154,7 +155,8 @@
             ./laptop.nix
             home-manager.nixosModules.home-manager { 
               home-manager = {
-                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo monitor-name; };
+                extraSpecialArgs = { inherit system inputs pkgs-unstable hostname wallpaper-photo monitor-name; 
+                wallpaper-photo-url = https://cdn.mos.cms.futurecdn.net/LCFTiCY5Jt7eA5hHF6zg7Y-1200-80.jpg; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "hm-backup";
