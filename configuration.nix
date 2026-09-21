@@ -121,6 +121,7 @@
       "audio"
       "libvirtd"
       "video"
+      "dialout"
       "nvidia"
     ];
     shell = pkgs.zsh;
