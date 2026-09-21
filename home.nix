@@ -262,6 +262,7 @@ rec {
               ignoreUsers = "";
               ignoreChannels = "";
               ignoreGuilds = "";
+              showEditDiffs = true;
           };
           MutualGroupDMs.enabled = true;
           NoOnboardingDelay.enabled = true;
