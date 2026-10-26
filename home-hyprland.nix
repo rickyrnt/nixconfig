@@ -101,12 +101,12 @@ rec {
 
       ansi08 = "3E4450";
       ansi09 = "CF717A";
-      ansi10 = "B3CE9C";
-      ansi11 = "FBDB9B";
-      ansi12 = "6E91BC";
-      ansi13 = "C49EBD";
-      ansi14 = "9FCCDB";
-      ansi15 = "F5F9F0";
+      ansi0A = "B3CE9C";
+      ansi0B = "FBDB9B";
+      ansi0C = "6E91BC";
+      ansi0D = "C49EBD";
+      ansi0E = "9FCCDB";
+      ansi0F = "F5F9F0";
     };
   };
 
