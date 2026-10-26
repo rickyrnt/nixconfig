@@ -98,7 +98,15 @@ rec {
       ansi05 = "B48EAD";
       ansi06 = "8FBCBB";
       ansi07 = "E5E9F0";
+
       ansi08 = "3E4450";
+      ansi09 = "CF717A";
+      ansi10 = "B3CE9C";
+      ansi11 = "FBDB9B";
+      ansi12 = "6E91BC";
+      ansi13 = "C49EBD";
+      ansi14 = "9FCCDB";
+      ansi15 = "F5F9F0";
     };
   };
 
