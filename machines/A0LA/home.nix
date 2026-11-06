@@ -37,6 +37,24 @@
           workspace_swipe_cancel_ratio = 0.15;
         };
       };
+      bind = [
+        (dspBind "CTRL + ALT + w" (lu ''function()
+          hl.dispatch(hl.dsp.focus({workspace='name:moonlight'}))
+          hl.dispatch(hl.dsp.submap('moonlight'))
+          end''))
+        (dspBind "ALT + SHIFT + w" (windowArgs "move" "{workspace='name:moonlight'}"))
+      ];
+    };
+    submaps = {
+      moonlight.settings = {
+        bind = [
+          (dspBind "SUPER + CTRL + ALT + e" (lu ''function()
+            hl.dispatch(hl.dsp.submap('reset'))
+            hl.dispatch(hl.dsp.focus({workspace='previous_per_monitor'}))
+            end''))
+          (dspBind "SUPER + CTRL + ALT + r" (dspCallArgs "submap" "'reset'"))
+        ];
+      };
     };
     extraConfig = ''
       hl.plugin.hyprgrass.gesture({

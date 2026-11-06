@@ -382,11 +382,6 @@ rec {
         (dspBind "CTRL + ALT + mouse_down" (focus "{workspace='e-1', on_current_monitor=true}"))
         (dspBind "CTRL + ALT + l" (focus "{workspace='r+1', on_current_monitor=true}"))
         (dspBind "CTRL + ALT + h" (focus "{workspace='r-1', on_current_monitor=true}"))
-        (dspBind "CTRL + ALT + w" (lu ''function()
-          hl.dispatch(hl.dsp.focus({workspace='name:moonlight'}))
-          hl.dispatch(hl.dsp.submap('moonlight'))
-          end''))
-        (dspBind "ALT + SHIFT + w" (windowArgs "move" "{workspace='name:moonlight'}"))
         (dspBind "CTRL + ALT + G" (focus "{workspace='name:gaming'}"))
         (dspBind "ALT + SHIFT + G" (windowArgs "move" "{workspace='name:gaming'}"))
         
@@ -490,17 +485,6 @@ rec {
         {leaf = "zoomFactor"; enabled = false;}
         {leaf = "monitorAdded"; enabled = false;}
       ];
-    };
-    submaps = {
-      moonlight.settings = {
-        bind = [
-          (dspBind "SUPER + CTRL + ALT + e" (lu ''function()
-            hl.dispatch(hl.dsp.submap('reset'))
-            hl.dispatch(hl.dsp.focus({workspace='previous_per_monitor'}))
-            end''))
-          (dspBind "SUPER + CTRL + ALT + r" (dspCallArgs "submap" "'reset'"))
-        ];
-      };
     };
   };
 
