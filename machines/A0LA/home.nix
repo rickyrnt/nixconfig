@@ -15,7 +15,7 @@
     inputs.hyprgrass.packages.${pkgs.system}.default
   ];
   
-  wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = with inputs.hmHyprLib.lib; {
     plugins = [
       inputs.hyprgrass.packages.${pkgs.system}.default
     ];
