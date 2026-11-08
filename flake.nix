@@ -2,7 +2,7 @@
   description = "The rickyrnt personal system";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-26.05;
+    nixpkgs.url = github:nixos/nixpkgs/f6587c4e25df2155cdf274967ae1f0825f442cb7;
     
     nixpkgs-unstable.url = github:nixos/nixpkgs/nixos-unstable;
 
@@ -111,7 +111,7 @@
       nixosConfigurations = {
         M04RYS8 = let
           system = "x86_64-linux";
-          pkgs-unstable = import nixpkgs-unstable { inherit system; };
+          pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
           hostname = "M04RYS8";
           wallpaper-photo = inputs.wallpaper-photo-morris;
           monitor-name = "HDMI-A-1";
@@ -141,7 +141,7 @@
         };
         A0LA = let
           system = "x86_64-linux";
-          pkgs-unstable = import nixpkgs-unstable { inherit system; };
+          pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
           hostname = "A0LA";
           wallpaper-photo = inputs.wallpaper-photo-aola;
           monitor-name = "DP-2";
