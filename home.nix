@@ -70,7 +70,7 @@ rec {
     cmatrix
     terminal-toys
     godot
-    (discord.override {
+    (pkgs-unstable.discord.override {
       withEquicord = true;
     })
     # jellyfin-media-player
@@ -104,6 +104,7 @@ rec {
         "${wallpaper-photo-url}"
       ];
     };
+    /*
     "Equicord/settings/settings.json" = {
       force = true;
       source = jsonFormat.generate "Equicord-settings" {
@@ -427,6 +428,7 @@ rec {
         };
       };
     };
+    */
   };
   
   xdg.portal.enable = true;
