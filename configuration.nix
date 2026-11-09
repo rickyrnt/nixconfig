@@ -26,7 +26,7 @@
           inherit (finalAttrs) pname version src;
           pnpm = final.pnpm_11;
           fetcherVersion = 4;
-          hash = "";
+          hash = "sha256-rFxPEG/BvWUnI+nu1IAZAJxye6MRkoOGS9Afj2ksRK0=";
         };
       });
     })
