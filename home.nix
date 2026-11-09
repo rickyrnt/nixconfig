@@ -104,7 +104,6 @@ rec {
         "${wallpaper-photo-url}"
       ];
     };
-    /*
     "Equicord/settings/settings.json" = {
       force = true;
       source = jsonFormat.generate "Equicord-settings" {
@@ -428,7 +427,6 @@ rec {
         };
       };
     };
-    */
   };
   
   xdg.portal.enable = true;
