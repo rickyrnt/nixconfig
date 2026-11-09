@@ -86,6 +86,7 @@
     extraPackages = with pkgs; [
       intel-media-driver
       vpl-gpu-rt
+      intel-vaapi-driver
     ];
   };
   services.xserver.videoDrivers = [ "modesetting" ];
