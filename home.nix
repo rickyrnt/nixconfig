@@ -70,7 +70,7 @@ rec {
     cmatrix
     terminal-toys
     godot
-    (pkgs-unstable.discord.override {
+    (discord.override {
       withEquicord = true;
     })
     # jellyfin-media-player
