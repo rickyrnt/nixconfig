@@ -2,7 +2,8 @@
   description = "The rickyrnt personal system";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/f6587c4e25df2155cdf274967ae1f0825f442cb7;
+    # nixpkgs.url = github:nixos/nixpkgs/nixos-26.05;
+    nixpkgs.url = github:nixos/nixpkgs/d6524aaca2ff07876657ae2b323f24be4874944b;
     
     nixpkgs-unstable.url = github:nixos/nixpkgs/nixos-unstable;
 
