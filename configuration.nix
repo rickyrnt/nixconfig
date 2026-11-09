@@ -44,7 +44,7 @@
             asar extract "$packed" "$unpacked"
             substituteInPlace $unpacked/@vscode/sudo-prompt/index.js \
               --replace-fail "/usr/bin/pkexec" "/run/wrappers/bin/pkexec" \
-              --replace-fail "/bin/bash" "${finalAttrs.bash}/bin/bash"
+              --replace-fail "/bin/bash" "${final.bash}/bin/bash"
             rm -rf "$packed"
           ''
           # without this symlink loading JsChardet, the library that is used for auto encoding detection when files.autoGuessEncoding is true,
@@ -66,15 +66,10 @@
               else
                 "resources/app/node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg";
           in
-          if !finalAttrs.useVSCodeRipgrep then
-            ''
-              rm ${vscodeRipgrep}
-              ln -s ${final.ripgrep}/bin/rg ${vscodeRipgrep}
-            ''
-          else
-            ''
-              chmod +x ${vscodeRipgrep}
-            ''
+          ''
+            rm ${vscodeRipgrep}
+            ln -s ${final.ripgrep}/bin/rg ${vscodeRipgrep}
+          ''
         );
       });
     })
