@@ -6,6 +6,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  lib,
   inputs,
   hostname,
   ...
@@ -190,7 +191,22 @@
     "1.1.1.1#one.one.one.one"
     "1.0.0.1#one.one.one.one"
   ];
-  programs.openvpn3.enable = true;
+  programs.openvpn3 = {
+    enable = true;
+    netcfg.settings = {
+      systemd-resolved = true;
+    };
+  };
+  environment.etc = let
+    json = pkgs.formats.json {};
+  in {
+    "openvpn3/netcfg.json".source = lib.mkForce (json.generate "netcfg.json" (
+      let
+        netcfg = config.programs.openvpn3.netcfg.settings;
+      in
+      builtins.removeAttrs netcfg (lib.optional (!netcfg.systemd_resolved) "systemd_resolved")
+    ));
+  };
 
   services.openvpn.servers.bboysenc = {
     autoStart = false;
