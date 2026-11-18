@@ -56,23 +56,7 @@
             ln -rs "$unpacked" "$packed"
           ''
         )
-        + (
-          let
-            vscodeRipgrep =
-              if final.stdenv.hostPlatform.isDarwin then
-                if final.lib.versionAtLeast finalAttrs.vscodeVersion "1.94.0" then
-                  "Contents/Resources/app/node_modules/@vscode/ripgrep/bin/rg"
-                else
-                  "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
-              else
-                "resources/app/node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg";
-          in
-          ''
-            rm ${vscodeRipgrep}
-            ln -s ${final.ripgrep}/bin/rg ${vscodeRipgrep}
-          ''
-        );
-      });
+      ;});
     })
   ];
 
