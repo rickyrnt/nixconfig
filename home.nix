@@ -492,6 +492,7 @@ rec {
     background_opacity = 0.2;
     background_blur = 0;
     background = "#100008";
+    remember_window_size = "no";
   };
   
   programs.direnv = {

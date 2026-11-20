@@ -452,6 +452,8 @@ rec {
 
         {match = {float=false;workspace="s[false]";}; no_blur = true;}
 
+        {match.initial_class = "zoom"; float = true;}
+
         {match = {workspace="n[e:gaming] w[tv1]";float=false;}; rounding = 0; border_size = 0; no_shadow = true;}
         {match = {workspace="n[e:gaming]";fullscreen=1;}; rounding = 0; border_size = 0; no_shadow = true;}
       ];
